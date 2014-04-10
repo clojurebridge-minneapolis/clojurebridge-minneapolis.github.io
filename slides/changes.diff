@@ -1,0 +1,49 @@
+diff --git a/slides/build.boot b/slides/build.boot
+index b5f246b..01689c6 100644
+--- a/slides/build.boot
++++ b/slides/build.boot
+@@ -1,11 +1,11 @@
+ #!/usr/bin/env boot
+ 
+-#tailrecursion.boot.core/version "2.2.1"
++#tailrecursion.boot.core/version "2.3.1"
+ 
+ (set-env!
+   :project      'clojurebridge.slides
+   :version      "0.1.0-SNAPSHOT"
+-  :dependencies '[[tailrecursion/boot.task   "2.1.1"]                  
++  :dependencies '[[tailrecursion/boot.task   "2.1.2"]
+                   [tailrecursion/hoplon      "5.5.1"]
+                   [tailrecursion/boot.ring   "0.1.0-SNAPSHOT"]
+                   [org.clojure/clojurescript "0.0-2156"]]
+diff --git a/slides/src/index.cljs.hl b/slides/src/index.cljs.hl
+index e94a477..42877b0 100644
+--- a/slides/src/index.cljs.hl
++++ b/slides/src/index.cljs.hl
+@@ -14,8 +14,8 @@
+      :theme "mozilla-theme.css"
+      (intro
+       :title "ClojureBridge"
+-      (p "Durham, NC")
+-      (p "April 5, 2014"))
++      (p "Minneapolis, MN")
++      (p "May 17, 2014"))
+      (slide
+       :title "Table of Contents"
+       (ul
+diff --git a/slides/src/training.cljs.hl b/slides/src/training.cljs.hl
+index e7da51c..fbd81a8 100644
+--- a/slides/src/training.cljs.hl
++++ b/slides/src/training.cljs.hl
+@@ -9,8 +9,9 @@
+      :theme "mozilla-theme.css"
+      (intro
+       :title "ClojureBridge Teacher Training"
+-      (p "Durham, NC")
+-      (p "March 18, 2014"))
++      (p "Minneapolis, MN")
++      ;(p "March 18, 2014")
++)
+      (slide
+       :title "Agenda"
+       (quicklist
