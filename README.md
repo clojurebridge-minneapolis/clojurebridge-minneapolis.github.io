@@ -1,6 +1,10 @@
 # ClojureBridge Minneapolis
 
-This repository hosts the [ClojureBridge Minneapolis](http://clojurebridge-minneapolis.github.io) website.
+**NOTE:** Please see the [ClojureBridgeMN.org](https://github.com/clojurebridge-minneapolis/clojurebridgemn.org) repo for our current website!
+
+## Background
+
+This repository *used to* host the [ClojureBridge Minneapolis](http://clojurebridge-minneapolis.github.io) website.
 
 ## Resources
 
