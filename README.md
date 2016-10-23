@@ -1,17 +1,15 @@
-# ClojureBridge Minneapolis
+# ClojureBridgeMN
 
-**NOTE:** Please see the [ClojureBridgeMN.org](https://github.com/clojurebridge-minneapolis/clojurebridgemn.org) repo for our current website!
+This is our **gh-pages** repo for http://clojurebridge-minneapolis.github.io/
 
-## Background
+## See also...
 
-This repository *used to* host the [ClojureBridge Minneapolis](http://clojurebridge-minneapolis.github.io) website.
-
-## Resources
-
-Check out...
-
-* National ClojureBridge resources
-  * ClojureBridge http://www.clojurebridge.org/
+You may want to visit
+* Our installfest page: https://github.com/clojurebridge-minneapolis/installfest
+* Our website: http://ClojureBridgeMN.org/
+* Our twitter: https://twitter.com/ClojureBridgeMN
+* Our facebook: https://www.facebook.com/ClojureBridgeMN
+* The global ClojureBridge site: http://ClojureBridge.org/
 
 ### License
 
