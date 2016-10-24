@@ -34,8 +34,9 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="index.html"/>
+        <link rel="up" title="Installfest: Getting Set Up" href="setup.html"/>
         <link rel="next" title="Clojure Resources" href="resources.html"/>
-        <link rel="prev" title="Install Nightcode" href="setup_new_nightcode.html"/> 
+        <link rel="prev" title="Older koans documentation" href="koans.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -63,7 +64,7 @@
             
             
               <div class="version">
-                Sunday Oct 23 2016 @ 23:46:35 tmarble
+                Monday Oct 24 2016 @ 08:48:16 tmarble
               </div>
             
           
@@ -85,21 +86,29 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Installfest: Getting Set Up</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new.html">ClojureBridge Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_irc.html">Join the #clojure.mn channel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_heroku.html">Install the Heroku Toolbelt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_ssh.html">Create an SSH key</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_github.html">Setup github</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_java.html">Install Java</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_lein.html">Install Leiningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_heroku2.html">Getting Started with Heroku</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_nightcode.html">Install Nightcode</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Try Clojure Koans in Nightcode</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#clone-our-version-of-the-clojure-koans">Clone our version of the Clojure Koans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#make-a-new-git-branch-for-your-work">Make a new git branch for your work</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#open-the-koans-repo-in-nightcode">Open the Koans repo in Nightcode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solve-a-koan">Solve a Koan</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="setup.html">Installfest: Getting Set Up</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#what-we-are-installing">What we are installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#instructions-by-operating-system">Instructions by operating system</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="setup.html#experimental-instructions-to-be-merged">Experimental Instructions (to be merged)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="setup_new_irc.html">Join the #clojure.mn channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_new_heroku.html">Install the Heroku Toolbelt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_new_ssh.html">Create an SSH key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_new_github.html">Setup github</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_new_java.html">Install Java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_new_lein.html">Install Leiningen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_new_heroku2.html">Getting Started with Heroku</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_new_nightcode.html">Install Nightcode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="koans.html">Older koans doc</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Try Clojure Koans in Nightcode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone-our-version-of-the-clojure-koans">Clone our version of the Clojure Koans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-a-new-git-branch-for-your-work">Make a new git branch for your work</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-the-koans-repo-in-nightcode">Open the Koans repo in Nightcode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solve-a-koan">Solve a Koan</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Clojure Resources</a></li>
@@ -134,6 +143,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
+          <li><a href="setup.html">Installfest: Getting Set Up</a> &raquo;</li>
+      
     <li>Try Clojure Koans in Nightcode</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -150,13 +161,6 @@
             
   <div class="section" id="try-clojure-koans-in-nightcode">
 <span id="try-clojure-koans-in-nightcode"></span><h1>Try Clojure Koans in Nightcode<a class="headerlink" href="#try-clojure-koans-in-nightcode" title="Permalink to this headline">¶</a></h1>
-<p>Go to the...</p>
-<ul class="simple">
-<li>prev section <a class="reference internal" href="setup_new_nightcode.html"><span class="doc">Install Nightcode</span></a></li>
-<li>new <a class="reference internal" href="setup_new.html"><span class="doc">Setup</span></a> instructions</li>
-<li>all ready to code!</li>
-</ul>
-<hr class="docutils" />
 <div class="section" id="clone-our-version-of-the-clojure-koans">
 <span id="clone-our-version-of-the-clojure-koans"></span><h2>Clone our version of the Clojure Koans<a class="headerlink" href="#clone-our-version-of-the-clojure-koans" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>clojurista@mylaptop $ mkdir -p ~/src/github/clojurebridge-minneapolis
@@ -202,7 +206,7 @@ clojurista@mylaptop $ git checkout clojurista
         <a href="resources.html" class="btn btn-neutral float-right" title="Clojure Resources" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="setup_new_nightcode.html" class="btn btn-neutral" title="Install Nightcode" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="koans.html" class="btn btn-neutral" title="Older koans documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
