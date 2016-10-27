@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Thursday Oct 27 2016 @ 14:11:58 web-flow
+                Thursday Oct 27 2016 @ 15:19:16 web-flow
               </div>
             
           
@@ -94,9 +94,9 @@
 <li class="toctree-l3"><a class="reference internal" href="setup_osx.html">OS X</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setup_win7.html">Windows 7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setup_win8.html">Windows 8</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Ubuntu Linux</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Linux</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#starting-a-terminal">Starting a terminal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#making-sure-java-is-installed">Making sure Java is installed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-java">Install Java</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-leiningen">Installing Leiningen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-light-table">Installing Light Table</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#getting-setup-with-heroku">Getting setup with Heroku</a></li>
@@ -178,13 +178,22 @@
 <p>The prompt (where you will type your commands) may look different: it usually shows the computer name and user name, as well as the folder or directory you are currently in.</p>
 <p>For the rest of this setup, I will tell you to run commands in your terminal. When I say that, I mean &#8220;type the command into the terminal and press the Return key.&#8221;</p>
 </div>
-<div class="section" id="making-sure-java-is-installed">
-<span id="making-sure-java-is-installed"></span><h2>Making sure Java is installed<a class="headerlink" href="#making-sure-java-is-installed" title="Permalink to this headline">¶</a></h2>
-<p>Run <code class="docutils literal"><span class="pre">java</span> <span class="pre">-version</span></code> in your terminal. If you do not have Java installed, Ubuntu will prompt you to install it. It should look something like this:</p>
-<p><img alt="no java" src="_images/no_java.png" /></p>
-<p>Follow all of the directions Ubuntu gives you, selecting the package &#8220;openjdk-7-jre-headless&#8221; then return to this part of the tutorial and run <code class="docutils literal"><span class="pre">java</span> <span class="pre">-version</span></code> again.</p>
-<p>If Java is installed, you will see something like this in your terminal:</p>
-<p><img alt="Java version" src="_images/java_version1.png" /></p>
+<div class="section" id="install-java">
+<span id="install-java"></span><h2>Install Java<a class="headerlink" href="#install-java" title="Permalink to this headline">¶</a></h2>
+<p>Instructions vary by Linux distribution... For Debian and Ubuntu you
+can update the package manager and install OpenJDK 8 like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># apt-get update</span>
+<span class="c1"># apt-get install openjdk-8-jdk</span>
+</pre></div>
+</div>
+<p>When Java is installed, you will see something like this in your terminal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>clojurista@mylaptop $ java -version
+openjdk version &quot;1.8.0_111&quot;
+OpenJDK Runtime Environment (build 1.8.0_111-8u111-b14-2-b14)
+OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)
+clojurista@mylaptop $
+</pre></div>
+</div>
 <p>The details of Java&#8217;s version may differ from what you see above; that is perfectly fine.</p>
 </div>
 <div class="section" id="installing-leiningen">
