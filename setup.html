@@ -34,7 +34,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="index.html"/>
-        <link rel="next" title="OS X Setup" href="setup_osx.html"/>
+        <link rel="next" title="Request an invitation to Clojurians Slack" href="slack.html"/>
         <link rel="prev" title="ClojureBridgeMN Documentation" href="index.html"/> 
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                Thursday Oct 27 2016 @ 10:20:38 web-flow
+                Thursday Oct 27 2016 @ 14:11:58 web-flow
               </div>
             
           
@@ -88,6 +88,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installfest</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-we-are-installing">What we are installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instructions-for-all-slack">Instructions for all: Slack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slack.html">Request an invitation to Clojurians Slack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slack.html#click-on-the-link-from-your-e-mail-and-register">Click on the link from your e-mail and register</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slack.html#sign-in-to-slack">Sign in to Slack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slack.html#join-the-clojurebridgemn-channel">Join the #clojurebridgemn channel</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#instructions-by-operating-system">Instructions by operating system</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="setup_osx.html">OS X</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setup_win7.html">Windows 7</a></li>
@@ -96,7 +103,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#experimental-instructions-to-be-merged">Experimental Instructions (to be merged)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="setup_new_irc.html">Join the #clojure.mn channel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setup_new_heroku.html">Install the Heroku Toolbelt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setup_new_ssh.html">Create an SSH key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="setup_new_github.html">Setup github</a></li>
@@ -163,27 +169,49 @@
 <span id="installfest"></span><h1>Installfest<a class="headerlink" href="#installfest" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="requirements">
 <span id="requirements"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
-<p>Everyone in the workshop should have a laptop. If it is running Windows, it should be running Windows 7 or above. If it is running OS X, it should be running 10.7 &#8220;Lion&#8221; or above. If it is running Linux, you are probably fine.</p>
-<p>If anyone attending does not have access to a laptop running one of the above choices, let the instructors know. You can either pair with someone else, or we can provide a virtual machine that you can run if you have a laptop.</p>
+<p>In order to run Clojure and the tools we&#8217;ll be using for
+programming we need to install some free software on your laptop.
+Most modern laptops should work just fine. Just to be sure
+the requirements for each operating system are...</p>
+<ul class="simple">
+<li><strong>Mac OS X</strong><br/>
+Any Intel-based computer running Mac OS X 10.8 (Mountain Lion) or later.</li>
+<li><strong>Windows</strong><br/>
+Windows 7 or later</li>
+<li><strong>Linux</strong><br/>
+Any recent distribution that includes <strong>openjdk-8-jdk</strong> or can install
+<a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 8 from Oracle</a> should be fine.</li>
+</ul>
+<p>If you don&#8217;t have access to a laptop or your laptop doesn&#8217;t meet
+the requirements above we have a few spare laptops that you can borrow.</p>
 </div>
 <div class="section" id="what-we-are-installing">
 <span id="what-we-are-installing"></span><h2>What we are installing<a class="headerlink" href="#what-we-are-installing" title="Permalink to this headline">¶</a></h2>
 <p>By the end of these instructions, you will have the following installed:</p>
 <ul class="simple">
-<li>Java, a &#8220;virtual machine&#8221; that Clojure runs atop of</li>
-<li>Leiningen, a tool for running Clojure programs</li>
-<li>Light Table, an editor for Clojure and other programming languages</li>
-<li>The Heroku Toolbelt, a program for putting your Clojure application on the web</li>
-<li>Git, a program for managing your program&#8217;s code, which is included in the Heroku Toolbelt</li>
-<li>An Internet Relay Chat (IRC) client</li>
+<li><strong>Java</strong> the platform atop which Clojure runs</li>
+<li><strong>Leiningen</strong> a build tool for Clojure programs</li>
+<li><strong>Nightcode</strong> an Integrated Development Environment for Clojure</li>
+<li><strong>Git</strong> a program for saving and sharing your program&#8217;s code (included in the Heroku Toolbelt)</li>
+<li>The <strong>Heroku</strong> Toolbelt: a program for publishing your Clojure application on the web</li>
 </ul>
 <p>And you will have:</p>
 <ul class="simple">
-<li>Created a <code class="docutils literal"><span class="pre">ssh</span></code> key (the public part of which will be uploaded to github and heroku)</li>
+<li>An account on <strong>Slack</strong> so you can chat with students and volunteers online</li>
 <li>Copied the example chat application with <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></code></li>
-<li>Pushed your copy of the chat application to heroku</li>
-<li>Joined the <code class="docutils literal"><span class="pre">#clojure.mn</span></code> IRC channel</li>
+<li>Pushed your copy of the chat application to Heroku so it&#8217;s <em>live on the Internet</em></li>
 </ul>
+</div>
+<div class="section" id="instructions-for-all-slack">
+<span id="instructions-for-all-slack"></span><h2>Instructions for all: Slack<a class="headerlink" href="#instructions-for-all-slack" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slack.html">Request an invitation to Clojurians Slack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slack.html#click-on-the-link-from-your-e-mail-and-register">Click on the link from your e-mail and register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slack.html#sign-in-to-slack">Sign in to Slack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slack.html#join-the-clojurebridgemn-channel">Join the #clojurebridgemn channel</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="instructions-by-operating-system">
 <span id="instructions-by-operating-system"></span><h2>Instructions by operating system<a class="headerlink" href="#instructions-by-operating-system" title="Permalink to this headline">¶</a></h2>
@@ -202,7 +230,6 @@
 <p><em>NOTE: This instructions will be merged into the section above</em></p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="setup_new_irc.html">Join the #clojure.mn channel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_new_heroku.html">Install the Heroku Toolbelt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_new_ssh.html">Create an SSH key</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup_new_github.html">Setup github</a></li>
@@ -224,7 +251,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="setup_osx.html" class="btn btn-neutral float-right" title="OS X Setup" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="slack.html" class="btn btn-neutral float-right" title="Request an invitation to Clojurians Slack" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="ClojureBridgeMN Documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
