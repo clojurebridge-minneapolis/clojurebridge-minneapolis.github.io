@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Thursday Oct 27 2016 @ 15:19:16 web-flow
+                now 
               </div>
             
           
@@ -162,7 +162,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="windows-7-setup">
-<span id="windows-7-setup"></span><h1>Windows 7 Setup<a class="headerlink" href="#windows-7-setup" title="Permalink to this headline">¶</a></h1>
+<h1>Windows 7 Setup<a class="headerlink" href="#windows-7-setup" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>Start a command prompt</li>
 <li>Get Java installed</li>
@@ -173,7 +173,7 @@
 <li>Troubleshooting</li>
 </ul>
 <div class="section" id="starting-a-command-prompt">
-<span id="starting-a-command-prompt"></span><h2>Starting a command prompt<a class="headerlink" href="#starting-a-command-prompt" title="Permalink to this headline">¶</a></h2>
+<h2>Starting a command prompt<a class="headerlink" href="#starting-a-command-prompt" title="Permalink to this headline">¶</a></h2>
 <p>For these instructions, and for much of the class, you will need to have a command prompt open. This is a text-based interface to talk to your computer. Go to the Start Menu and type &#8220;command&#8221; in the search box. Choose the &#8220;Command Prompt&#8221; program, like in this screenshot:</p>
 <p><img alt="Starting a command prompt" src="_images/starting-command-prompt.png" /></p>
 <p>When you choose &#8220;Command Prompt,&#8221; your screen should look similar to this:</p>
@@ -182,7 +182,7 @@
 <p>On other operating systems, the command prompt is called the terminal. We will use the terms terminal, command prompt, and command line interchangably.</p>
 </div>
 <div class="section" id="installing-java">
-<span id="installing-java"></span><h2>Installing Java<a class="headerlink" href="#installing-java" title="Permalink to this headline">¶</a></h2>
+<h2>Installing Java<a class="headerlink" href="#installing-java" title="Permalink to this headline">¶</a></h2>
 <p>Go to <a class="reference external" href="http://leiningen-win-installer.djpowell.net/">the Leiningen Windows installer site</a>. You should see two links, one for installing Java and another for &#8220;leiningen-win-installer.&#8221; Click the Java link. Then, you should see a screen like the following:</p>
 <p><img alt="First page of Java download" src="_images/java-download1.png" /></p>
 <p>Click the button above &#8220;Java Platform (JDK),&#8221; as you can see in the above picture. Then you will come to a page that will have the following table on it:</p>
@@ -194,19 +194,19 @@
 <p>Once you have downloaded the right Java version, run the executable you downloaded to install Java. Follow the installation wizard.</p>
 </div>
 <div class="section" id="installing-leiningen">
-<span id="installing-leiningen"></span><h2>Installing Leiningen<a class="headerlink" href="#installing-leiningen" title="Permalink to this headline">¶</a></h2>
+<h2>Installing Leiningen<a class="headerlink" href="#installing-leiningen" title="Permalink to this headline">¶</a></h2>
 <p>Leiningen is a tool used on the command line to manage Clojure projects.</p>
 <p>Next, go back to <a class="reference external" href="http://leiningen-win-installer.djpowell.net/">the Leiningen Windows installer site</a> and download the file linked as &#8220;leiningen-win-installer.&#8221; Run this executable and follow the &#8220;Detailed installation&#8221; section at the Leiningen Windows Installer site. At the end of the installation, leave &#8220;Run a Clojure REPL&#8221; checked before you click &#8220;Finish.&#8221; If a terminal window opens that looks like the one on the Leiningen Windows installer site, then you are good to go.</p>
 </div>
 <div class="section" id="installing-light-table">
-<span id="installing-light-table"></span><h2>Installing Light Table<a class="headerlink" href="#installing-light-table" title="Permalink to this headline">¶</a></h2>
+<h2>Installing Light Table<a class="headerlink" href="#installing-light-table" title="Permalink to this headline">¶</a></h2>
 <p>Go to the <a class="reference external" href="http://www.lighttable.com/">Light Table site</a>. On the page there, you should see a set of buttons that have download links for Light Table. Click the &#8220;Win&#8221; button and you will download a .zip file.</p>
 <p><img alt="Light Table downloads" src="_images/light-table-download1.png" /></p>
 <p>Unzip this file (either by finding it in your Downloads folder and double-clicking it, or by choosing &#8220;Open&#8221; when downloading.) Inside the .zip file, there is a a directory called &#8220;Light Table&#8221;. Drag this to your desktop. (If you know what you are doing and want this somewhere else, that is fine.)</p>
 <p>Inside the Light Table directory, there is an application called Light Table. Right-click it and choose &#8220;Pin to Start Menu&#8221; so you can start it more quickly.</p>
 </div>
 <div class="section" id="get-setup-with-heroku">
-<span id="get-setup-with-heroku"></span><h2>Get setup with Heroku<a class="headerlink" href="#get-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
+<h2>Get setup with Heroku<a class="headerlink" href="#get-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
 <p>Heroku is the tool we will use in order to put your application online where others can see it.</p>
 <p>First, we need to create an account. Go to <a class="reference external" href="http://heroku.com">Heroku</a> and click the &#8220;Sign up&#8221; link.</p>
 <p><img alt="Heroku step 1" src="_images/heroku-step1.png" /></p>
@@ -220,15 +220,15 @@
 <p>You will download an .exe file. Run this executable to install the Heroku Toolbelt and follow all prompts from the installation wizard.</p>
 <p>Before you can use Heroku, you will have to set up SSH, the way your computer communicates with Heroku.</p>
 <p>First, look up what your user directory is. You can find it by running <code class="docutils literal"><span class="pre">echo</span> <span class="pre">%USERPROFILE%</span></code>. Create a place for your SSH keys by running this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="s2">&quot;%USERPROFILE%\.ssh&quot;</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>mkdir &quot;%USERPROFILE%\.ssh&quot;
 </pre></div>
 </div>
 <p>Then, if you have 32-bit Windows, run this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Git</span><span class="se">\b</span><span class="s2">in\ssh-keygen.exe&quot;</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;C:\Program Files\Git\bin\ssh-keygen.exe&quot;
 </pre></div>
 </div>
 <p>If you have 64-bit Windows, run this command instead:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files (x86)\Git</span><span class="se">\b</span><span class="s2">in\ssh-keygen.exe&quot;</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;C:\Program Files (x86)\Git\bin\ssh-keygen.exe&quot;
 </pre></div>
 </div>
 <p>The quotes are necessary on the <code class="docutils literal"><span class="pre">ssh-keygen.exe</span></code> command. When you run <code class="docutils literal"><span class="pre">ssh-keygen.exe</span></code>, you will need to type the name of your user directory - everything from &#8220;C:&#8220; onward - plus <code class="docutils literal"><span class="pre">\.ssh\id_rsa</span></code> when it asks you where to save the key. Be careful to type everything exactly. When it asks to &#8216;Enter passphrase&#8217; just hit Enter, then Enter again. <em>Look at the following example:</em></p>
@@ -236,7 +236,7 @@
 <p>After that, close the command prompt, open it again, and run the command <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">login</span></code>. You will be prompted for your email and password on Heroku. If you enter them and the command ends successfully, congratulations!</p>
 </div>
 <div class="section" id="testing-your-setup">
-<span id="testing-your-setup"></span><h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
+<h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
 <p>You have set up Java, Leiningen, Light Table, Git, and Heroku on your computer, all the tools you will need for this program. Before starting, we need to test them out. Make sure you have a terminal (OS X) or command prompt (Windows) open for testing. We will just call this a terminal from now on.</p>
 <p>Go to your terminal and run the following command:</p>
 <p><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/heroku/clojure-sample.git</span></code></p>
@@ -260,9 +260,9 @@
 <p>There should be output about something being created. A URL will be displayed. Look at the following example:</p>
 <p><img alt="Testing heroku create" src="_images/testing-step52.png" /></p>
 <p>Next, run the following commands:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">heroku</span> <span class="n">master</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>git push heroku master
 
-<span class="n">heroku</span> <span class="nb">open</span>
+heroku open
 </pre></div>
 </div>
 <p>Enter &#8220;yes&#8221; if you are asked if you are sure you want to connect.</p>
@@ -271,9 +271,9 @@
 <p>Congratulations! That website is running code you have on your computer that you have uploaded. You have actually made a very simple Clojure app, and your computer is all set up to make more.</p>
 </div>
 <div class="section" id="troubleshooting">
-<span id="troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <p>Students with Windows 7 may get the error below when they run <code class="docutils literal"><span class="pre">lein</span> <span class="pre">repl</span></code> for the first time.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Address</span> <span class="n">family</span> <span class="ow">not</span> <span class="n">supported</span> <span class="n">by</span> <span class="n">protocol</span> <span class="n">family</span><span class="p">:</span> <span class="n">connect</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Address family not supported by protocol family: connect
 </pre></div>
 </div>
 <p>If the error message is this, look at <a class="reference external" href="http://stackoverflow.com/a/21383865">http://stackoverflow.com/a/21383865</a>.</p>
@@ -285,7 +285,7 @@ Sometimes, attendees haven&#8217;t heard of such permission stuff.
 Be ready for that.</p>
 </div>
 <div class="section" id="try-the-koans">
-<span id="try-the-koans"></span><h2>Try the koans<a class="headerlink" href="#try-the-koans" title="Permalink to this headline">¶</a></h2>
+<h2>Try the koans<a class="headerlink" href="#try-the-koans" title="Permalink to this headline">¶</a></h2>
 <p>If you&#8217;re a track 2 student, try to tackle running the <a class="reference internal" href="koans.html"><span class="doc">koans</span></a>.</p>
 </div>
 </div>

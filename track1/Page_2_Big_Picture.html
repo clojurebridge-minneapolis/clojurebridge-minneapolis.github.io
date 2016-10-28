@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 2: Big Picture &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="../index.html"/>
+        <link rel="up" title="Track 1" href="../track1.html"/>
+        <link rel="next" title="Chapter 3: Starting The Project" href="Page_3_Start_project.html"/>
+        <link rel="prev" title="Chapter 1: ClojureBridge Track 1" href="Page_1_Intro_TOC.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ClojureBridgeMN Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                now 
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installfest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome to ClojureBridge</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../track1.html">Track 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Page_1_Intro_TOC.html">Chapter 1: ClojureBridge Track 1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 2: Big Picture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clojure-the-big-picture">Clojure, the Big Picture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clojure-is-great-because">Clojure is great because:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-web-a-basic-overview">The Web: a basic overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html-proper">HTML Proper</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#let-s-see-it-in-action">Let&#8217;s see it in action</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Page_3_Start_project.html">Chapter 3: Starting the Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_4_Change_code.html">Chapter 4: Branches, Merges, Commits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_5_More_code_changes.html">Chapter 5: More Code Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_6_Push_to_live.html">Chapter 6: Push to Live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Clojure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Connect with the Clojure Community</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ClojureBridgeMN Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../track1.html">Track 1</a> &raquo;</li>
+      
+    <li>Chapter 2: Big Picture</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/track1/Page_2_Big_Picture.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-2-big-picture">
+<h1>Chapter 2: Big Picture<a class="headerlink" href="#chapter-2-big-picture" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="clojure-the-big-picture">
+<h2>Clojure, the Big Picture<a class="headerlink" href="#clojure-the-big-picture" title="Permalink to this headline">¶</a></h2>
+<p>Clojure is a modern Lisp, which is a programming language, with a focus on functional programming. There are lots of programming languages, and Clojure is just one of them. The image below shows similar programming languages grouped by color. Clojure is in the bottom half in the center; it is a dialect of the Common-Lisp language on the far right.</p>
+<p><img src="http://griffsgraphs.files.wordpress.com/2012/07/programming-languages_label.png"/></p>
+<div class="section" id="clojure-is-great-because">
+<h3>Clojure is great because:<a class="headerlink" href="#clojure-is-great-because" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The core language is small and easy to learn.</li>
+<li>The design makes it easy to write correct programs.</li>
+<li>Clojure makes it easier to write concurrent programs <p>—</p>
+ programs that do more than one thing at a time.</li>
+<li>Clojure programs are fast.</li>
+<li>Clojure programs can build on Java libraries.</li>
+</ul>
+<p>Most programmers have to use multiple languages to get their jobs done.  Web applications often use HTML, CSS, and JavaScript.  We&#8217;ll touch on each of those as we build our web app.</p>
+</div>
+</div>
+<div class="section" id="the-web-a-basic-overview">
+<h2>The Web: a basic overview<a class="headerlink" href="#the-web-a-basic-overview" title="Permalink to this headline">¶</a></h2>
+<p>The Internet is a bunch computers all over the world communicating with
+each other using a variety of computer programs.  Some of those programs
+are servers that listen for requests and respond with data.</p>
+<p>Your web browser is a program that sends requests over HTTP (HyperText Transfer Protocol). Entering, <a class="reference external" href="https://github.com">https://github.com</a> into your browser&#8217;s address bar tells your browser that you want to see that page.</p>
+<p><a class="reference external" href="https://github.com">https://github.com</a> is actually a human-readable alias for the numerical address of GitHub&#8217;s servers.  Since your computer isn&#8217;t directly connected to GitHub, your computer (through your web browser) asks the computers connected to GitHub to forward the request. This request may be passed through various computers to retrieve the data (web page).</p>
+<p>On Linux or a Mac, the command <code class="docutils literal"><span class="pre">traceroute</span></code> shows you the number of hops request takes to get to GitHub.  (On Windows, the command is called <code class="docutils literal"><span class="pre">tracert</span></code>.)</p>
+<p>On my machine, working from home:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    $: traceroute github.com
+    traceroute to github.com (192.30.252.130), 30 hops max, 60 byte packets
+    1  192.168.1.1 (192.168.1.1)  5.913 ms  5.908 ms  6.000 ms
+    2  * 96.120.49.33 (96.120.49.33)  30.033 ms  30.066 ms
+    3  te-0-3-0-1-sur02.webster.mn.minn.comcast.net (68.85.167.149)  30.553 ms  32.776 ms  32.785 ms
+    4  te-0-7-0-12-ar01.roseville.mn.minn.comcast.net (69.139.219.134)  32.778 ms  36.059 ms te-0-7-0-13-ar01.roseville.mn.minn.comcast.net (68.87.174.185)  35.686 ms
+    5  he-1-13-0-0-cr01.350ecermak.il.ibone.comcast.net (68.86.94.81)  42.354 ms *  43.213 ms
+    6  be-10206-cr01.newyork.ny.ibone.comcast.net (68.86.86.225)  63.574 ms  59.894 ms  62.441 ms
+    7  pos-2-5-0-0-cr01.dallas.tx.ibone.comcast.net (68.86.85.25)  64.643 ms  64.659 ms  64.653 ms
+    8  he-3-14-0-0-cr01.dallas.tx.ibone.comcast.net (68.86.85.1)  67.039 ms  67.079 ms  67.056 ms
+    9  he-0-10-0-0-pe07.ashburn.va.ibone.comcast.net (68.86.83.66)  63.013 ms  67.045 ms  88.273 ms
+    10  * * *
+    11  * * *
+    12  * * *
+    13  * * *
+    14  * * *
+    15  * * *
+    16  * * *
+    17  * * *
+    18  * * *
+    19  * * *
+    20  * * *
+    21  * * *
+    22  * * *
+    23  * * *
+    24  * * *
+    25  * * *
+    26  * * *
+    27  * * *
+    28  * * *
+    29  * * *
+    30  * * *
+</pre></div>
+</div>
+<ul class="simple">
+<li>Line 1 is my computer server address.</li>
+<li>Line 2 is my router server address.</li>
+<li>Lines 3-30, the request is moving through Comcast&#8217;s network of servers to get the information.</li>
+</ul>
+<p>When you enter <a class="reference external" href="httpss://github.com">https://github.com</a> in the address bar, your browser makes a GET request to the GitHub server. There are several types of HTTP requests, but GET is the one that asks the server to send data from a specified resource.  The server sends back an HTML page and the Web browser turns the HTML into the web page you see through a process called rendering. You can see the HTML by right-clicking on the page and selecting <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code>.</p>
+</div>
+<div class="section" id="html-proper">
+<h2>HTML Proper<a class="headerlink" href="#html-proper" title="Permalink to this headline">¶</a></h2>
+<p>HTML stands for &#8220;HyperText Markup Language&#8221;.</p>
+<p>Hypertext means documents can contain links to other pages or images. The structure of the HTML document is encoded using a markup language consisting of opening and closing elements (also called tags). Each segment of text is formatted according to the type of tag (<code class="docutils literal"><span class="pre">&lt;body&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;title&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;h2&gt;</span></code>, etc). Each segment of text needs an opening tag, <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code>, and a closing tag, <code class="docutils literal"><span class="pre">&lt;/body&gt;</span></code>. The <code class="docutils literal"><span class="pre">/</span></code> signifies the end of the formatting for that segment.</p>
+<div class="section" id="let-s-see-it-in-action">
+<h3>Let&#8217;s see it in action<a class="headerlink" href="#let-s-see-it-in-action" title="Permalink to this headline">¶</a></h3>
+<p>Open a text editing program and enter the following text:</p>
+<div class="highlight-HTML"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Sample HTML Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    This is a sample html page.  This is more text.
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Save the file as &#8216;sample.html&#8217;. Then open the file in the web browser. On Windows or a Mac, double-click the file to open it in the default browser, or right-click and select <code class="docutils literal"><span class="pre">Open</span> <span class="pre">With</span></code>. In your browser you should see something like this,</p>
+<p><img alt="" src="https://github.com/annieengmark/track1-chatter/blob/master/images/sample%20html.png" /></p>
+<p>Notice the address bar. Instead of making an HTTP request to a server over the Internet, the browser  opened a local file and displayed the HTML. Remember, the web browser renders the HTML to make it appear as you see it in the browser. Right-click the page and select <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code> to see the HTML elements of the file you saved.</p>
+<p>The first line of the source, the DOCTYPE, announces the document is HTML.  The text is enclosed between the <em>opening</em> <code class="docutils literal"><span class="pre">&lt;html&gt;</span></code> and <em>closing</em> <code class="docutils literal"><span class="pre">&lt;/html&gt;</span></code> tags, or elements.</p>
+<div class="section" id="titles-headers-body-text">
+<h4>Titles, Headers, &amp; Body Text<a class="headerlink" href="#titles-headers-body-text" title="Permalink to this headline">¶</a></h4>
+<p>Inside the HTML document, we have a <code class="docutils literal"><span class="pre">head</span></code> and <code class="docutils literal"><span class="pre">body</span></code>. These are both <em>elements</em> or <em>tags</em>. The <code class="docutils literal"><span class="pre">head</span></code> contains the <code class="docutils literal"><span class="pre">title</span></code>; in our example it&#8217;s &#8220;Sample HTML Page&#8221;. The title is the name of the web page. You will see this text as the tab name and when you bookmark the page in your browser. It is not actually a part of the text on the page.</p>
+<p>To add a title on the page itself, add it within the <code class="docutils literal"><span class="pre">body</span></code> of the HTML using a header tag. HTML uses various heading tags to indicate the size of the title or heading. The largest is <code class="docutils literal"><span class="pre">&lt;h1&gt;</span></code> and the smallest header is <code class="docutils literal"><span class="pre">&lt;h6&gt;</span></code>.</p>
+<p>Let&#8217;s add some headers to our example. In your text editing file, add <code class="docutils literal"><span class="pre">&lt;h2&gt;</span> <span class="pre">Our</span> <span class="pre">HTML</span> <span class="pre">&lt;/h2&gt;</span></code> in the <code class="docutils literal"><span class="pre">body</span></code> of the HTML. This will display &#8220;Our HTML&#8221; as a title. Your text file will look like this:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Sample HTML Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Our HTML<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    This is a sample html page.  This is more text.
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Save the file and refresh the browser. Experiment with different size heading tags from <code class="docutils literal"><span class="pre">&lt;h1&gt;</span></code> to <code class="docutils literal"><span class="pre">&lt;h6&gt;</span></code>. Remember to open and close the HTML tags, meaning you must surround the header text with the an opening and closing tag.</p>
+</div>
+<div class="section" id="tables">
+<h4>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h4>
+<p>HTML supports tables as well. Add a table to your sample HTML by adding the following within the <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code> tags of the text file:</p>
+<div class="highlight-HTML"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Hydrogen<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>H<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Helium<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>He<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Neon<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Ne<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://github.com/annieengmark/track1-chatter/blob/master/images/HTML%20table.png" /></p>
+<p><code class="docutils literal"><span class="pre">table</span></code> encloses the entire table.</p>
+<p><code class="docutils literal"><span class="pre">tr</span></code> wraps a table row.</p>
+<p><code class="docutils literal"><span class="pre">td</span></code> wraps table data, creating a cell within a row.</p>
+<p>When you save and refresh the page, you see the table. You might notice it also looks pretty bad. The HTML we&#8217;ve been using describes the basic structure of the document and leaves the display entirely up to the browser. Another language, called CSS, is used so the browser can display the page in a more pleasing way.  We&#8217;ll touch on CSS later.</p>
+<p>The HTML file we have is <em>static HTML</em>. The HTML we see in the web browser is simply the code we have written in the text file. Static HTML works great for some kinds of pages, but our page will change depending on the messages people post to it.
+So instead of having a file with HTML, we will have a program listening for requests that generate the HTML. As people make requests and post messages, it will generate HTML that reflects the posts.</p>
+<p>There&#8217;s a lot more to HTML, but this gives us enough knowledge for our Chat app.</p>
+<p>In the next section, <a class="reference external" href="track1/Page%203_Start%20project.md">Chapter 3: Starting the Project</a>, we&#8217;ll start coding our Chatter app.</p>
+<p>####More HTML Resources</p>
+<p><a class="reference external" href="http://www.w3schools.com">w3schools.com</a> is a great source for
+learning more about html. Start with the
+<a class="reference external" href="http://www.w3schools.com/html/html_intro.asp">HTML Introduction</a>.</p>
+<p><a class="reference external" href="http://developer.mozilla.org/">Mozilla Developer Network</a> is another useful resource.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Page_3_Start_project.html" class="btn btn-neutral float-right" title="Chapter 3: Starting The Project" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Page_1_Intro_TOC.html" class="btn btn-neutral" title="Chapter 1: ClojureBridge Track 1" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 ClojureBridgeMN volunteers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'November 4-5, 2016',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

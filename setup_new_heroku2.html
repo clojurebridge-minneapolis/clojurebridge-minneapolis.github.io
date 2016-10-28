@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Thursday Oct 27 2016 @ 15:19:16 web-flow
+                now 
               </div>
             
           
@@ -166,9 +166,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="getting-started-with-heroku">
-<span id="getting-started-with-heroku"></span><h1>Getting Started with Heroku<a class="headerlink" href="#getting-started-with-heroku" title="Permalink to this headline">¶</a></h1>
+<h1>Getting Started with Heroku<a class="headerlink" href="#getting-started-with-heroku" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="verify-the-heroku-toolbelt-installation">
-<span id="verify-the-heroku-toolbelt-installation"></span><h2>Verify the heroku toolbelt installation<a class="headerlink" href="#verify-the-heroku-toolbelt-installation" title="Permalink to this headline">¶</a></h2>
+<h2>Verify the heroku toolbelt installation<a class="headerlink" href="#verify-the-heroku-toolbelt-installation" title="Permalink to this headline">¶</a></h2>
 <p>In a previous step we installed the Heroku toolbelt.
 Check the Heroku version on the command line:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">version</span>
@@ -177,7 +177,7 @@ Check the Heroku version on the command line:</p>
 <p>You should see something like <code class="docutils literal"><span class="pre">heroku/toolbelt/3.38.3</span></code>...</p>
 </div>
 <div class="section" id="login-to-heroku">
-<span id="login-to-heroku"></span><h2>Login to Heroku<a class="headerlink" href="#login-to-heroku" title="Permalink to this headline">¶</a></h2>
+<h2>Login to Heroku<a class="headerlink" href="#login-to-heroku" title="Permalink to this headline">¶</a></h2>
 <p>Now we&#8217;ll use the toolbelt to login to your Heroku account:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">login</span>
 </pre></div>
@@ -188,7 +188,7 @@ used when you signed up for Heroku.</p>
 <p><img alt="Login to Heroku" src="_images/heroku3.png" /></p>
 </div>
 <div class="section" id="make-a-new-directory-for-the-application">
-<span id="make-a-new-directory-for-the-application"></span><h2>Make a new directory for the application<a class="headerlink" href="#make-a-new-directory-for-the-application" title="Permalink to this headline">¶</a></h2>
+<h2>Make a new directory for the application<a class="headerlink" href="#make-a-new-directory-for-the-application" title="Permalink to this headline">¶</a></h2>
 <p>We&#8217;re going to follow the instructions in the https://github.com/heroku/clojure-getting-started repo...</p>
 <p>First things first.. Let&#8217;s make a directory where that repo
 should land... One commen convention is to use</p>
@@ -203,21 +203,21 @@ should land... One commen convention is to use</p>
 </ul>
 <p>So for the current example we can make that series of directories
 like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>clojurista@mylaptop $ mkdir -p ~/src/github/heroku
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ mkdir -p ~/src/github/heroku
 clojurista@mylaptop $ cd ~/src/github/heroku
 </pre></div>
 </div>
 <p><img alt="Make directories for your repo" src="_images/heroku6.png" /></p>
 </div>
 <div class="section" id="clone-the-clojure-getting-started-repo">
-<span id="clone-the-clojure-getting-started-repo"></span><h2>Clone the clojure-getting-started repo<a class="headerlink" href="#clone-the-clojure-getting-started-repo" title="Permalink to this headline">¶</a></h2>
+<h2>Clone the clojure-getting-started repo<a class="headerlink" href="#clone-the-clojure-getting-started-repo" title="Permalink to this headline">¶</a></h2>
 <p>Now we&#8217;ll</p>
 <ol class="simple">
 <li>Download a copy of the repo from github to your local hard drive</li>
 <li>Change to the new repo directory</li>
 <li>Start a Leiningen REPL</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span>clojurista@mylaptop $ git clone https://github.com/heroku/clojure-getting-started.git
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ git clone https://github.com/heroku/clojure-getting-started.git
 clojurista@mylaptop $ cd clojure-getting-started
 clojurista@mylaptop $ lein repl
 </pre></div>
@@ -225,38 +225,38 @@ clojurista@mylaptop $ lein repl
 <p><img alt="Start the program" src="_images/heroku9.png" /></p>
 </div>
 <div class="section" id="start-the-program">
-<span id="start-the-program"></span><h2>Start the program<a class="headerlink" href="#start-the-program" title="Permalink to this headline">¶</a></h2>
+<h2>Start the program<a class="headerlink" href="#start-the-program" title="Permalink to this headline">¶</a></h2>
 <p>Now that the REPL has started you can enter these
 to commands to start the program:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="n">require</span> <span class="s1">&#39;clojure-getting-started.web)</span>
-<span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="k">def</span> <span class="nf">server</span> <span class="p">(</span><span class="n">clojure</span><span class="o">-</span><span class="n">getting</span><span class="o">-</span><span class="n">started</span><span class="o">.</span><span class="n">web</span><span class="o">/-</span><span class="n">main</span><span class="p">))</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>user=&gt; (require &#39;clojure-getting-started.web)
+user=&gt; (def server (clojure-getting-started.web/-main))
 </pre></div>
 </div>
 <p><em>NOTE: on some platforms your firewall may need to ask permissions for Java to connect to the Internet</em></p>
 </div>
 <div class="section" id="view-the-running-program-in-a-web-browser">
-<span id="view-the-running-program-in-a-web-browser"></span><h2>View the running program in a web browser<a class="headerlink" href="#view-the-running-program-in-a-web-browser" title="Permalink to this headline">¶</a></h2>
+<h2>View the running program in a web browser<a class="headerlink" href="#view-the-running-program-in-a-web-browser" title="Permalink to this headline">¶</a></h2>
 <p>You should be able to open your browser to: http://localhost:5000</p>
 <p>...and see a very simple web page served from the sample program you just started!</p>
 <p><img alt="View the program" src="_images/heroku10.png" /></p>
 </div>
 <div class="section" id="stop-the-program">
-<span id="stop-the-program"></span><h2>Stop the program<a class="headerlink" href="#stop-the-program" title="Permalink to this headline">¶</a></h2>
+<h2>Stop the program<a class="headerlink" href="#stop-the-program" title="Permalink to this headline">¶</a></h2>
 <p>Once you&#8217;ve tried the server you can shut it down gracefully
 with the <code class="docutils literal"><span class="pre">(.stop</span> <span class="pre">server)</span></code> command and exit the REPL with <code class="docutils literal"><span class="pre">(exit)</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="o">.</span><span class="n">stop</span> <span class="n">server</span><span class="p">)</span>
-<span class="n">user</span><span class="o">=&gt;</span> <span class="p">(</span><span class="n">exit</span><span class="p">)</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>user=&gt; (.stop server)
+user=&gt; (exit)
 </pre></div>
 </div>
 <p><img alt="View the program" src="_images/heroku11.png" /></p>
 </div>
 <div class="section" id="publish-the-program-to-the-internet-using-heroku">
-<span id="publish-the-program-to-the-internet-using-heroku"></span><h2>Publish the program to the Internet using Heroku<a class="headerlink" href="#publish-the-program-to-the-internet-using-heroku" title="Permalink to this headline">¶</a></h2>
+<h2>Publish the program to the Internet using Heroku<a class="headerlink" href="#publish-the-program-to-the-internet-using-heroku" title="Permalink to this headline">¶</a></h2>
 <p>That was cool, but only worked on your local laptop.
 Now you can publish the application to Heroku so anyone
 on the Internet can access it!</p>
 <p>We&#8217;ll use the Heroku toolbelt to put the program into production...</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>clojurista@mylaptop $ heroku create
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ heroku create
 clojurista@mylaptop $ git push heroku master
 clojurista@mylaptop $ heroku open
 </pre></div>

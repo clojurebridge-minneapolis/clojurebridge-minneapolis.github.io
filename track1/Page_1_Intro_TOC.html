@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 1: ClojureBridge Track 1 &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="../index.html"/>
+        <link rel="up" title="Track 1" href="../track1.html"/>
+        <link rel="next" title="Chapter 2: Big Picture" href="Page_2_Big_Picture.html"/>
+        <link rel="prev" title="Track 1" href="../track1.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ClojureBridgeMN Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                now 
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installfest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome to ClojureBridge</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../track1.html">Track 1</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 1: ClojureBridge Track 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-chatter-app-goals-tools">The Chatter App Goals &amp; Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#specific-goal-of-workshop">Specific Goal of Workshop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-benefits-learning-opportunities">Additional Benefits &amp; Learning Opportunities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-name-required-tools-required-tools-a"><a name="required_tools">Required Tools</a></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#readme">Readme</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app">App</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-server-entering-commands-in-the-terminal">Running The Server &amp; Entering Commands in the terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-forward">Moving Forward</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#copyright-and-license">Copyright and License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Page_2_Big_Picture.html">Chapter 2: Big Picture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_3_Start_project.html">Chapter 3: Starting the Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_4_Change_code.html">Chapter 4: Branches, Merges, Commits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_5_More_code_changes.html">Chapter 5: More Code Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_6_Push_to_live.html">Chapter 6: Push to Live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Clojure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Connect with the Clojure Community</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ClojureBridgeMN Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../track1.html">Track 1</a> &raquo;</li>
+      
+    <li>Chapter 1: ClojureBridge Track 1</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/track1/Page_1_Intro_TOC.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-1-clojurebridge-track-1">
+<h1>Chapter 1: ClojureBridge Track 1<a class="headerlink" href="#chapter-1-clojurebridge-track-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This curriculum will introduce you to Clojure by creating a web app called Chatter. We will teach you to use the command line, make code changes in LightTable, and push those changes to GitHub so you can share your app with the world.</p>
+<p>Each chapter below will work through different concepts of coding and provide Clojure-specific instructions to help you create your app. Review this page, then work your way through each chapter in the table of contents.</p>
+</div>
+<div class="section" id="the-chatter-app-goals-tools">
+<h2>The Chatter App Goals &amp; Tools<a class="headerlink" href="#the-chatter-app-goals-tools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="specific-goal-of-workshop">
+<h3>Specific Goal of Workshop<a class="headerlink" href="#specific-goal-of-workshop" title="Permalink to this headline">¶</a></h3>
+<p>Create a web app using Clojure code.</p>
+<p>We will introduce you to Clojure by creating and deploying a web app where you and your friends can post messages to each other.</p>
+<p><img alt="" src="https://github.com/annieengmark/track1-chatter/blob/master/images/finished%20app.png" /></p>
+</div>
+<div class="section" id="additional-benefits-learning-opportunities">
+<h3>Additional Benefits &amp; Learning Opportunities<a class="headerlink" href="#additional-benefits-learning-opportunities" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Understand HTTP and web basics</li>
+<li>Basic Clojure syntax</li>
+<li>REPL (Read Eval Print Loop)</li>
+<li>Leiningen for project automation</li>
+<li>Git for version control (branches, merges, commits)</li>
+<li>Heroku deployment</li>
+</ul>
+</div>
+<div class="section" id="a-name-required-tools-required-tools-a">
+<h3><a name="required_tools">Required Tools</a><a class="headerlink" href="#a-name-required-tools-required-tools-a" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Java 1.7+</li>
+<li>Leiningen 2.5+</li>
+<li>Git 2.1+</li>
+<li>Firefox with Firebug</li>
+<li>The Heroku Toolbelt</li>
+</ul>
+<p><em>These should have all been installed at the Friday night Install Fest</em></p>
+</div>
+</div>
+<div class="section" id="readme">
+<h2>Readme<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
+<p>This is the standard structure of most coding projects. You will have a Readme file that will provide a basic overview of the project and the programs you need to open the project.</p>
+<div class="section" id="app">
+<h3>App<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h3>
+<p>In this curriculum we will create a web app, the Chatter app, that displays posted messages.</p>
+</div>
+<div class="section" id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<p>You will need <a class="reference external" href="https://github.com/technomancy/leiningen">Leiningen</a> 2.0.0 or above installed.</p>
+</div>
+<div class="section" id="running-the-server-entering-commands-in-the-terminal">
+<h3>Running The Server &amp; Entering Commands in the terminal<a class="headerlink" href="#running-the-server-entering-commands-in-the-terminal" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="server">
+<h4>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h4>
+<p>Confirm your server is running properly. To start a web server for the application, enter the following command in the terminal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lein</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>This will confirm what version of lein and what version of java you have on your machine.</p>
+</div>
+<div class="section" id="entering-commands">
+<h4>Entering Commands<a class="headerlink" href="#entering-commands" title="Permalink to this headline">¶</a></h4>
+<p>Confirm you have all the required software/apps installed prior to starting your project. The <a class="reference external" href="#required_tools">required tools</a> were installed during <em>Install Fest</em> on Friday night.</p>
+<p>We will show examples of commands in terminal (also called the command line). Our prompt is the dollar sign; everything <em>after</em> the dollar sign is the command you enter. You do not need to type <code class="docutils literal"><span class="pre">$:</span></code> in your terminal. We may we enter multiple commands in the same snippet <p>—</p>
+ the dollar sign indicates a new command to enter. You should enter each command individually.</p>
+<p>The terminal, or command line, you use may have different prompts (<code class="docutils literal"><span class="pre">$:</span></code>), only enter the text after the prompt.</p>
+<p>Open your terminal and enter the commands below to confirm you have the correct tools installed.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: lein -version
+Leiningen 2.5.1 on Java 1.8.0_40-internal OpenJDK 64-Bit Server VM
+
+$: git --version
+git version 2.1.4
+
+$: heroku --version
+heroku-toolbelt/3.25.0 (x86_64-linux-gnu) ruby/2.1.5
+You have no installed plugins.
+</pre></div>
+</div>
+<p>Only enter the first line in the command line; the following lines are the results of your command and indicate the versions of software you have installed on your computer.</p>
+<p>If your commands and results look like the example above, you are ready to move on and start working on your Chatter app.</p>
+</div>
+</div>
+</div>
+<div class="section" id="moving-forward">
+<h2>Moving Forward<a class="headerlink" href="#moving-forward" title="Permalink to this headline">¶</a></h2>
+<p>Once you confirm your server is working properly, move to the next page where were will briefly go over what Clojure is, what the Web is and how we interact with it, and how HTML works.</p>
+<p>Next page, <a class="reference external" href="track1/Page%202_Big%20Picture.md">Chapter 2: Big Picture</a></p>
+<div class="section" id="copyright-and-license">
+<h3>Copyright and License<a class="headerlink" href="#copyright-and-license" title="Permalink to this headline">¶</a></h3>
+<p>Copyright © 2015 Chris Koehnen</p>
+<p>Licensed under the <a class="reference external" href="http://opensource.org/licenses/MIT">MIT LICENSE</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Page_2_Big_Picture.html" class="btn btn-neutral float-right" title="Chapter 2: Big Picture" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../track1.html" class="btn btn-neutral" title="Track 1" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 ClojureBridgeMN volunteers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'November 4-5, 2016',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

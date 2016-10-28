@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Thursday Oct 27 2016 @ 15:19:16 web-flow
+                now 
               </div>
             
           
@@ -161,7 +161,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="os-x-setup">
-<span id="os-x-setup"></span><h1>OS X Setup<a class="headerlink" href="#os-x-setup" title="Permalink to this headline">¶</a></h1>
+<h1>OS X Setup<a class="headerlink" href="#os-x-setup" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference external" href="#starting-a-terminal">Start a terminal</a></li>
 <li><a class="reference external" href="#making-sure-java-is-installed">Make sure Java is installed</a></li>
@@ -171,7 +171,7 @@
 <li><a class="reference external" href="#testing-your-setup">Test installation</a></li>
 </ul>
 <div class="section" id="starting-a-terminal">
-<span id="starting-a-terminal"></span><h2>Starting a terminal<a class="headerlink" href="#starting-a-terminal" title="Permalink to this headline">¶</a></h2>
+<h2>Starting a terminal<a class="headerlink" href="#starting-a-terminal" title="Permalink to this headline">¶</a></h2>
 <p>For these instructions, and for much of the class, you will need to have a terminal, or command line, open. This is a text-based interface to talk to your computer, and you can open it by running Terminal.app, which is found under <code class="docutils literal"><span class="pre">/Applications/Utilities</span></code>. If you have never used the terminal before, you may want to spend some time <a class="reference external" href="http://blog.teamtreehouse.com/command-line-basics">reading up on command-line basics</a>.</p>
 <p>Go ahead and open your terminal now. It should look something like this:</p>
 <p><img alt="blank terminal" src="_images/blank_terminal.png" /></p>
@@ -179,14 +179,14 @@
 <p>For the rest of this setup, I will tell you to run commands in your terminal. When I say that, I mean &#8220;type the command into the terminal and press the Return key.&#8221;</p>
 </div>
 <div class="section" id="making-sure-java-is-installed">
-<span id="making-sure-java-is-installed"></span><h2>Making sure Java is installed<a class="headerlink" href="#making-sure-java-is-installed" title="Permalink to this headline">¶</a></h2>
+<h2>Making sure Java is installed<a class="headerlink" href="#making-sure-java-is-installed" title="Permalink to this headline">¶</a></h2>
 <p>Run <code class="docutils literal"><span class="pre">java</span> <span class="pre">-version</span></code> in your terminal. If you do not have Java installed, OS X will prompt you to install it. Follow all of the directions OS X gives you, then return to this part of the tutorial and run <code class="docutils literal"><span class="pre">java</span> <span class="pre">-version</span></code> again.</p>
 <p>If Java is installed, you will see something like this in your terminal:</p>
 <p><img alt="Java version" src="_images/java_version.png" /></p>
 <p>The details of Java&#8217;s version may differ from what you see above; that is perfectly fine.</p>
 </div>
 <div class="section" id="installing-leiningen">
-<span id="installing-leiningen"></span><h2>Installing Leiningen<a class="headerlink" href="#installing-leiningen" title="Permalink to this headline">¶</a></h2>
+<h2>Installing Leiningen<a class="headerlink" href="#installing-leiningen" title="Permalink to this headline">¶</a></h2>
 <p>Leiningen is a tool used on the command line to manage Clojure projects.</p>
 <p>To install <code class="docutils literal"><span class="pre">lein</span></code>, execute the following commands in your terminal. You will be prompted to enter your password.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein &gt; lein
@@ -201,13 +201,13 @@ sudo chmod a+x /usr/local/bin/lein
 <p>After you run the above commands, run the <code class="docutils literal"><span class="pre">lein</span> <span class="pre">version</span></code> command. It should take a while to run, as it will download some resources it needs the first time. If it completes successfully, you are golden! If not, ask an instructor for help.</p>
 </div>
 <div class="section" id="installing-light-table">
-<span id="installing-light-table"></span><h2>Installing Light Table<a class="headerlink" href="#installing-light-table" title="Permalink to this headline">¶</a></h2>
+<h2>Installing Light Table<a class="headerlink" href="#installing-light-table" title="Permalink to this headline">¶</a></h2>
 <p>Go to the <a class="reference external" href="http://www.lighttable.com/">Light Table site</a>. On the page there, you should see a set of buttons that have download links for Light Table. Click the &#8220;OS X 10.7+&#8221; button and you will download a .zip file.</p>
 <p><img alt="Light Table downloads" src="_images/light-table-download.png" /></p>
 <p>There should now be a file named LightTableMac.zip in your Downloads folder. Double-click the file to unzip it, then move LightTable.app to your Applications folder.</p>
 </div>
 <div class="section" id="getting-setup-with-heroku">
-<span id="getting-setup-with-heroku"></span><h2>Getting setup with Heroku<a class="headerlink" href="#getting-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
+<h2>Getting setup with Heroku<a class="headerlink" href="#getting-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
 <p>Heroku is the tool we will use in order to put your application online where others can see it.</p>
 <p>First, we need to create an account. Go to <a class="reference external" href="http://heroku.com">Heroku</a> and click the &#8220;Sign up&#8221; link.</p>
 <p><img alt="Heroku step 1" src="_images/heroku-step1.png" /></p>
@@ -226,20 +226,20 @@ sudo chmod a+x /usr/local/bin/lein
 <p><img alt="Heroku key-add" src="_images/heroku_key_add.png" /></p>
 </div>
 <div class="section" id="testing-your-setup">
-<span id="testing-your-setup"></span><h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
+<h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
 <p>You have set up Java, Leiningen, Light Table, Git, and Heroku on your computer&#8211;all the tools you will need for this course. Before starting, we need to test them out.</p>
 <p>Go to your terminal and run the following command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">heroku</span><span class="o">/</span><span class="n">clojure</span><span class="o">-</span><span class="n">sample</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/heroku/clojure-sample.git
 </pre></div>
 </div>
 <p>This will check out a sample Clojure application from GitHub, a central repository for lots of source code. Your terminal should look similar to this picture:</p>
 <p><img alt="Testing git clone" src="_images/testing-step1.png" /></p>
 <p>Then run the command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">clojure</span><span class="o">-</span><span class="n">sample</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>cd clojure-sample
 </pre></div>
 </div>
 <p>This will put you in the directory with the source code for this sample bit of Clojure code. After that completes, run:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lein</span> <span class="n">repl</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>lein repl
 </pre></div>
 </div>
 <p>This could take a long time, and will download many other pieces of code it relies on. You should see lines that start with <code class="docutils literal"><span class="pre">Retrieving</span> <span class="pre">...</span></code> on your screen. When it finishes, your terminal should look like the following:</p>
@@ -256,8 +256,8 @@ sudo chmod a+x /usr/local/bin/lein
 <p>There should be output about something being created. A URL will be displayed. Look at the following example:</p>
 <p><img alt="Testing heroku create" src="_images/testing-step5.png" /></p>
 <p>Next, run the following commands:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">heroku</span> <span class="n">master</span>
-<span class="n">heroku</span> <span class="nb">open</span>
+<div class="highlight-none"><div class="highlight"><pre><span></span>git push heroku master
+heroku open
 </pre></div>
 </div>
 <p>Enter &#8220;yes&#8221; if you are asked if you are sure you want to connect, like in the following image:</p>
@@ -268,7 +268,7 @@ sudo chmod a+x /usr/local/bin/lein
 <p>Congratulations! That website is running code you have on your computer that you have uploaded. You have actually made a very simple Clojure app, and your computer is all set up to make more.</p>
 </div>
 <div class="section" id="try-the-koans">
-<span id="try-the-koans"></span><h2>Try the koans<a class="headerlink" href="#try-the-koans" title="Permalink to this headline">¶</a></h2>
+<h2>Try the koans<a class="headerlink" href="#try-the-koans" title="Permalink to this headline">¶</a></h2>
 <p>If you&#8217;re a track 2 student, try to tackle running the <a class="reference internal" href="koans.html"><span class="doc">koans</span></a>.</p>
 </div>
 </div>

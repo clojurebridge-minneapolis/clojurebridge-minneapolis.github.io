@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 3: Starting The Project &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="../index.html"/>
+        <link rel="up" title="Track 1" href="../track1.html"/>
+        <link rel="next" title="Chapter 4: Branches, Merges, Commits" href="Page_4_Change_code.html"/>
+        <link rel="prev" title="Chapter 2: Big Picture" href="Page_2_Big_Picture.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ClojureBridgeMN Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                now 
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installfest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome to ClojureBridge</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../track1.html">Track 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Page_1_Intro_TOC.html">Chapter 1: ClojureBridge Track 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_2_Big_Picture.html">Chapter 2: Big Picture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 3: Starting the Project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-clojure-project">Creating a Clojure project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-closer-look-at-the-src-directory">A closer look at the src directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git">git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow">Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Page_4_Change_code.html">Chapter 4: Branches, Merges, Commits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_5_More_code_changes.html">Chapter 5: More Code Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_6_Push_to_live.html">Chapter 6: Push to Live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Clojure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Connect with the Clojure Community</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ClojureBridgeMN Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../track1.html">Track 1</a> &raquo;</li>
+      
+    <li>Chapter 3: Starting The Project</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/track1/Page_3_Start_project.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-3-starting-the-project">
+<h1>Chapter 3: Starting The Project<a class="headerlink" href="#chapter-3-starting-the-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-a-clojure-project">
+<h2>Creating a Clojure project<a class="headerlink" href="#creating-a-clojure-project" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;re going to start by asking Leiningen to start a web application for us.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>  $: lein new compojure chatter
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">lein</span></code> is a tool for managing Clojure projects.</p>
+<p>The command above requests permission to create a new compojure project called &#8220;Chatter&#8221;. This command results in the creation of a directory<code class="docutils literal"><span class="pre">chatter</span></code> which appears as a folder in your computer&#8217;s directory (Finder on Mac, Windows Explorer on Windows)</p>
+<p>In the terminal, move into the project &#8220;Chatter&#8221; directory by entering,</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>  $: cd chatter
+</pre></div>
+</div>
+<p>Start the server with this command</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>  $: lein ring server
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">lein</span></code> will download a bunch of stuff from the Internet the first time it runs. After this finishes, your default browser opens a page that says, &#8220;Hello World&#8221;.</p>
+<p>Notice the address bar.</p>
+<ul class="simple">
+<li>&#8220;localhost&#8221; is an alias for your computer.</li>
+<li>3000 is the port number where your server is listening for requests.</li>
+</ul>
+<p>In the web browser, right-click and select <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code>. You see that it&#8217;s not even an HTML document, it&#8217;s just the <em>string</em> &#8220;Hello World&#8221;.</p>
+<p>In the terminal you see the message, &#8220;Started server on port 3000&#8221;. This means your server is working and you will be able to view your app in the browser. We initiated this connection earlier when we entered <code class="docutils literal"><span class="pre">lein</span> <span class="pre">ring</span> <span class="pre">server</span></code> in the command line.</p>
+<p>Stop the server connection by hitting &#8220;Ctrl + C&#8221; in the command line.</p>
+<p>Let&#8217;s take a closer look at what&#8217;s in the chatter directory. In LightTable, it looks like this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>.
+├── project.clj
+├── README.md
+├── resources
+│   └── public
+├── src
+│   └── chatter
+│       └── handler.clj
+└── test
+    └── chatter
+        └── handler_test.clj
+
+6 directories, 4 files
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">project.clj</span></code> is a Clojure file that describes what our project does and what other programs it needs to run.</p>
+<p><code class="docutils literal"><span class="pre">README.md</span></code> is a <em>markdown</em> file (.md), which describes the program&#8217;s prerequisites, how to run the program, and the license.</p>
+<p><code class="docutils literal"><span class="pre">resources</span></code> is a folder where you store static HTML, CSS, and images.</p>
+<p><code class="docutils literal"><span class="pre">src</span></code> is where the source code lives.</p>
+<p><code class="docutils literal"><span class="pre">test</span></code> is where the tests are stored. (A best-practice method is to test the directory before starting the project <p>—</p>
+ we will skip this step in this tutorial.)</p>
+</div>
+<div class="section" id="a-closer-look-at-the-src-directory">
+<h2>A closer look at the src directory<a class="headerlink" href="#a-closer-look-at-the-src-directory" title="Permalink to this headline">¶</a></h2>
+<p>In the editor, open the file <code class="docutils literal"><span class="pre">src/chatter/handler.clj</span></code>.</p>
+<p>The file that ends with &#8221;.clj&#8221; indicates this is a Clojure file. Clojure programs are made up of <em>expressions</em>. Expressions are either a single name, number, string, or a list of expressions beginning with a paren (or parenthesis). These expressions make your app appear and function in a web browser.</p>
+<p>In the <code class="docutils literal"><span class="pre">src/chatter/handler.clj</span></code> file, the first expression <code class="docutils literal"><span class="pre">(ns</span> <span class="pre">chatter.handler</span> <span class="pre">...</span></code> tells Clojure what we want to call the namespace (ns) being defined in this file. In this case we want to call it &#8220;chatter.handler&#8221;.</p>
+<p>The sub-expression, the expression below, begins with <code class="docutils literal"><span class="pre">(:require</span> <span class="pre">...</span></code>. This is importing the ring and compojure libraries. Those are low-level Clojure libraries for building web apps.</p>
+<p>The second expression is <code class="docutils literal"><span class="pre">(defroutes</span> <span class="pre">app-routes</span> <span class="pre">...</span></code>. <em>defroutes</em> is specific to Clojure web apps.  It creates a set of routes and gives them the name <code class="docutils literal"><span class="pre">app-routes</span></code>.  The expressions after symbol <code class="docutils literal"><span class="pre">app-routes</span></code> are the route definitions. There are two here.</p>
+<p>The first is:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are four parts to this expression:</p>
+<ol class="simple">
+<li><code class="docutils literal"><span class="pre">GET</span></code>: this is the type of HTTP request we want to handle. GETs are requests for information or data.</li>
+<li><code class="docutils literal"><span class="pre">&quot;/&quot;</span></code>: this is the name of the web page.  <code class="docutils literal"><span class="pre">/</span></code> means the top level.</li>
+<li><code class="docutils literal"><span class="pre">[]</span></code>: this is an empty parameter vector.  When you do a search or fill out a form, the parameters narrow the result.</li>
+<li><code class="docutils literal"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>: the result that gets sent back to the requesting browser.</li>
+</ol>
+<p>After the GET request is the second route definition <code class="docutils literal"><span class="pre">app-route</span></code>, which is:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This means when the server gets any kind of request other than GET, it should return &#8220;Not Found.&#8221;</p>
+<p>In your browser, right-click on the page and select <code class="docutils literal"><span class="pre">Inspect</span> <span class="pre">Element</span> <span class="pre">With</span> <span class="pre">Firebug.</span></code></p>
+<p><img alt="" src="https://github.com/annieengmark/track1-chatter/blob/master/images/Inspecting%20the%20element%20showing%20the%20source.png" /></p>
+<p>The <code class="docutils literal"><span class="pre">HTML</span></code> tab shows what the HTML document looks like. The default is an empty head and a body with the string &#8220;Hello World&#8221;. This is different from what we saw when we used <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code>. The
+browser requested html but only got a string back, and it fleshes out a legal page from this information.</p>
+<p>Click on the <code class="docutils literal"><span class="pre">Net</span></code> tab and refresh the page. You see the request is actually a GET request and the response contained a status code of 200 <p>—</p>
+ that indicates the request was successful.</p>
+<p>In your browser address bar, type
+<code class="docutils literal"><span class="pre">http://localhost:3000/non-existent-page</span></code>. Now you see the GET request is in red and has a status of 404, which indicates that the server couldn&#8217;t find the page. This was handled by the line,</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the editor, the third and final expression of the <code class="docutils literal"><span class="pre">handler.clj</span></code> file says,</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">app</span> <span class="nv">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">def</span></code> is how you declare a variable in Clojure.
+The format is: <code class="docutils literal"><span class="pre">(def</span> <span class="pre">name</span> <span class="pre">doc-string?</span> <span class="pre">init?)</span></code></p>
+<ol class="simple">
+<li><code class="docutils literal"><span class="pre">def</span></code>: introduces the def expression.</li>
+<li><code class="docutils literal"><span class="pre">name</span></code>: the name you want to give the variable.</li>
+<li><code class="docutils literal"><span class="pre">doc-string?</span></code>: an optional description on what the variable is and how it is meant to be used.</li>
+<li><code class="docutils literal"><span class="pre">init?</span></code>: an optional value the variable will be set to. If unset, the variable is unbound.</li>
+</ol>
+<p>The <em>name</em> of the variable is <code class="docutils literal"><span class="pre">app</span></code> and it&#8217;s being assigned the result of <code class="docutils literal"><span class="pre">(wrap-defaults</span> <span class="pre">app-routes</span> <span class="pre">site-defaults)</span></code></p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">wrap-defaults</span></code> is imported from the ring library, and it combines our routes and the defaults. When we start the server, it&#8217;s going to look for the routes associated with the <code class="docutils literal"><span class="pre">app</span></code> variable and use those to decide how to handle HTTP requests.</li>
+<li><code class="docutils literal"><span class="pre">app-routes</span></code> is what we&#8217;re calling our set of routes</li>
+<li><code class="docutils literal"><span class="pre">site-defaults</span></code>are default request/response handling details imported into the namespace from ring library.</li>
+</ul>
+<p>Stop the server by going back to the terminal and holding the &#8220;Ctrl+C&#8221;.</p>
+</div>
+<div class="section" id="git">
+<h2>git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+<p>Since we haven&#8217;t made any changes yet, this is a good time to put the code under version control.  Version control allows developers to keep track of their changes over time. It makes it easy to experiment and coordinate work with others.</p>
+<p>In the Chatter directory, enter the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git init
+Initialized empty Git repository in /home/crk/chatter/.git/
+</pre></div>
+</div>
+<p>Now git is monitoring our directory. Verify the status of our directory by entering,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
+
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+.gitignore
+README.md
+project.clj
+src/
+test/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>We&#8217;re on the master branch. The master branch is the main place where our code will be.  It says &#8220;Initial commit&#8221; because we&#8217;re just initializing git. Git doesn&#8217;t know anything about the files in our project, but it has spotted the <code class="docutils literal"><span class="pre">README.md</span></code> and <code class="docutils literal"><span class="pre">project.clj</span></code> files as well as the src and test directories. It also spotted a file called
+<code class="docutils literal"><span class="pre">.gitignore</span></code>. Files beginning with a dot are normally hidden unless you specifically ask to see them. <code class="docutils literal"><span class="pre">.gitignore</span></code> is a special file; it tells git what kind of files we don&#8217;t want git to track.  These will mostly be compiled code, test reports, and log files.</p>
+<p>Git follows a two-step process.  First you add the changes; they become staged.  Then, you commit all of the staged changes.  Let&#8217;s add everything. Enter the following in the command line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git add .
+</pre></div>
+</div>
+<p>The &#8221;.&#8221; tells git the current directory and below. We are telling git to add all of the Chatter files to the master branch.</p>
+<p>Now when we ask git for the status:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+new file:   .gitignore
+new file:   README.md
+new file:   project.clj
+new file:   src/chatter/handler.clj
+new file:   test/chatter/handler_test.clj
+</pre></div>
+</div>
+<p>All of our stuff is ready to be committed. That requires a commit message. After <code class="docutils literal"><span class="pre">-m</span></code> enter a short message that will help you identify the changes in this commit.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git commit . -m &quot;initial commit&quot;
+[master (root-commit) 44a560f] initial commit
+5 files changed, 66 insertions(+)
+create mode 100644 .gitignore
+create mode 100644 README.md
+create mode 100644 project.clj
+create mode 100644 src/chatter/core/handler.clj
+create mode 100644 test/chatter/core/handler_test.clj
+</pre></div>
+</div>
+<p>Now when we ask git for the status:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
+On branch master
+nothing to commit, working directory clean
+</pre></div>
+</div>
+<p>There haven&#8217;t been any changes since our last commit, so there&#8217;s nothing to see. Let&#8217;s check the log.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git log
+commit 44a560f1653770afac01aea2c9279a7af46a46eb
+Author: crkoehnen &lt;crkoehnen@gmail.com&gt;
+Date:   Sun Dec 28 16:43:37 2014 -0600
+
+    initial commit
+</pre></div>
+</div>
+<p>We see there&#8217;s been one commit, the commit hash (which uniquely identifies every commit), the author&#8217;s name, the date, and the commit comment.</p>
+<p>By keeping track of changes, git makes it easy to go back to an earlier point <p>—</p>
+ you are creating different versions of the file. By itself, it won&#8217;t do much if our hard drive suddenly dies. But git allows you to have repositories on other computers, so if your computer dies, your code lives on. GitHub is a company hosting source code; it&#8217;s free if you don&#8217;t mind that other people can see your code. As a safety measure, and for version control, we will put our code on GitHub.</p>
+<p>Log into <a class="reference external" href="https://github.com">https://github.com</a> and click, &#8220;create repository&#8221; (the &#8220;+&#8221; sign on the top menu). Name it &#8220;Chatter&#8221;. That will open a page for your new repository. We want to push an existing repository, enter the following:</p>
+<p>NOTE: be sure to use the url that GitHub gives you, not the one listed.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git remote add origin https://github.com/crkoehnen/chatter.git
+$: git push -u origin master
+Username for &#39;https://github.com&#39;: crkoehnen
+Password for &#39;https://crkoehnen@github.com&#39;:
+Counting objects: 13, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (13/13), 1.54 KiB | 0 bytes/s, done.
+Total 13 (delta 0), reused 0 (delta 0)
+To https://github.com/crkoehnen/chatter.git
+* [new branch]      master -&gt; master
+Branch master set up to track remote branch master from origin.
+</pre></div>
+</div>
+<p>Back on GitHub, click on the &#8220;Chatter&#8221; link and you&#8217;ll go to the main page for the repository. Note there is a single commit and the text is identical to what&#8217;s in our <code class="docutils literal"><span class="pre">README.md</span></code> file.</p>
+</div>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<p>Now we&#8217;re going to start changing the templated code to make it our web app. We&#8217;re going to follow a certain workflow:</p>
+<ol class="simple">
+<li>branch the code</li>
+<li>write some code</li>
+<li>try the code</li>
+<li>repeat 2-3 times until we&#8217;re happy with the changes</li>
+<li>merge the branch into master</li>
+<li>push the changes to GitHub</li>
+</ol>
+<p>This methodology allows us to isolate changes in their own branch.  If we change our minds or discover we&#8217;ve made a mistake, it&#8217;s easy to revert back to an earlier version using git.</p>
+<p>In <a class="reference external" href="track1/Page%204_%20Change%20code.md">Chapter 4</a> we will create a new branch to make changes on, change the code, then commit and merge the changes and push to GitHub.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Page_4_Change_code.html" class="btn btn-neutral float-right" title="Chapter 4: Branches, Merges, Commits" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Page_2_Big_Picture.html" class="btn btn-neutral" title="Chapter 2: Big Picture" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 ClojureBridgeMN volunteers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'November 4-5, 2016',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

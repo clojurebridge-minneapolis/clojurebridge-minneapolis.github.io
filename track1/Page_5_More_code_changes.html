@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 5: More Code Changes &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="../index.html"/>
+        <link rel="up" title="Track 1" href="../track1.html"/>
+        <link rel="next" title="Heroku" href="Page_6_Push_to_live.html"/>
+        <link rel="prev" title="Chapter 4: Branches, Merges, Commits" href="Page_4_Change_code.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ClojureBridgeMN Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                now 
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Installfest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome to ClojureBridge</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../track1.html">Track 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Page_1_Intro_TOC.html">Chapter 1: ClojureBridge Track 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_2_Big_Picture.html">Chapter 2: Big Picture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_3_Start_project.html">Chapter 3: Starting the Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Page_4_Change_code.html">Chapter 4: Branches, Merges, Commits</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 5: More Code Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-hiccup">Adding Hiccup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-does-hiccup-work">How Does Hiccup Work?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-messages">Adding Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forms">Forms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wiring-the-form">Wiring the form</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#conj">conj</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#swap">swap!</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#let">let</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrap">Bootstrap</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Page_6_Push_to_live.html">Chapter 6: Push to Live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Clojure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Connect with the Clojure Community</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ClojureBridgeMN Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../track1.html">Track 1</a> &raquo;</li>
+      
+    <li>Chapter 5: More Code Changes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/track1/Page_5_More_code_changes.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-5-more-code-changes">
+<h1>Chapter 5: More Code Changes<a class="headerlink" href="#chapter-5-more-code-changes" title="Permalink to this headline">¶</a></h1>
+<p>Now let&#8217;s change the app&#8217;s main page from &#8220;Hello, World&#8221; to something a little more chatty.</p>
+<p>First, let&#8217;s create and checkout a new branch called, <code class="docutils literal"><span class="pre">view-messages</span></code>. If you need a refresher on <a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">creating and checking out branches</a>, review Chapter 4. Once you are on the new <code class="docutils literal"><span class="pre">view-messages</span></code> branch, we&#8217;ll move on to updating the code.</p>
+<div class="section" id="adding-hiccup">
+<h2>Adding Hiccup<a class="headerlink" href="#adding-hiccup" title="Permalink to this headline">¶</a></h2>
+<p>We need to write code that will generate HTML. To do this, we will use a library called <code class="docutils literal"><span class="pre">hiccup</span></code>. We don&#8217;t have this library yet, so we&#8217;re going to add it. Adding a new library requires two steps:</p>
+<ol class="simple">
+<li>Add the library to the dependency section of the <code class="docutils literal"><span class="pre">project.clj</span></code> file. This tells lein your program needs another program.</li>
+</ol>
+<p>Add hiccup by updating the <code class="docutils literal"><span class="pre">project.clj</span></code> file to look like this:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.7.0&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">compojure</span> <span class="s">&quot;1.4.0&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">ring/ring-defaults</span> <span class="s">&quot;0.1.5&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">hiccup</span> <span class="s">&quot;1.0.5&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li>Import the library into the namespace you will use it in by adding the import to the <code class="docutils literal"><span class="pre">ns</span></code> declaration. Our ns declaration will be part of the <code class="docutils literal"><span class="pre">handler.clj</span></code> file:</li>
+</ol>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">ns </span><span class="nv">chatter.handler</span>
+  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">compojure.core</span> <span class="ss">:refer</span> <span class="ss">:all</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">compojure.route</span> <span class="ss">:as</span> <span class="nv">route</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">ring.middleware.defaults</span> <span class="ss">:refer</span> <span class="p">[</span><span class="nv">wrap-defaults</span> <span class="nv">site-defaults</span><span class="p">]]</span>
+            <span class="p">[</span><span class="nv">hiccup.page</span> <span class="ss">:as</span> <span class="nv">page</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Let&#8217;s use hiccup to generate the html by changing <code class="docutils literal"><span class="pre">app-routes</span></code>:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span>
+       <span class="p">(</span><span class="nf">page/html5</span>
+        <span class="p">[</span><span class="ss">:head</span>
+         <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]]</span>
+        <span class="p">[</span><span class="ss">:body</span>
+         <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Our Chat App&quot;</span><span class="p">]]))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Once the code is updated, let&#8217;s try it out. In the command line, start the server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: lein ring server
+</pre></div>
+</div>
+<p>Now <code class="docutils literal"><span class="pre">http://localhost:3000</span></code> displays &#8220;Our Chat App&#8221;.  Right-click and select <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code> to see  it&#8217;s now proper HTML complete with <code class="docutils literal"><span class="pre">head</span></code>, <code class="docutils literal"><span class="pre">title</span></code>, and <code class="docutils literal"><span class="pre">body</span></code>.</p>
+<p>The hiccup function(*) <code class="docutils literal"><span class="pre">page/html5</span></code> generates an HTML page. It expects Clojure vectors with symbols representing corresponding HTML tags. Hiccup will automatically add the closing tag when it reaches the end of the vector.</p>
+<ul class="simple">
+<li><em>&lt;&lt;&lt; include screenshot &gt;&gt;&gt;</em></li>
+</ul>
+<p>Compare the hiccup to HTML in <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code> to the HTML we wrote by hand earlier.</p>
+<div class="section" id="how-does-hiccup-work">
+<h3>How Does Hiccup Work?<a class="headerlink" href="#how-does-hiccup-work" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><em>Vectors</em> are a Clojure data structure used to contain sequences of things, including other vectors. Vectors are often written using square brackets. For example, <code class="docutils literal"><span class="pre">[1</span> <span class="pre">2</span> <span class="pre">3]</span></code> is a vector containing the numbers 1, 2, and 3. Hiccup uses vectors of keywords to represent sections of HTML.</div></blockquote>
+<blockquote>
+<div><em>Keywords</em> are names that begin with a colon.  <code class="docutils literal"><span class="pre">:title</span></code>, <code class="docutils literal"><span class="pre">:x</span></code>, and <code class="docutils literal"><span class="pre">:favorite-color</span></code> are all keywords. Clojure often uses keywords where other languages use strings. If you were to use Clojure to query a database, Clojure would probably use keywords to represent the column names.  Hiccup uses keywords to represent the names of HTML elements.</div></blockquote>
+<blockquote>
+<div>Where HTML uses <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code>, hiccup would expect <code class="docutils literal"><span class="pre">:body</span></code>. Where HTML uses <code class="docutils literal"><span class="pre">&lt;title&gt;</span></code>, hiccup uses
+<code class="docutils literal"><span class="pre">:title</span></code>. Because the keywords are enclosed in a vector, the closing of the HTML tag is unnecessary.  The closing of the surrounding vector signals where the HTML section ends.</div></blockquote>
+<p>A problem with our new <code class="docutils literal"><span class="pre">app-routes</span></code> is that it has two different functions right now. Its main role is to take the incoming request and decide what to do.  Right now it&#8217;s doing that, but it is also generating a full HTML page. As we add more pages, this will become too complicated to manage. We&#8217;ll get ahead of the game by splitting out the task of generating the HTML into a helper function.</p>
+<p>Clojure defines a function using this syntax:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">name</span>
+  <span class="nv">doc-string?</span>
+  <span class="nv">params-vector</span>
+  <span class="nv">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><code class="docutils literal"><span class="pre">defn</span></code> - introduces the defn expression.</li>
+<li><code class="docutils literal"><span class="pre">name</span></code> - what you call the function.</li>
+<li><code class="docutils literal"><span class="pre">doc-string?</span></code> - an optional description of the function.</li>
+<li><code class="docutils literal"><span class="pre">params-vector</span></code> - a vector of symbols naming the functions arguments.</li>
+<li><code class="docutils literal"><span class="pre">expression</span></code> - the body of the function.</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">hello-world</span></code>, a traditional first function, might be programmed in Clojure like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">hello-world</span>
+  <span class="s">&quot;ye olde &#39;Hello, World&#39;&quot;</span>
+  <span class="p">[]</span>
+  <span class="s">&quot;Hello, World&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">hello-world</span></code> takes no arguments and returns the string &#8220;Hello, World&#8221;.</p>
+<p><code class="docutils literal"><span class="pre">user&gt;</span> <span class="pre">(hello-world)</span> <span class="pre">&quot;Hello,</span> <span class="pre">World&quot;</span></code></p>
+<p>Our new code should look like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">generate-message-view</span>
+  <span class="s">&quot;This generates the HTML for displaying messages&quot;</span>
+  <span class="p">[]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+   <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]]</span>
+   <span class="p">[</span><span class="ss">:body</span>
+    <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Our Chat App&quot;</span><span class="p">]]))</span>
+<span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">generate-message-view</span></code> is a function that takes no arguments. It calls a hiccup function <code class="docutils literal"><span class="pre">page/html5</span></code> to generate html from a vector representing the <code class="docutils literal"><span class="pre">head</span></code> sections and a vector representing the <code class="docutils literal"><span class="pre">body</span></code> elements of the html.</p>
+<p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, and refresh the browser to make sure our page still works. From the outside, we shouldn&#8217;t see a change. The page should still display &#8220;Our Chat App&#8221; and the html should be identical. Now, let&#8217;s double check our git status:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
+On branch view-messages
+Changes not staged for commit:
+   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+      modified:   project.clj
+      modified:   src/chatter/core/handler.clj
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</pre></div>
+</div>
+<p>That looks right so <a class="reference external" href="/track1/Page_4_Change_code.html#adding-and-committing-the-changes">add, commit, merge the changes back to master, and then push to GitHub</a>.  Then, delete the <code class="docutils literal"><span class="pre">view-messages</span></code> branch. You should see the commit numbers go up on GitHub.</p>
+</div>
+</div>
+<div class="section" id="adding-messages">
+<h2>Adding Messages<a class="headerlink" href="#adding-messages" title="Permalink to this headline">¶</a></h2>
+<p>Our app is not displaying messages, nor do we have a way of adding messages. Let&#8217;s make that happen now.</p>
+<p><a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">Create and check out a branch to work on</a>.</p>
+<p>Let&#8217;s change the app so it displays messages. We&#8217;ll represent the messages as a vector of maps. Each map will have a <code class="docutils literal"><span class="pre">:name</span></code> and <code class="docutils literal"><span class="pre">:message</span></code>key and the corresponding value, in quotes.  For example, the code below will represent blue&#8217;s first post.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is a map with two keys.</p>
+<ol>
+<li> `:name` is "blue", because blue posted it</li>
+<li>`:message` is the content of the post
+and its value is "blue's first post".</li>
+</ol><p>Programs often need to associate keys with values and the usual data structure for doing that are hash tables. Clojure calls them maps and they look like this:</p>
+<p><code class="docutils literal"><span class="pre">clojure</span></code></p>
+<p><code class="docutils literal"><span class="pre">(def</span> <span class="pre">cities</span></code></p>
+<p><code class="docutils literal"><span class="pre">{&quot;Tokyo&quot;</span> <span class="pre">37900000</span></code></p>
+<p><code class="docutils literal"><span class="pre">&quot;Delhi&quot;</span> <span class="pre">26580000</span></code></p>
+<p><code class="docutils literal"><span class="pre">&quot;Seoul&quot;</span> <span class="pre">26100000})</span></code></p>
+<p>Here <code class="docutils literal"><span class="pre">cities</span></code> is a hash table whose <em>keys</em> are strings (in this case the names of cities) and the <em>values</em> are the populations of each city.</p>
+<p>To get a value from a map, pass the map and key into the <code class="docutils literal"><span class="pre">get</span></code> function. For example,</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">get </span><span class="nv">cities</span> <span class="s">&quot;Tokyo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>returns 37900000. When the keys are keywords, you can also use the keyword as a function that takes the map and returns the values.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:name</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>returns &#8220;blue&#8221;.</p>
+<blockquote>
+<div><div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:message</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>returns &#8220;blue&#8217;s first post&#8221;.</p>
+</div></blockquote>
+<p>Maps are everywhere in Clojure and are used for many things where other languages might use objects.</p>
+<p>Let&#8217;s call the vector simply <code class="docutils literal"><span class="pre">chat-messages</span></code> and hard code(*) some samples to get started. Add a chat-messages variable to <code class="docutils literal"><span class="pre">handler.clj</span></code>.</p>
+<p>After the ns expression, add:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span> <span class="p">[{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;hello, world&quot;</span><span class="p">}</span>
+                    <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;red&quot;</span> <span class="ss">:message</span> <span class="s">&quot;red is my favorite color&quot;</span><span class="p">}</span>
+                    <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;green&quot;</span> <span class="ss">:message</span> <span class="s">&quot;green makes it go faster&quot;</span><span class="p">}])</span>
+</pre></div>
+</div>
+<p>Next, we&#8217;ll modify the HTML to display the messages.  We will also add a parameter to the <code class="docutils literal"><span class="pre">generate-message-view</span></code> function so that we can give it a messages we want displayed.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">generate-message-view</span>
+  <span class="s">&quot;This generates the HTML for displaying messages&quot;</span>
+  <span class="p">[</span><span class="nv">messages</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+   <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]]</span>
+   <span class="p">[</span><span class="ss">:body</span>
+    <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Our Chat App&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="ss">:p</span> <span class="nv">messages</span><span class="p">]]))</span>
+<span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code> and refresh the browser.</p>
+<p>This blows up spectacularly.</p>
+<p><img alt="" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/illegal-argument-exception.jpg" /></p>
+<p><a class="reference external" href="#"></a></p>
+<p>This is a stack trace - it gives us an idea what the program was doing when it hit the problem. Ignore all the files that aren&#8217;t ones you wrote for the project. In my case, the first file of interest is
+<code class="docutils literal"><span class="pre">handler.clj</span></code>, line 14, the <code class="docutils literal"><span class="pre">generate-message-view</span></code> function.</p>
+<p>The exception message on the top, <code class="docutils literal"><span class="pre">&quot;...</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">element</span> <span class="pre">name&quot;</span></code>, is a clue to what&#8217;s wrong.  Elements are what fragments of html are called.  Hiccup is responsible for generating html from Clojure symbols. The problem is that we&#8217;ve got a map with symbols in it and hiccup thinks they&#8217;re html.  They&#8217;re not, so it creates an error.</p>
+<p>We can fix the issue by converting our maps to strings.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">generate-message-view</span>
+  <span class="s">&quot;This generates the HTML for displaying messages&quot;</span>
+  <span class="p">[</span><span class="nv">messages</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+   <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]]</span>
+   <span class="p">[</span><span class="ss">:body</span>
+    <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Our Chat App&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="ss">:p</span> <span class="p">(</span><span class="nb">str </span><span class="nv">messages</span><span class="p">)]]))</span>
+</pre></div>
+</div>
+<p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, and refresh the browser.</p>
+<p>This fixes the exception but it&#8217;s ugly.</p>
+<p><img alt="ugly hack" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/ugly.jpg" /></p>
+<p>Let&#8217;s take the messages and put them in a table using HTML&#8217;s <code class="docutils literal"><span class="pre">table</span></code>, <code class="docutils literal"><span class="pre">tr</span></code>, and <code class="docutils literal"><span class="pre">td</span></code> elements.  We&#8217;re going to write a function that takes a
+message and creates an HTML row. Then, inside a <code class="docutils literal"><span class="pre">table</span></code>, we&#8217;re going to apply that function to all of our messages.</p>
+<p>Clojure uses <code class="docutils literal"><span class="pre">defn</span></code> to create a function, but those functions are named. Sometimes, we want a specialized function that isn&#8217;t reusable. For those cases, Clojure has a way of creating an anonymous function.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">fn </span><span class="nv">params-vector</span> <span class="nv">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Our function is going to take a message, we&#8217;ll call it &#8220;m&#8221; within the function, and extract both the <code class="docutils literal"><span class="pre">:name</span></code> and <code class="docutils literal"><span class="pre">:message</span></code>, wrapping them in <code class="docutils literal"><span class="pre">:td</span></code> to make table cells and putting them both within a <code class="docutils literal"><span class="pre">:tr</span></code> to make the row.  Since the keys to
+the message hashmap are keywords, we can use them as functions to get the values.  In Clojure, the function looks like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span>
+</pre></div>
+</div>
+<p>Making a new collection by applying a function to all of the elements of an existing collection is such a common thing that Clojure has it functionality predefined. It&#8217;s a function called <code class="docutils literal"><span class="pre">map</span></code>. This is different than &#8220;mapping&#8221; (the function) over a collection of maps (hash tables), which is what we are doing.</p>
+<p>The syntax is:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="k">fn </span><span class="nv">coll</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">map</span></code> - signifies that we&#8217;re going to be invoking the map function.</p>
+<p><code class="docutils literal"><span class="pre">fn</span></code> - the function we&#8217;re going to apply to every element.</p>
+<p><code class="docutils literal"><span class="pre">coll</span></code> - the collection containing the elements.</p>
+</div></blockquote>
+<p>Mapping our anonymous function over our vector of messages looks like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span> <span class="nv">messages</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now our <code class="docutils literal"><span class="pre">generate-message-view</span></code> looks like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">generate-message-view</span>
+  <span class="s">&quot;This generates the HTML for displaying messages&quot;</span>
+  <span class="p">[</span><span class="nv">messages</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+     <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]]</span>
+   <span class="p">[</span><span class="ss">:body</span>
+    <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Our Chat App&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="ss">:p</span>
+     <span class="p">[</span><span class="ss">:table</span>
+      <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span> <span class="nv">messages</span><span class="p">)]]]))</span>
+</pre></div>
+</div>
+<p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, then refresh the browser.  Our hard-coded messages should now display in the page.</p>
+<p><img alt="hard coded messages" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/hardcoded.jpg" /></p>
+</div>
+<div class="section" id="forms">
+<h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<p>We still don&#8217;t have a way of adding new messages. This requires HTML forms and importing the form functions from hiccup. The form allows the user to send messages in the parameters of an HTML <code class="docutils literal"><span class="pre">POST</span></code>. We will need to extract the message and add it to our collection of messages. This will be the most complicated set of changes in our app.</p>
+<blockquote>
+<div><p>In HTML, a <code class="docutils literal"><span class="pre">form</span></code> is used to send input from the browser to the server. The <code class="docutils literal"><span class="pre">form</span></code> element contains a pair of attributes.</p>
+<p><code class="docutils literal"><span class="pre">action</span></code> - which specifies the route that should handle the input.</p>
+<p><code class="docutils literal"><span class="pre">method</span></code> - which specifies the type of request.</p>
+</div></blockquote>
+<p>Up until now, we&#8217;ve only used <code class="docutils literal"><span class="pre">GET</span></code> to show the messages. To send messages, we&#8217;ll need to add a <code class="docutils literal"><span class="pre">POST</span></code>.</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">forms</span></code> contain text and <code class="docutils literal"><span class="pre">input</span></code> elements. The <code class="docutils literal"><span class="pre">input</span></code> elements define the content the <code class="docutils literal"><span class="pre">form</span></code> will send to the server. <code class="docutils literal"><span class="pre">input</span></code> elements have a number of attributes:</p>
+<p><code class="docutils literal"><span class="pre">id</span></code> - a way of identifying the input</p>
+<p><code class="docutils literal"><span class="pre">name</span></code> - the name of the input</p>
+<p><code class="docutils literal"><span class="pre">type</span></code> - the kind of input</p>
+<p><code class="docutils literal"><span class="pre">value</span></code> - the default value for the input</p>
+</div></blockquote>
+<p>We&#8217;re going to use hiccup to generate html that looks like,</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+  Name: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="p">&gt;</span>
+  Message: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;msg&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;msg&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Submit&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>First, we need to import some libraries into our <code class="docutils literal"><span class="pre">handler.clj</span></code> file.  Add:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nv">hiccup.form</span> <span class="ss">:as</span> <span class="nv">form</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>to the <code class="docutils literal"><span class="pre">:require</span></code> section of the <code class="docutils literal"><span class="pre">ns</span></code> declaration.  It should now look like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">ns </span><span class="nv">chatter.handler</span>
+  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">compojure.core</span> <span class="ss">:refer</span> <span class="ss">:all</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">compojure.route</span> <span class="ss">:as</span> <span class="nv">route</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">ring.middleware.defaults</span> <span class="ss">:refer</span> <span class="p">[</span><span class="nv">wrap-defaults</span> <span class="nv">site-defaults</span><span class="p">]]</span>
+            <span class="p">[</span><span class="nv">hiccup.page</span> <span class="ss">:as</span> <span class="nv">page</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">hiccup.form</span> <span class="ss">:as</span> <span class="nv">form</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Now that we have imported the hiccup form function, we can use it to generate the HTML form.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">form/form-to</span>
+ <span class="p">[</span><span class="ss">:post</span> <span class="s">&quot;/&quot;</span><span class="p">]</span>
+ <span class="s">&quot;Name: &quot;</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">&quot;name&quot;</span><span class="p">)</span>
+ <span class="s">&quot;Message: &quot;</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">&quot;msg&quot;</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">form/submit-button</span> <span class="s">&quot;Submit&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">form/form-to</span></code> is a hiccup function for generating the form.</p>
+<p><code class="docutils literal"><span class="pre">[:post</span> <span class="pre">&quot;/&quot;]</span></code> is a vector with the keyword <code class="docutils literal"><span class="pre">:post</span></code> and the string &#8220;/&#8221;. This tells hiccup to make the method a <code class="docutils literal"><span class="pre">POST</span></code> to the <code class="docutils literal"><span class="pre">/</span></code> location.</p>
+<p><code class="docutils literal"><span class="pre">&quot;Name:</span> <span class="pre">&quot;</span></code> is a string that will be the text displayed before the input field.</p>
+<p><code class="docutils literal"><span class="pre">form/text-field</span></code> is a hiccup function for generating an input field of type &#8220;text&#8221;. We&#8217;re passing in the string &#8220;name&#8221;.</p>
+<p><code class="docutils literal"><span class="pre">&quot;Message:</span> <span class="pre">&quot;</span></code> is a string that will be the text displayed before the input field.</p>
+<p><code class="docutils literal"><span class="pre">form/submit-button</span></code> is a hiccup function for generating the submit button.</p>
+<p>We want to generate the form button below the title but above the list of messages in the <code class="docutils literal"><span class="pre">generate-message-view</span></code> function.</p>
+<p>Finally, we&#8217;re going to change our definition of the app</p>
+<p>from:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">app</span>
+  <span class="p">(</span><span class="nf">wrap-defaults</span> <span class="nv">app-routes</span> <span class="nv">site-defaults</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>to:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">app</span> <span class="nv">app-routes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a simplification for the tutorial.</p>
+<p>Now our code looks like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">ns </span><span class="nv">chatter.handler</span>
+  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">compojure.core</span> <span class="ss">:refer</span> <span class="ss">:all</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">compojure.route</span> <span class="ss">:as</span> <span class="nv">route</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">ring.middleware.defaults</span> <span class="ss">:refer</span> <span class="p">[</span><span class="nv">wrap-defaults</span> <span class="nv">site-defaults</span><span class="p">]]</span>
+            <span class="p">[</span><span class="nv">hiccup.page</span> <span class="ss">:as</span> <span class="nv">page</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">hiccup.form</span> <span class="ss">:as</span> <span class="nv">form</span><span class="p">]))</span>
+
+<span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span> <span class="p">[{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">}</span>
+                    <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;red&quot;</span> <span class="ss">:message</span> <span class="s">&quot;red is my favorite color&quot;</span><span class="p">}</span>
+                    <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;green&quot;</span> <span class="ss">:message</span> <span class="s">&quot;green makes it go faster&quot;</span><span class="p">}])</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">generate-message-view</span>
+  <span class="s">&quot;This generates the HTML for displaying messages&quot;</span>
+  <span class="p">[</span><span class="nv">messages</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+   <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]]</span>
+   <span class="p">[</span><span class="ss">:body</span>
+    <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Our Chat App&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="ss">:p</span>
+     <span class="p">(</span><span class="nf">form/form-to</span>
+      <span class="p">[</span><span class="ss">:post</span> <span class="s">&quot;/&quot;</span><span class="p">]</span>
+      <span class="s">&quot;Name: &quot;</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">&quot;name&quot;</span><span class="p">)</span>
+      <span class="s">&quot;Message: &quot;</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">&quot;msg&quot;</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">form/submit-button</span> <span class="s">&quot;Submit&quot;</span><span class="p">))]</span>
+    <span class="p">[</span><span class="ss">:p</span>
+     <span class="p">[</span><span class="ss">:table</span>
+      <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span> <span class="nv">messages</span><span class="p">)]]]))</span>
+
+<span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">POST</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">def </span><span class="nv">app</span> <span class="nv">app-routes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code> and refresh the browser. We should now have a form on the page where a user could submit a new message.</p>
+<p><img alt="unwired form" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/unwired-form.jpg" /></p>
+</div>
+<div class="section" id="wiring-the-form">
+<h2>Wiring the form<a class="headerlink" href="#wiring-the-form" title="Permalink to this headline">¶</a></h2>
+<p>We see the form now, but submitting it does nothing. The problem now is that we&#8217;re extracting the params during the <code class="docutils literal"><span class="pre">POST</span></code> but aren&#8217;t actually doing anything with them.  To fix this, we have to extract the parameters from the form, build a message, and store the message in our
+messages vector. This might be the hardest part of our app.</p>
+<p>First, we need to import a library to extract the information sent by the form. Add the following to the <code class="docutils literal"><span class="pre">:require</span></code> section,</p>
+<p><code class="docutils literal"><span class="pre">[ring.middleware.params</span> <span class="pre">:refer</span> <span class="pre">[wrap-params]]</span></code></p>
+<p>Next, change the <code class="docutils literal"><span class="pre">app</span></code> definition from:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">app</span> <span class="nv">app-routes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">app</span> <span class="p">(</span><span class="nf">wrap-params</span> <span class="nv">app-routes</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This enables us to have access to the information sent back in our <code class="docutils literal"><span class="pre">form</span></code>.</p>
+<p>We want to be able to add new messages to our <code class="docutils literal"><span class="pre">messages</span></code> vector. Clojure was designed from the ground up to make it easier to write concurrent programs. Concurrent programs are programs that do more than one thing at a time. It does that by having data structures that do not change. Variables can be changed to point to something else, but Clojure requires that doing so happens using particular functions, so it can ensure the program stays in a safe state. We&#8217;re going to use the <code class="docutils literal"><span class="pre">atom</span></code> mechanism to allow us to update our <code class="docutils literal"><span class="pre">messages</span></code>.</p>
+<blockquote>
+<div>An <code class="docutils literal"><span class="pre">atom</span></code> is like a box that protects information from being changed in an unsafe way. You simply pass the information into the <code class="docutils literal"><span class="pre">atom</span></code>.</div></blockquote>
+<p>Instead of having the <code class="docutils literal"><span class="pre">chat-messages</span></code> variable point to our vector of messages, we&#8217;re going to have it point to the <code class="docutils literal"><span class="pre">atom</span></code> protecting the vector.</p>
+<p>Instead of:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span> <span class="p">[{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">}</span>
+                    <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;red&quot;</span> <span class="ss">:message</span> <span class="s">&quot;red is my favorite color&quot;</span><span class="p">}</span>
+                    <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;green&quot;</span> <span class="ss">:message</span> <span class="s">&quot;green makes it go faster&quot;</span><span class="p">}])</span>
+</pre></div>
+</div>
+<p>We&#8217;ll use:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span>
+     <span class="p">(</span><span class="nf">atom</span> <span class="p">[{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">}</span>
+            <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;red&quot;</span> <span class="ss">:message</span> <span class="s">&quot;red is my favorite color&quot;</span><span class="p">}</span>
+            <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;green&quot;</span> <span class="ss">:message</span> <span class="s">&quot;green makes it go faster&quot;</span><span class="p">}]))</span>
+</pre></div>
+</div>
+<p>Now <code class="docutils literal"><span class="pre">chat-messages</span></code> is pointing to the <code class="docutils literal"><span class="pre">atom</span></code> protecting our vector of hashes.</p>
+<p>Because <code class="docutils literal"><span class="pre">chat-messages</span></code> is pointing to the <code class="docutils literal"><span class="pre">atom</span></code>, we can&#8217;t simply <code class="docutils literal"><span class="pre">map</span></code> over it in <code class="docutils literal"><span class="pre">generate-message-view</span></code>.  Now, we have to tell Clojure that we want to generate HTML for the contents of the atom. This allows Clojure to ensure the messages are always read in a consistent
+state, even though something could be modifying them.</p>
+<blockquote>
+<div>Reading what&#8217;s stored in an <code class="docutils literal"><span class="pre">atom</span></code> is called &#8220;dereferencing&#8221; and is represented by the <code class="docutils literal"><span class="pre">&#64;</span></code> character.</div></blockquote>
+<p>We will dereference the <code class="docutils literal"><span class="pre">chat-messages</span></code> atom just before it is passed to the <code class="docutils literal"><span class="pre">generate-message-view</span></code> function. We can do this by changing our routes from:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">POST</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>to:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="o">@</span><span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">POST</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="o">@</span><span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If you save <code class="docutils literal"><span class="pre">handler.clj</span></code> and refresh the browser, the hard coded examples should display as before. We still won&#8217;t see any new messages because we still need to extract the information from the form and modify <code class="docutils literal"><span class="pre">chat-messages</span></code>.</p>
+<p>To add messages to <code class="docutils literal"><span class="pre">chat-messages</span></code>, we will need to introduce two more functions: <code class="docutils literal"><span class="pre">conj</span></code> and <code class="docutils literal"><span class="pre">swap!</span></code>.</p>
+<div class="section" id="conj">
+<h3>conj<a class="headerlink" href="#conj" title="Permalink to this headline">¶</a></h3>
+<p>There are many ways to work with collections of values in Clojure.  One commonly used function is <code class="docutils literal"><span class="pre">conj</span></code>. The name is short for &#8220;conjoin&#8221;. This function takes a collection and one or more item(s) to add to the collection. It then returns a <em>new</em> collection without modifying the original collection.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">conj </span><span class="p">[</span><span class="ss">:one</span> <span class="ss">:two</span><span class="p">]</span> <span class="ss">:three</span><span class="p">)</span>
+<span class="nv">=&gt;</span> <span class="p">[</span><span class="ss">:one</span> <span class="ss">:two</span> <span class="ss">:three</span><span class="p">]</span>
+
+<span class="p">(</span><span class="nb">conj </span><span class="p">[</span><span class="ss">:one</span> <span class="ss">:two</span> <span class="ss">:three</span><span class="p">]</span> <span class="ss">:four</span> <span class="ss">:five</span><span class="p">)</span>
+<span class="nv">=&gt;</span> <span class="p">[</span><span class="ss">:one</span> <span class="ss">:two</span> <span class="ss">:three</span> <span class="ss">:four</span> <span class="ss">:five</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="swap">
+<h3>swap!<a class="headerlink" href="#swap" title="Permalink to this headline">¶</a></h3>
+<p>To modify an <code class="docutils literal"><span class="pre">atom</span></code>, Clojure provides <code class="docutils literal"><span class="pre">swap!</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">swap!</span> <span class="nv">atom</span> <span class="nv">update-function</span> <span class="nv">arguments...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">atom</span></code> - the atom to be updated.
+<code class="docutils literal"><span class="pre">update-function</span></code> - the function that is applied to the value protected by the atom. It returns a new value which will replace the original.</p>
+<p><code class="docutils literal"><span class="pre">arguments...</span></code> - zero or more arguments to be passed to the <code class="docutils literal"><span class="pre">update-function</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">swap!</span></code> function will:</p>
+<ol class="simple">
+<li>Dereference the atom</li>
+<li>Pass this dereferenced value to the <code class="docutils literal"><span class="pre">update-function</span></code> along with any additional arguments. You can think of it like this: <code class="docutils literal"><span class="pre">(update-function</span> <span class="pre">&#64;atom</span> <span class="pre">arguments...)</span></code></li>
+<li>Safely replace the inner content of the atom with the value returned from the <code class="docutils literal"><span class="pre">update-function</span></code>, and finally...</li>
+<li>Return the new content of the atom.</li>
+</ol>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">a-number</span> <span class="p">(</span><span class="nf">atom</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="o">@</span><span class="nv">a-number</span>
+<span class="nv">=&gt;</span> <span class="mi">1</span>
+<span class="p">(</span><span class="nf">swap!</span> <span class="nv">a-number</span> <span class="nb">+ </span><span class="mi">2</span><span class="p">)</span>
+<span class="nv">=&gt;</span> <span class="mi">3</span>
+<span class="o">@</span><span class="nv">a-number</span>
+<span class="nv">=&gt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<p>In our case, we&#8217;re going to &#8220;swap&#8221; the content of <code class="docutils literal"><span class="pre">chat-messages</span></code> by
+&#8220;<code class="docutils literal"><span class="pre">conj</span></code>ing&#8221; a new message onto the vector of messages.</p>
+<p>We&#8217;ll also put it in a helper function to make it easier to maintain.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">update-messages!</span>
+  <span class="s">&quot;This will update a message list atom&quot;</span>
+  <span class="p">[</span><span class="nv">messages</span> <span class="nb">name </span><span class="nv">new-message</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">swap!</span> <span class="nv">messages</span> <span class="nb">conj </span><span class="p">{</span><span class="ss">:name</span> <span class="nb">name </span><span class="ss">:message</span> <span class="nv">new-message</span><span class="p">}))</span>
+</pre></div>
+</div>
+<p>Now, we have to modify our <code class="docutils literal"><span class="pre">app-routes</span></code>. We have to make two changes; it needs to extract the form information when somebody <code class="docutils literal"><span class="pre">POST</span></code>s a new message, and it needs to add the new message to our <code class="docutils literal"><span class="pre">chat-messages</span></code> before returning the page to the user. Both of these changes need to happen in the <code class="docutils literal"><span class="pre">POST</span></code> route.</p>
+<p>The new <code class="docutils literal"><span class="pre">app-routes</span></code> looks like</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="o">@</span><span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">POST</span> <span class="s">&quot;/&quot;</span> <span class="p">{</span><span class="nv">params</span> <span class="ss">:params</span><span class="p">}</span> <span class="p">(</span><span class="nf">generate-message-view</span>
+                               <span class="p">(</span><span class="nf">update-messages!</span> <span class="nv">chat-messages</span>
+<span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;name&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;msg&quot;</span><span class="p">))</span>
+                               <span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><code class="docutils literal"><span class="pre">{params</span> <span class="pre">:params}</span></code> is a shorthand notation that tells Clojure to extract all of the data submitted from the HTML form and call that data <code class="docutils literal"><span class="pre">params</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">(get</span> <span class="pre">params</span> <span class="pre">&quot;name&quot;)</span></code> and <code class="docutils literal"><span class="pre">(get</span> <span class="pre">params</span> <span class="pre">&quot;msg&quot;)</span></code> extract the values of the &#8220;name&#8221; and &#8220;msg&#8221; fields from the form data.</li>
+<li>The <code class="docutils literal"><span class="pre">update-messages!</span></code> function is then called with the <code class="docutils literal"><span class="pre">chat-messages</span></code> atom and the values of the &#8220;name&#8221; and &#8220;msg&#8221; fields from the form.</li>
+<li>After <code class="docutils literal"><span class="pre">update-messages!</span></code> has added the new message to the inner content of <code class="docutils literal"><span class="pre">chat-messages</span></code> it returns the new, dereferenced, vector of messages held by the atom.</li>
+<li><code class="docutils literal"><span class="pre">generate-message-view</span></code> is called with the updated collection of messages and builds the HTML response for the user.</li>
+</ol>
+<p>Another way of writing this, which may make the intent more clear, is to name some of the intermediate values using <code class="docutils literal"><span class="pre">let</span></code>. This will allow us to temporarily provide names for the results of some of the expressions.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="o">@</span><span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">POST</span> <span class="s">&quot;/&quot;</span> <span class="p">{</span><span class="nv">params</span> <span class="ss">:params</span><span class="p">}</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">name-param</span> <span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;name&quot;</span><span class="p">)</span>
+          <span class="nv">msg-param</span> <span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;msg&quot;</span><span class="p">)</span>
+          <span class="nv">new-messages</span> <span class="p">(</span><span class="nf">update-messages!</span> <span class="nv">chat-messages</span> <span class="nv">name-param</span> <span class="nv">msg-param</span><span class="p">)]</span>
+      <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">new-messages</span><span class="p">)</span>
+      <span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li>Extract the &#8220;name&#8221; field from the form data in <code class="docutils literal"><span class="pre">params</span></code> and name it <code class="docutils literal"><span class="pre">name-param</span></code>.</li>
+<li>Extract the &#8220;msg&#8221; field from the form data in <code class="docutils literal"><span class="pre">params</span></code> and name it <code class="docutils literal"><span class="pre">msg-param</span></code>.</li>
+<li>Execute the <code class="docutils literal"><span class="pre">update-messages!</span></code> function for the chat-messages atom and the values of the previously established <code class="docutils literal"><span class="pre">name-param</span></code> and <code class="docutils literal"><span class="pre">msg-param</span></code> names.</li>
+<li>Assign the name <code class="docutils literal"><span class="pre">new-messages</span></code> to the result of <code class="docutils literal"><span class="pre">update-messages!</span></code>.</li>
+<li>Execute <code class="docutils literal"><span class="pre">generate-message-view</span></code> for the new collection of messages now called <code class="docutils literal"><span class="pre">new-messages</span></code>.</li>
+<li>Return the HTML produced by <code class="docutils literal"><span class="pre">generate-message-view</span></code> and forget about the names <code class="docutils literal"><span class="pre">name-param</span></code>, <code class="docutils literal"><span class="pre">msg-param</span></code>, and <code class="docutils literal"><span class="pre">new-messages</span></code>.</li>
+</ol>
+<div class="section" id="let">
+<h3>let<a class="headerlink" href="#let" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">let</span></code> expressions are used to temporarily associate names with the results of other expressions, similar to how a function assigns names to its arguments. These named values can also be re-used without the cost of re-evaluating the expression that generated them.</p>
+<p>(let [name-one expression-one]
+name-two expression-two]
+(some-function name-one name-two))</p>
+<ol class="simple">
+<li><code class="docutils literal"><span class="pre">name-one</span></code> - a name for the result of evaluating <code class="docutils literal"><span class="pre">expression-one</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">name-two</span></code> - a name for the result of evaluating <code class="docutils literal"><span class="pre">expression-two</span></code>.</li>
+<li>Call <code class="docutils literal"><span class="pre">some-function</span></code> and pass it the values assigned to <code class="docutils literal"><span class="pre">name-one</span></code> and <code class="docutils literal"><span class="pre">name-two</span></code>.</li>
+<li>Return the result of the last expression within the <code class="docutils literal"><span class="pre">let</span></code>, and forget about the names we had created.</li>
+</ol>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">two</span>   <span class="mi">2</span>
+      <span class="nv">three</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">two</span> <span class="mi">1</span><span class="p">)]</span>
+  <span class="p">(</span><span class="nb">* </span><span class="nv">two</span> <span class="nv">three</span><span class="p">))</span>
+<span class="nv">=&gt;</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+<p>Save the <code class="docutils literal"><span class="pre">handler.clj</span></code> file, we will be able to use the form to add messages to the page.</p>
+<p>Since we can add messages through the form, we can remove our hard-coded messages. Change the messages to an empty vector.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span> <span class="p">(</span><span class="nf">atom</span> <span class="p">[]))</span>
+</pre></div>
+</div>
+<p>Now, the app is taking our new messages, but it&#8217;s adding new messages to the end. That&#8217;s going to be hard to read.  We can fix that by changing from a vector to a list.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span> <span class="p">(</span><span class="nf">atom</span> <span class="o">&#39;</span><span class="p">()))</span>
+</pre></div>
+</div>
+<blockquote>
+<div>Like vectors, lists are sequential collections.  Vectors are better for accessing random elements fast (which we aren&#8217;t doing). Lists are better at adding an element to the front, which we want to do. Since they are both collections, <code class="docutils literal"><span class="pre">conj</span></code> works with either.</div></blockquote>
+<p>Our app now looks like:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">ns </span><span class="nv">chatter.handler</span>
+  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">compojure.core</span> <span class="ss">:refer</span> <span class="ss">:all</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">compojure.route</span> <span class="ss">:as</span> <span class="nv">route</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">ring.middleware.defaults</span> <span class="ss">:refer</span> <span class="p">[</span><span class="nv">wrap-defaults</span> <span class="nv">site-defaults</span><span class="p">]]</span>
+            <span class="p">[</span><span class="nv">ring.middleware.params</span> <span class="ss">:refer</span> <span class="p">[</span><span class="nv">wrap-params</span><span class="p">]]</span>
+            <span class="p">[</span><span class="nv">hiccup.page</span> <span class="ss">:as</span> <span class="nv">page</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">hiccup.form</span> <span class="ss">:as</span> <span class="nv">form</span><span class="p">]))</span>
+
+<span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span> <span class="p">(</span><span class="nf">atom</span> <span class="o">&#39;</span><span class="p">()))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">generate-message-view</span>
+  <span class="s">&quot;This generates the HTML for displaying messages&quot;</span>
+  <span class="p">[</span><span class="nv">messages</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">page/html5</span>
+   <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]]</span>
+   <span class="p">[</span><span class="ss">:body</span>
+    <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Our Chat App&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="ss">:p</span>
+     <span class="p">(</span><span class="nf">form/form-to</span>
+      <span class="p">[</span><span class="ss">:post</span> <span class="s">&quot;/&quot;</span><span class="p">]</span>
+      <span class="s">&quot;Name: &quot;</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">&quot;name&quot;</span><span class="p">)</span>
+      <span class="s">&quot;Message: &quot;</span> <span class="p">(</span><span class="nf">form/text-field</span> <span class="s">&quot;msg&quot;</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">form/submit-button</span> <span class="s">&quot;Submit&quot;</span><span class="p">))]</span>
+    <span class="p">[</span><span class="ss">:p</span>
+     <span class="p">[</span><span class="ss">:table</span>
+      <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span> <span class="nv">messages</span><span class="p">)]]]))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">update-messages!</span>
+  <span class="s">&quot;This will update a message list atom&quot;</span>
+  <span class="p">[</span><span class="nv">messages</span> <span class="nb">name </span><span class="nv">message</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">swap!</span> <span class="nv">messages</span> <span class="nb">conj </span> <span class="p">{</span><span class="ss">:name</span> <span class="nb">name </span><span class="ss">:message</span> <span class="nv">message</span><span class="p">}))</span>
+
+<span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="o">@</span><span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">POST</span> <span class="s">&quot;/&quot;</span> <span class="p">{</span><span class="nv">params</span> <span class="ss">:params</span><span class="p">}</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">name-param</span> <span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;name&quot;</span><span class="p">)</span>
+          <span class="nv">msg-param</span> <span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;msg&quot;</span><span class="p">)</span>
+          <span class="nv">new-messages</span> <span class="p">(</span><span class="nf">update-messages!</span> <span class="nv">chat-messages</span> <span class="nv">name-param</span> <span class="nv">msg-param</span><span class="p">)]</span>
+      <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">new-messages</span><span class="p">)</span>
+      <span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">def </span><span class="nv">app</span> <span class="p">(</span><span class="nf">wrap-params</span> <span class="nv">app-routes</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">Add, commit, merge the changes to master, push master to GitHub</a>, and delete the branch.</p>
+</div>
+<div class="section" id="bootstrap">
+<h2>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h2>
+<p>The app is working but is ugly. We can improve it by using CSS and JavaScript from a package of software called Twitter Bootstrap.</p>
+<p><a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">Create and checkout a new branch.</a></p>
+<p>In the head section of our HTML, we&#8217;re going to include Bootstrap:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span>   <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]</span>
+    <span class="p">(</span><span class="nf">page/include-css</span> <span class="s">&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">page/include-js</span>  <span class="s">&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="/track1/Page_3_Start_project.html#creating-a-clojure-project">Start the server again</a>, and you will see the fonts change. You&#8217;ll also notice the table get smashed together.</p>
+<p>Now, let&#8217;s change the table element from <code class="docutils literal"><span class="pre">:table</span></code> to <code class="docutils literal"><span class="pre">:table#messages.table</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span>    <span class="p">[</span><span class="ss">:table#messages.table</span>
+     <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span> <span class="nv">messages</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>This tells hiccup that we want the table to have an id of <code class="docutils literal"><span class="pre">messages</span></code> and a class of <code class="docutils literal"><span class="pre">table</span></code>. CSS works by looking for combinations of classes and structure and changing the appearance when an element matches a pattern. Bootstrap uses a set of predefined CSS to look for a common set of classes. One of them is table.</p>
+<p>Save the file, then refresh the browser. It now looks better. Examine the HTML that&#8217;s generated. You see an id and class field inside the table element.</p>
+<p>Let&#8217;s make the table entries stripped by adding an additional class. Change the table element to <code class="docutils literal"><span class="pre">:table#messages.table.table-striped</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span>    <span class="p">[</span><span class="ss">:table#messages.table.table-striped</span>
+     <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span> <span class="nv">messages</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>What do you think will happen if you change <code class="docutils literal"><span class="pre">table-striped</span></code> to <code class="docutils literal"><span class="pre">table-bordered</span></code>? Try it and refresh your browser to find out!</p>
+<p>HTML elements can have multiple classes and CSS uses this to create more complex effects. Try adding <code class="docutils literal"><span class="pre">table-hover</span></code> to the table element: <code class="docutils literal"><span class="pre">:table#messages.table.table-bordered.table-hover</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span>    <span class="p">[</span><span class="ss">:table#messages.table.table-hover</span>
+     <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">m</span><span class="p">]</span> <span class="p">[</span><span class="ss">:tr</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:name</span> <span class="nv">m</span><span class="p">)]</span> <span class="p">[</span><span class="ss">:td</span> <span class="p">(</span><span class="ss">:message</span> <span class="nv">m</span><span class="p">)]])</span> <span class="nv">messages</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Now, when you move the mouse over a row, the entire row becomes highlighted. Dynamic effects in the browser are implemented using a language called JavaScript. We won&#8217;t talk about JavaScript except to say that it exists and the JavaScript part of Bootstrap was imported into the page with the <code class="docutils literal"><span class="pre">include-js</span></code> call.</p>
+<p>Let&#8217;s create our own CSS file to center the heading.  Create a file <code class="docutils literal"><span class="pre">chatter.css</span></code> in the <code class="docutils literal"><span class="pre">resources/public</span></code> directory. Inside, paste:</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="nt">h1</span> <span class="p">{</span>
+    <span class="nb">text-align</span><span class="o">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>CSS works using pattern matching. In this case, we&#8217;re saying that if the element is an <code class="docutils literal"><span class="pre">h1</span></code> element, center the text. Save the file and add another <code class="docutils literal"><span class="pre">page/include-css</span></code> expression to <code class="docutils literal"><span class="pre">handler.clj</span></code> to pull in <code class="docutils literal"><span class="pre">chatter.css</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span>   <span class="p">[</span><span class="ss">:head</span>
+    <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]</span>
+    <span class="p">(</span><span class="nf">page/include-css</span> <span class="s">&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">page/include-js</span>  <span class="s">&quot;//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">page/include-css</span> <span class="s">&quot;/chatter.css&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Refresh the page. We want to see the <code class="docutils literal"><span class="pre">h1</span></code> tag centered, but you&#8217;ll see it&#8217;s not. Open Firebug and watch the traffic as you refresh the page. We&#8217;re getting a 404 when it&#8217;s trying to download the css.</p>
+<p>The problem is in our <code class="docutils literal"><span class="pre">defroutes</span></code>. We have a route handling browser GET or POST requests, but anything else is falling through to our <code class="docutils literal"><span class="pre">route/not-found</span></code> call. We need to tell <code class="docutils literal"><span class="pre">defroutes</span></code> where to find our resources.  Change the defroutes to:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
+  <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="o">@</span><span class="nv">chat-messages</span><span class="p">))</span>
+  <span class="p">(</span><span class="nf">POST</span> <span class="s">&quot;/&quot;</span> <span class="p">{</span><span class="nv">params</span> <span class="ss">:params</span><span class="p">}</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">name-param</span> <span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;name&quot;</span><span class="p">)</span>
+          <span class="nv">msg-param</span> <span class="p">(</span><span class="nb">get </span><span class="nv">params</span> <span class="s">&quot;msg&quot;</span><span class="p">)</span>
+          <span class="nv">new-messages</span> <span class="p">(</span><span class="nf">update-messages!</span> <span class="nv">chat-messages</span> <span class="nv">name-param</span> <span class="nv">msg-param</span><span class="p">)]</span>
+      <span class="p">(</span><span class="nf">generate-message-view</span> <span class="nv">new-messages</span><span class="p">)</span>
+      <span class="p">))</span>
+  <span class="p">(</span><span class="nf">route/resources</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Not Found&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In <a class="reference internal" href="Page_6_Push_to_live.html"><span class="doc">Chapter 6</span></a>, we will complete the project by pushing your Chatter app live so you can share with your friends!</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Page_6_Push_to_live.html" class="btn btn-neutral float-right" title="Heroku" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Page_4_Change_code.html" class="btn btn-neutral" title="Chapter 4: Branches, Merges, Commits" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 ClojureBridgeMN volunteers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'November 4-5, 2016',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
