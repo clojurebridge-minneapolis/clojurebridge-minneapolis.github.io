@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ubuntu Setup &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  <title>Linux Setup &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                now 
+                Friday Oct 28 2016 @ 11:23:32 web-flow
               </div>
             
           
@@ -97,8 +97,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Linux</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#starting-a-terminal">Starting a terminal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-java">Install Java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-nightcode">Installing Nightcode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-leiningen">Installing Leiningen</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installing-light-table">Installing Light Table</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#getting-setup-with-heroku">Getting setup with Heroku</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-your-setup">Testing your setup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#try-the-koans">Try the koans</a></li>
@@ -146,7 +146,7 @@
       
           <li><a href="setup.html">Installfest</a> &raquo;</li>
       
-    <li>Ubuntu Setup</li>
+    <li>Linux Setup</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -160,16 +160,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ubuntu-setup">
-<h1>Ubuntu Setup<a class="headerlink" href="#ubuntu-setup" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>Start a terminal</li>
-<li>Make sure Java is installed</li>
-<li>Get Leiningen installed</li>
-<li>Get Light Table installed</li>
-<li>Get Heroku installed (includes Git)</li>
-<li>Test installation</li>
-</ul>
+  <div class="section" id="linux-setup">
+<h1>Linux Setup<a class="headerlink" href="#linux-setup" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="starting-a-terminal">
 <h2>Starting a terminal<a class="headerlink" href="#starting-a-terminal" title="Permalink to this headline">¶</a></h2>
 <p>For these instructions, and for much of the class, you will need to have a terminal, or command line, open. This is a text-based interface to talk to your computer, and you can open it by clicking &#8220;Dash Home&#8221; and typing <code class="docutils literal"><span class="pre">Terminal</span></code>. You can also open a terminal at any time by pressing <code class="docutils literal"><span class="pre">CTRL-ALT-T</span></code>. If you have never used the terminal before, you may want to spend some time <a class="reference external" href="http://blog.teamtreehouse.com/command-line-basics">reading up on command-line basics</a>.</p>
@@ -180,21 +172,44 @@
 </div>
 <div class="section" id="install-java">
 <h2>Install Java<a class="headerlink" href="#install-java" title="Permalink to this headline">¶</a></h2>
-<p>Instructions vary by Linux distribution... For Debian and Ubuntu you
-can update the package manager and install OpenJDK 8 like this:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span># apt-get update
-# apt-get install openjdk-8-jdk
-</pre></div>
-</div>
-<p>When Java is installed, you will see something like this in your terminal:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ java -version
-openjdk version &quot;1.8.0_111&quot;
-OpenJDK Runtime Environment (build 1.8.0_111-8u111-b14-2-b14)
-OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)
+<p>Typically you can use the Java that&#8217;s packaged or your Linux
+distribution (e.g. for Debian and Ubuntu it&#8217;s the package
+<strong>openjdk-8-jdk</strong>). However because we&#8217;re using Nightcode and
+Nightcode <em>requires</em> the Oracle JDK you will need to download
+and install it from the <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle Java SE Downloads</a> page.</p>
+<p>You can install the Oracle JDK one of your subdirectories like this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ mkdir -p ~/src/oracle/
+clojurista@mylaptop $ cd ~/src/oracle/
+clojurista@mylaptop $ tar -zxf jdk-8u112-linux-x64.tar.gz
+clojurista@mylaptop $ export JAVA_HOME=$HOME/src/oracle/jdk1.8.0_112
+clojurista@mylaptop $ export PATH=$JAVA_HOME/bin:$HOME/bin:$PATH
+clojurista@mylaptop $ which java
+/home/clojurista/src/oracle/jdk1.8.0_112/bin/java
+clojurista@mylaptop $ java -version
+java version &quot;1.8.0_112&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, mixed mode)
 clojurista@mylaptop $
 </pre></div>
 </div>
+<p><em>NOTE: your <code class="docutils literal"><span class="pre">~/bin</span></code> directory was also added to your PATH because you may want to put the Nightcode launcher script there</em></p>
 <p>The details of Java&#8217;s version may differ from what you see above; that is perfectly fine.</p>
+</div>
+<div class="section" id="installing-nightcode">
+<h2>Installing Nightcode<a class="headerlink" href="#installing-nightcode" title="Permalink to this headline">¶</a></h2>
+<p>On the <a class="reference external" href="https://sekao.net/nightcode/">Nightcode home page</a> you can download
+and install a <code class="docutils literal"><span class="pre">*.deb</span></code> for Debian/Ubuntu, <code class="docutils literal"><span class="pre">*.rpm</span></code> for RedHat/Fedora,
+or <code class="docutils literal"><span class="pre">*.jar</span></code> file for any other distribution.</p>
+<p>If you download the <code class="docutils literal"><span class="pre">*.jar</span></code> you can place it in your <code class="docutils literal"><span class="pre">~/bin</span></code> directory and
+use our handy launcher script. NOTE: for this method we also install the
+Clojure jar here to get started:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ cd ~/bin
+clojurista@mylaptop $ mv ~/Downloads/Nightcode*.jar ./
+clojurista@mylaptop $ curl -O https://raw.githubusercontent.com/clojurebridge-minneapolis/installfest/master/docs/linux/nightcode
+clojurista@mylaptop $ chmod +x nightcode
+</pre></div>
+</div>
+<p>Now you should be able to launch it by typing <code class="docutils literal"><span class="pre">nightcode</span></code> in a terminal.</p>
 </div>
 <div class="section" id="installing-leiningen">
 <h2>Installing Leiningen<a class="headerlink" href="#installing-leiningen" title="Permalink to this headline">¶</a></h2>
@@ -213,26 +228,6 @@ exec bash
 </div>
 <p>After you run the above commands, run the <code class="docutils literal"><span class="pre">lein</span> <span class="pre">version</span></code> command. It should take a while to run, as it will download some resources it needs the first time. If it completes successfully, you are golden! If not, ask an instructor for help.</p>
 </div>
-<div class="section" id="installing-light-table">
-<h2>Installing Light Table<a class="headerlink" href="#installing-light-table" title="Permalink to this headline">¶</a></h2>
-<p>You will need to know whether you are running the 32-bit or 64-bit version of Ubuntu. To find out, click Dash Home and type Details. You should see a window like this:</p>
-<p><img alt="Ubuntu Version" src="_images/ubuntu-version.png" /></p>
-<p>Alternatively, open your terminal and type <code class="docutils literal"><span class="pre">uname</span> <span class="pre">-m</span></code> if the output says &#8220;x86_64&#8221; you have a 64-bit OS, if it says &#8220;i686&#8221; you have a 32-bit OS.</p>
-<p>Go to the <a class="reference external" href="http://www.lighttable.com/">Light Table site</a>. On the page there, you should see a set of buttons that have download links for Light Table.
-Depending on your architecture, click the &#8220;Linux64&#8221; or &#8220;Linux32&#8221; button and select the &#8220;Save file&#8221;.</p>
-<p><img alt="Light Table downloads" src="_images/lighttable.png" /></p>
-<p>Open up your terminal and cd to the directory where your downloads go <code class="docutils literal"><span class="pre">cd</span> <span class="pre">~/Downloads</span></code>.
-Check to see that your file is there. <code class="docutils literal"><span class="pre">ls</span></code>
-Extract the compressed file <code class="docutils literal"><span class="pre">tar</span> <span class="pre">-xzf</span> <span class="pre">LightTableLinux64.tar.gz</span></code>
-Check to see that there is now a directory called LightTable <code class="docutils literal"><span class="pre">ls</span></code>
-Move the LightTable directory to &#8220;/usr/local/bin&#8221; <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">mv</span> <span class="pre">LightTable</span> <span class="pre">/usr/local/bin</span></code>
-From your home directory, set your path so you can launch LightTable from the command line  <code class="docutils literal"><span class="pre">echo</span> <span class="pre">&quot;export</span> <span class="pre">PATH=/usr/local/bin/LightTable:$PATH&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">.bashrc</span></code>
-Launch LightTable <code class="docutils literal"><span class="pre">LightTable</span></code></p>
-<p>If you want, you can create a launcher for LightTable. <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">gnome-desktop-item-edit</span> <span class="pre">/usr/share/applications/</span> <span class="pre">--create-new</span></code>
-You should see a window like this:</p>
-<p><img alt="Create Icon" src="_images/create_icon.png" /></p>
-<p>Name the launcher LightTable. Type the path to the command <code class="docutils literal"><span class="pre">/usr/local/bin/LightTable/LightTable</span></code>. Click the icon. The LightTable icon can be found at <code class="docutils literal"><span class="pre">/usr/local/bin/LightTable/core/img/lticon.png</span></code>.</p>
-</div>
 <div class="section" id="getting-setup-with-heroku">
 <h2>Getting setup with Heroku<a class="headerlink" href="#getting-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
 <p>Heroku is the tool we will use in order to put your application online where others can see it.</p>
@@ -249,7 +244,7 @@ You should see a window like this:</p>
 </div>
 <div class="section" id="testing-your-setup">
 <h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
-<p>You have set up Java, Leiningen, Light Table, Git, and Heroku on your computer&#8211;all the tools you will need for this course. Before starting, we need to test them out.</p>
+<p>You have set up Java, Nightcode, Leiningen, Git, and Heroku on your computer&#8211;all the tools you will need for this course. Before starting, we need to test them out.</p>
 <p>Go to your terminal and run the following command:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/heroku/clojure-sample.git
 </pre></div>
@@ -267,10 +262,13 @@ You should see a window like this:</p>
 <p>This could take a long time, and will download many other pieces of code it relies on. You should see lines that start with <code class="docutils literal"><span class="pre">Retrieving</span> <span class="pre">...</span></code> on your screen. When it finishes, your terminal should look like the following:</p>
 <p><img alt="Testing lein repl" src="_images/testing-step21.png" /></p>
 <p>This is starting a REPL, which we will learn about soon. It&#8217;s a special terminal for Clojure. At the REPL prompt, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> and press Return. Did you get the answer <code class="docutils literal"><span class="pre">2</span></code> back? You will learn more about that in the course. For now, press the Control button and D button on your keyboard together (abbreviated as Ctrl+D). This should take you out of the Clojure REPL and back to your normal terminal prompt.</p>
+<p><strong>FIXME</strong></p>
 <p>Now, start Light Table. Once it is started, press the Control button and Space Bar together (abbreviated Ctrl+Space). This is how you start giving Light Table a command. Start typing the word &#8220;instarepl&#8221; and you should see a menu of options, like below. Choose &#8220;Instarepl: open a clojure instarepl.&#8221;</p>
 <p><img alt="Testing Light Table - starting instarepl" src="_images/testing-step31.png" /></p>
+<p><strong>FIXME</strong></p>
 <p>At the bottom of the screen, you will see a cube moving and some text about connecting and installing dependencies. Once that stops moving, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> into the window. It should look like the following image:</p>
 <p><img alt="Testing Light Table - running in the instarepl" src="_images/testing-step41.png" /></p>
+<p><strong>FIXME</strong></p>
 <p>If that worked, great! Close Light Table. We only have one more thing to test, Heroku.</p>
 <p>Go back to your terminal. You should still be in the <code class="docutils literal"><span class="pre">clojure-sample</span></code> directory.</p>
 <p>Run this command:</p>
