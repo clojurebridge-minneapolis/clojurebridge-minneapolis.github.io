@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Friday Oct 28 2016 @ 13:11:01 tmarble
+                Friday Oct 28 2016 @ 13:09:46 tmarble
               </div>
             
           
@@ -96,12 +96,12 @@
 <li class="toctree-l3"><a class="reference internal" href="setup_win8.html">Windows 8</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Linux</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#starting-a-terminal">Starting a terminal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-java">Install Java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-git-and-ruby">Installing Git and Ruby</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-java">Installing Java</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-nightcode">Installing Nightcode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-leiningen">Installing Leiningen</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#getting-setup-with-heroku">Getting setup with Heroku</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-the-heroku-command-line-interface-cli">Installing the Heroku Command Line Interface (CLI)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-your-setup">Testing your setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#try-the-koans">Try the koans</a></li>
 </ul>
 </li>
 </ul>
@@ -170,30 +170,41 @@
 <p>The prompt (where you will type your commands) may look different: it usually shows the computer name and user name, as well as the folder or directory you are currently in.</p>
 <p>For the rest of this setup, I will tell you to run commands in your terminal. When I say that, I mean &#8220;type the command into the terminal and press the Return key.&#8221;</p>
 </div>
-<div class="section" id="install-java">
-<h2>Install Java<a class="headerlink" href="#install-java" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-git-and-ruby">
+<h2>Installing Git and Ruby<a class="headerlink" href="#installing-git-and-ruby" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>git</strong> version control system is packaged for your Linux distribution.
+On Debian Ubuntu systems you can install it with the following
+<em>(as the superuser)</em>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>root@mylaptop# apt-get update
+root@mylaptop# apt-get install git git-core git-man ruby
+</pre></div>
+</div>
+<p><em>NOTE: We are installing Ruby because it&#8217;s needed by the Heroku Command Line Interface</em></p>
+</div>
+<div class="section" id="installing-java">
+<h2>Installing Java<a class="headerlink" href="#installing-java" title="Permalink to this headline">¶</a></h2>
 <p>Typically you can use the Java that&#8217;s packaged or your Linux
 distribution (e.g. for Debian and Ubuntu it&#8217;s the package
 <strong>openjdk-8-jdk</strong>). However because we&#8217;re using Nightcode and
 Nightcode <em>requires</em> the Oracle JDK you will need to download
 and install it from the <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle Java SE Downloads</a> page.</p>
 <p>You can install the Oracle JDK one of your subdirectories like this:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ mkdir -p ~/src/oracle/
-clojurista@mylaptop $ cd ~/src/oracle/
-clojurista@mylaptop $ tar -zxf jdk-8u112-linux-x64.tar.gz
-clojurista@mylaptop $ export JAVA_HOME=$HOME/src/oracle/jdk1.8.0_112
-clojurista@mylaptop $ export PATH=$JAVA_HOME/bin:$HOME/bin:$PATH
-clojurista@mylaptop $ which java
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ mkdir -p ~/src/oracle/
+clojurista@mylaptop$ cd ~/src/oracle/
+clojurista@mylaptop$ tar -zxf jdk-8u112-linux-x64.tar.gz
+clojurista@mylaptop$ export JAVA_HOME=$HOME/src/oracle/jdk1.8.0_112
+clojurista@mylaptop$ export PATH=$JAVA_HOME/bin:/usr/local/heroku/bin:$HOME/bin:$PATH
+clojurista@mylaptop$ which java
 /home/clojurista/src/oracle/jdk1.8.0_112/bin/java
-clojurista@mylaptop $ java -version
+clojurista@mylaptop$ java -version
 java version &quot;1.8.0_112&quot;
 Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
 Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, mixed mode)
-clojurista@mylaptop $
+clojurista@mylaptop$
 </pre></div>
 </div>
-<p><em>NOTE: your <code class="docutils literal"><span class="pre">~/bin</span></code> directory was also added to your PATH because you may want to put the Nightcode launcher script there</em></p>
 <p>The details of Java&#8217;s version may differ from what you see above; that is perfectly fine.</p>
+<p><em>NOTE: your <code class="docutils literal"><span class="pre">~/bin</span></code> directory was also added to your PATH because we will put the <strong>nightcode</strong> and <strong>lein</strong> launcher scripts there and the <code class="docutils literal"><span class="pre">/usr/local/heroku/bin</span></code> directory was added to your PATH because we will put the <strong>heroku</strong> launcher script there</em></p>
 </div>
 <div class="section" id="installing-nightcode">
 <h2>Installing Nightcode<a class="headerlink" href="#installing-nightcode" title="Permalink to this headline">¶</a></h2>
@@ -203,13 +214,18 @@ or <code class="docutils literal"><span class="pre">*.jar</span></code> file for
 <p>If you download the <code class="docutils literal"><span class="pre">*.jar</span></code> you can place it in your <code class="docutils literal"><span class="pre">~/bin</span></code> directory and
 use our handy launcher script. NOTE: for this method we also install the
 Clojure jar here to get started:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ cd ~/bin
-clojurista@mylaptop $ mv ~/Downloads/Nightcode*.jar ./
-clojurista@mylaptop $ curl -O https://raw.githubusercontent.com/clojurebridge-minneapolis/installfest/master/docs/linux/nightcode
-clojurista@mylaptop $ chmod +x nightcode
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ cd ~/bin
+clojurista@mylaptop$ mv ~/Downloads/Nightcode*.jar ./
+clojurista@mylaptop$ curl -O https://raw.githubusercontent.com/clojurebridge-minneapolis/installfest/master/docs/linux/nightcode
+clojurista@mylaptop$ chmod +x nightcode
 </pre></div>
 </div>
-<p>Now you should be able to launch it by typing <code class="docutils literal"><span class="pre">nightcode</span></code> in a terminal.</p>
+<p>Now you should be able to launch it by typing <code class="docutils literal"><span class="pre">nightcode</span></code> in a terminal:</p>
+<p><img alt="Nightcode" src="_images/nc1.png" /></p>
+<p>This is starting a REPL... which we will learn about soon. It&#8217;s a special
+terminal for Clojure. At the REPL prompt type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">2</span> <span class="pre">3)</span></code> and press Return.
+Did you get the answer <code class="docutils literal"><span class="pre">5</span></code> back?
+You will learn more about that in the workshop.</p>
 </div>
 <div class="section" id="installing-leiningen">
 <h2>Installing Leiningen<a class="headerlink" href="#installing-leiningen" title="Permalink to this headline">¶</a></h2>
@@ -217,19 +233,19 @@ clojurista@mylaptop $ chmod +x nightcode
 <p>Go to the <a class="reference external" href="http://leiningen.org/">Leiningen website</a>. You will see a link to the <code class="docutils literal"><span class="pre">lein</span></code> script under the &#8220;Install&#8221; heading. Right-click that link and choose &#8220;Save Link As...&#8221;. Save it in your Downloads directory.</p>
 <p><img alt="Leiningen site" src="_images/leiningen_site.png" />
 <img alt="Leiningen site" src="_images/lein_install.png" /></p>
-<p>After that, run the following commands in your terminal. You will be prompted to enter your password.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>sudo mkdir -p /usr/local/bin/
-sudo mv ~/Downloads/lein* /usr/local/bin/lein
-sudo chmod a+x /usr/local/bin/lein
-cd $HOME
-echo &#39;PATH=$PATH:/usr/local/bin&#39; &gt;&gt; .bashrc
-exec bash
+<p>After that, run the following commands in your terminal:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ cd ~/bin
+clojurista@mylaptop$ mv ~/Downloads/lein ./
+clojurista@mylaptop$ chmod +x lein
+clojurista@mylaptop$ lein version
+Leiningen 2.7.1 on Java 1.8.0_112 Java HotSpot(TM) 64-Bit Server VM
+clojurista@mylaptop$
 </pre></div>
 </div>
 <p>After you run the above commands, run the <code class="docutils literal"><span class="pre">lein</span> <span class="pre">version</span></code> command. It should take a while to run, as it will download some resources it needs the first time. If it completes successfully, you are golden! If not, ask an instructor for help.</p>
 </div>
-<div class="section" id="getting-setup-with-heroku">
-<h2>Getting setup with Heroku<a class="headerlink" href="#getting-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-the-heroku-command-line-interface-cli">
+<h2>Installing the Heroku Command Line Interface (CLI)<a class="headerlink" href="#installing-the-heroku-command-line-interface-cli" title="Permalink to this headline">¶</a></h2>
 <p>Heroku is the tool we will use in order to put your application online where others can see it.</p>
 <p>First, we need to create an account. Go to <a class="reference external" href="http://heroku.com">Heroku</a> and click the &#8220;Sign up&#8221; link.</p>
 <p><img alt="Heroku step 1" src="_images/heroku-step1.png" /></p>
@@ -237,59 +253,161 @@ exec bash
 <p><img alt="Heroku step 2" src="_images/heroku-step2.png" /></p>
 <p>After clicking on the link, you will be taken to another form where you will need to choose a password. Choose one and enter it twice.</p>
 <p><img alt="Heroku step 3" src="_images/heroku-step3.png" /></p>
-<p>After all that, you should be at your Heroku dashboard. There will be a link on the dashboard to download the Heroku Toolbelt. Download it now.</p>
+<p>After all that, you should be at your Heroku dashboard. There will be a link on the dashboard to download the Heroku Command Line Interface. Download it now.</p>
 <p><img alt="Heroku dashboard" src="_images/heroku_dashboard_ubuntu.png" /></p>
-<p>If you do not see this link on your dashboard, you can download the toolbelt from <a class="reference external" href="https://toolbelt.heroku.com/">toolbelt.heroku.com</a>.</p>
-<p>This will take you too a page with a terminal command. Copy this command and paste it into your terminal. Once the Heroku Toolbelt is installed, run the command <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">login</span></code>. You will be prompted for your email and password on Heroku. If you are prompted to create an SSH key, say yes. If you enter them and the command ends successfully, congratulations!</p>
+<p>If you do not see this link on your dashboard, you can download the Heroku Command Line Interface from <a class="reference external" href="https://toolbelt.heroku.com/">toolbelt.heroku.com</a>.</p>
+<p>From the &#8220;Heroku Command Line&#8221; web page you can copy/paste the
+command to script to install the Heroku Command Line Interface to
+<code class="docutils literal"><span class="pre">/usr/local/heroku</span></code> <em>(as the superuser)</em>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>root@mylaptop# wget -qO- https://toolbelt.heroku.com/install.sh | sh
+This script requires superuser access to install software.
+You will be prompted for your password by sudo.
+Add the Heroku CLI to your PATH using:
+$ echo &#39;PATH=&quot;/usr/local/heroku/bin:$PATH&quot;&#39; &gt;&gt; ~/.profile
+root@mylaptop#
+</pre></div>
+</div>
+<p><em>NOTE: We already added <code class="docutils literal"><span class="pre">/usr/local/heroku/bin</span></code> to the PATH above</em></p>
+<p>You can test that the basic <strong>heroku</strong> command works like this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>
+clojurista@mylaptop$ heroku --version
+heroku-toolbelt/3.43.12 (x86_64-linux-gnu) ruby/2.3.1
+heroku-cli/5.4.8-eee5ec9 (linux-amd64) go1.7.1
+You have no installed plugins.
+clojurista@mylaptop$
+</pre></div>
+</div>
+<p>Now you can login to heroku the first time:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ heroku login
+Enter your Heroku credentials.
+Email: clojurista@gmail.com
+Password (typing will be hidden): ++++++++
+Logged in as clojurista@gmail.com
+clojurista@mylaptop$
+</pre></div>
+</div>
 </div>
 <div class="section" id="testing-your-setup">
 <h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
-<p>You have set up Java, Nightcode, Leiningen, Git, and Heroku on your computer&#8211;all the tools you will need for this course. Before starting, we need to test them out.</p>
-<p>Go to your terminal and run the following command:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/heroku/clojure-sample.git
+<p>You have set up Java, Nightcode, Leiningen, Git, and Heroku on your computer &#8211; all the tools you will need for this course. Before starting, we need to test them out.</p>
+<p>Go to your terminal and download a copy of the <a class="reference external" href="https://github.com/heroku/clojure-getting-started">clojure-getting-started</a> repository:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ mkdir -p ~/src/github/heroku
+clojurista@mylaptop$ git clone https://github.com/heroku/clojure-getting-started.git
+clojurista@mylaptop$ cd clojure-getting-started
+clojurista@mylaptop$
 </pre></div>
 </div>
-<p>This will check out a sample Clojure application from GitHub, a central repository for lots of source code. Your terminal should look similar to this picture:</p>
-<p><img alt="Testing git clone" src="_images/testing-step11.png" /></p>
-<p>Then run the command:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>cd clojure-sample
+<p>Now in Nightcode click the <strong>Import</strong> button and select the <strong>clojure-getting-started</strong> directory:</p>
+<p><img alt="Nightcode" src="_images/nc21.png" /></p>
+<p>Open the <code class="docutils literal"><span class="pre">web.clj</span></code> file by opening up the <code class="docutils literal"><span class="pre">src</span></code> and <code class="docutils literal"><span class="pre">clojure-getting-started</span></code> directories. Then change the line <code class="docutils literal"><span class="pre">:body</span> <span class="pre">&quot;Hello</span> <span class="pre">from</span> <span class="pre">Heroku&quot;})</span></code> with
+<code class="docutils literal"><span class="pre">:body</span> <span class="pre">&quot;Hello</span> <span class="pre">Clojurista</span> <span class="pre">from</span> <span class="pre">Heroku!&quot;})</span></code> (i.e. you can put in your
+name or anything you want)!</p>
+<p><img alt="Nightcode" src="_images/nc31.png" /></p>
+<p>Now click the <strong>Save</strong> button. We&#8217;ll save this change in <strong>git</strong> by
+making the following commit:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ git commit -a -m &#39;modified greeting&#39;
+git commit -a -m &#39;modified greeting&#39;
+[master 2824daa] modified greeting
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+clojurista@mylaptop$
 </pre></div>
 </div>
-<p>This will put you in the directory with the source code for this sample bit of Clojure code. After that completes, run:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>lein repl
+<p>Now you can start the sample application on your laptop using <strong>lein repl</strong>.
+The first two Clojure commands start the application. You can then
+visit the application webpage on your laptop at
+<a class="reference external" href="http://localhost:5000">http://localhost:5000</a>.
+Then you can shut down the application and exit with the last
+two commmands.</p>
+<ol class="simple">
+<li><code class="docutils literal"><span class="pre">lein</span> <span class="pre">repl</span></code></li>
+<li><code class="docutils literal"><span class="pre">(require</span> <span class="pre">'clojure-getting-started.web)</span></code></li>
+<li><code class="docutils literal"><span class="pre">(def</span> <span class="pre">server</span> <span class="pre">(clojure-getting-started.web/-main))</span></code></li>
+<li>Now you can open the web page at <a class="reference external" href="http://localhost:5000">http://localhost:5000</a>
+<img alt="Nightcode" src="_images/nc41.png" /></li>
+<li><code class="docutils literal"><span class="pre">(.stop</span> <span class="pre">server)</span></code></li>
+<li><code class="docutils literal"><span class="pre">(exit)</span></code></li>
+</ol>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ lein repl
+Retrieving environ/environ.lein/0.3.1/environ.lein-0.3.1.pom from clojars
+Retrieving environ/environ.lein/0.3.1/environ.lein-0.3.1.jar from clojars
+Warning: cider-nrepl requires Clojure 1.7 or greater.
+Warning: cider-nrepl will not be included in your project.
+Warning: cider-nrepl requires Clojure 1.7 or greater.
+Warning: cider-nrepl will not be included in your project.
+Retrieving environ/environ/1.0.0/environ-1.0.0.pom from clojars
+Retrieving environ/environ/1.0.0/environ-1.0.0.jar from clojars
+nREPL server started on port 42509 on host 127.0.0.1 - nrepl://127.0.0.1:42509
+REPL-y 0.3.7, nREPL 0.2.12
+Clojure 1.6.0
+OpenJDK 64-Bit Server VM 1.8.0_111-8u111-b14-2-b14
+    Docs: (doc function-name-here)
+          (find-doc &quot;part-of-name-here&quot;)
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=&gt; (require &#39;clojure-getting-started.web)
+2016-10-28 14:05:21.439:INFO::nREPL-worker-0: Logging initialized @17071ms
+nil
+user=&gt; (def server (clojure-getting-started.web/-main))
+(def server (clojure-getting-started.web/-main))
+2016-10-28 14:05:30.163:INFO:oejs.Server:nREPL-worker-0: jetty-9.2.10.v20150310
+2016-10-28 14:05:30.203:INFO:oejs.ServerConnector:nREPL-worker-0: Started ServerConnector@379cb9a6{HTTP/1.1}{0.0.0.0:5000}
+2016-10-28 14:05:30.204:INFO:oejs.Server:nREPL-worker-0: Started @25837ms
+#&#39;user/server
+user=&gt; (println &quot;open http://localhost:5000&quot;)
+open http://localhost:5000
+user=&gt; (.stop server)
+2016-10-28 14:06:15.811:INFO:oejs.ServerConnector:nREPL-worker-1: Stopped ServerConnector@379cb9a6{HTTP/1.1}{0.0.0.0:5000}
+nil
+user=&gt; (exit)
+Bye for now!
+clojurista@mylaptop$
 </pre></div>
 </div>
-<p>This could take a long time, and will download many other pieces of code it relies on. You should see lines that start with <code class="docutils literal"><span class="pre">Retrieving</span> <span class="pre">...</span></code> on your screen. When it finishes, your terminal should look like the following:</p>
-<p><img alt="Testing lein repl" src="_images/testing-step21.png" /></p>
-<p>This is starting a REPL, which we will learn about soon. It&#8217;s a special terminal for Clojure. At the REPL prompt, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> and press Return. Did you get the answer <code class="docutils literal"><span class="pre">2</span></code> back? You will learn more about that in the course. For now, press the Control button and D button on your keyboard together (abbreviated as Ctrl+D). This should take you out of the Clojure REPL and back to your normal terminal prompt.</p>
-<p><strong>FIXME</strong></p>
-<p>Now, start Light Table. Once it is started, press the Control button and Space Bar together (abbreviated Ctrl+Space). This is how you start giving Light Table a command. Start typing the word &#8220;instarepl&#8221; and you should see a menu of options, like below. Choose &#8220;Instarepl: open a clojure instarepl.&#8221;</p>
-<p><img alt="Testing Light Table - starting instarepl" src="_images/testing-step31.png" /></p>
-<p><strong>FIXME</strong></p>
-<p>At the bottom of the screen, you will see a cube moving and some text about connecting and installing dependencies. Once that stops moving, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> into the window. It should look like the following image:</p>
-<p><img alt="Testing Light Table - running in the instarepl" src="_images/testing-step41.png" /></p>
-<p><strong>FIXME</strong></p>
-<p>If that worked, great! Close Light Table. We only have one more thing to test, Heroku.</p>
-<p>Go back to your terminal. You should still be in the <code class="docutils literal"><span class="pre">clojure-sample</span></code> directory.</p>
-<p>Run this command:</p>
-<p><code class="docutils literal"><span class="pre">heroku</span> <span class="pre">create</span></code></p>
-<p>There should be output about something being created. A URL will be displayed. Look at the following example:</p>
-<p><img alt="Testing heroku create" src="_images/testing-step51.png" /></p>
-<p>Next, run the following commands:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>git push heroku master
-heroku open
+<p>Yay! Your first web application works on your laptop!</p>
+<p>Now you can push the application to the web via <strong>heroku create</strong>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>
+clojurista@mylaptop$ heroku create
+Creating app... done, enigmatic-beyond-54459
+https://enigmatic-beyond-54459.herokuapp.com/ | https://git.heroku.com/enigmatic-beyond-54459.git
+clojurista@mylaptop$ git push heroku master
+Counting objects: 41, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (38/38), done.
+Writing objects: 100% (41/41), 6.36 KiB | 0 bytes/s, done.
+Total 41 (delta 15), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----&gt; Clojure (Leiningen 2) app detected
+remote: -----&gt; Installing OpenJDK 1.8... done
+remote: -----&gt; Installing Leiningen
+remote:        Downloading: leiningen-2.6.1-standalone.jar
+remote:        Writing: lein script
+remote: -----&gt; Building with Leiningen
+remote:        Running: lein uberjar
+remote:        Retrieving environ/environ.lein/0.3.1/environ.lein-0.3.1.pom from clojars
+...more output...
+remote: -----&gt; Launching...
+remote:        Released v3
+remote:        https://enigmatic-beyond-54459.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/enigmatic-beyond-54459.git
+ * [new branch]      master -&gt; master
+clojurista@mylaptop$ heroku open
+clojurista@mylaptop$
 </pre></div>
 </div>
-<p>Enter &#8220;yes&#8221; if you are asked if you are sure you want to connect, like in the following image:</p>
-<p><img alt="Connecting via SSH" src="_images/testing-step61.png" /></p>
 <p>Your browser should open (and take a long time to load), and you should see a website like the following:</p>
-<p><img alt="Testing heroku working" src="_images/testing-step71.png" /></p>
+<p><img alt="Nightcode" src="_images/nc51.png" /></p>
 <p>If your browser does not open after running <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">open</span></code>, start a browser and go to the URL displayed after you ran <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">create</span></code>.</p>
-<p>Congratulations! That website is running code you have on your computer that you have uploaded. You have actually made a very simple Clojure app, and your computer is all set up to make more.</p>
-</div>
-<div class="section" id="try-the-koans">
-<h2>Try the koans<a class="headerlink" href="#try-the-koans" title="Permalink to this headline">¶</a></h2>
-<p>If you&#8217;re a track 2 student, try to tackle running the <a class="reference internal" href="koans.html"><span class="doc">koans</span></a>.</p>
+<p>Congratulations! That website is running the code you have
+uploaded to the Interet!!!
+You have made a very simple Clojure app and you are all set up to make more!</p>
+<p>You&#8217;re ready for the workshop!!!</p>
 </div>
 </div>
 
