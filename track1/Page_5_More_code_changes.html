@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Sunday Oct 30 2016 @ 11:19:40 brian-dawn
+                Sunday Oct 30 2016 @ 16:30:00 peterschwarz
               </div>
             
           
@@ -336,7 +336,7 @@ and its value is "blue's first post".</li>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code> and refresh the browser.</p>
 <p>This blows up spectacularly.</p>
-<p><img alt="" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/illegal-argument-exception.jpg" /></p>
+<p><img alt="" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/illegal-argument-exception.jpg" /></p>
 <p><a class="reference external" href="#"></a></p>
 <p>This is a stack trace - it gives us an idea what the program was doing when it hit the problem. Ignore all the files that aren&#8217;t ones you wrote for the project. In my case, the first file of interest is
 <code class="docutils literal"><span class="pre">handler.clj</span></code>, line 14, the <code class="docutils literal"><span class="pre">generate-message-view</span></code> function.</p>
@@ -355,7 +355,7 @@ and its value is "blue's first post".</li>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, and refresh the browser.</p>
 <p>This fixes the exception but it&#8217;s ugly.</p>
-<p><img alt="ugly hack" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/ugly.jpg" /></p>
+<p><img alt="ugly hack" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/ugly.jpg" /></p>
 <p>Let&#8217;s take the messages and put them in a table using HTML&#8217;s <code class="docutils literal"><span class="pre">table</span></code>, <code class="docutils literal"><span class="pre">tr</span></code>, and <code class="docutils literal"><span class="pre">td</span></code> elements.  We&#8217;re going to write a function that takes a
 message and creates an HTML row. Then, inside a <code class="docutils literal"><span class="pre">table</span></code>, we&#8217;re going to apply that function to all of our messages.</p>
 <p>Clojure uses <code class="docutils literal"><span class="pre">defn</span></code> to create a function, but those functions are named. Sometimes, we want a specialized function that isn&#8217;t reusable. For those cases, Clojure has a way of creating an anonymous function.</p>
@@ -396,7 +396,7 @@ the message hashmap are keywords, we can use them as functions to get the values
 </pre></div>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, then refresh the browser.  Our hard-coded messages should now display in the page.</p>
-<p><img alt="hard coded messages" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/hardcoded.jpg" /></p>
+<p><img alt="hard coded messages" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/hardcoded.jpg" /></p>
 </div>
 <div class="section" id="forms">
 <h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
@@ -500,7 +500,7 @@ the message hashmap are keywords, we can use them as functions to get the values
 </pre></div>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code> and refresh the browser. We should now have a form on the page where a user could submit a new message.</p>
-<p><img alt="unwired form" src="https://github.com/clojurebridge-minneapolis/track1-chatter/blob/master/images/unwired-form.jpg" /></p>
+<p><img alt="unwired form" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/unwired-form.jpg" /></p>
 </div>
 <div class="section" id="wiring-the-form">
 <h2>Wiring the form<a class="headerlink" href="#wiring-the-form" title="Permalink to this headline">¶</a></h2>
