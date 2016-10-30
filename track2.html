@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                Saturday Oct 29 2016 @ 17:50:17 tmarble
+                Sunday Oct 30 2016 @ 11:19:40 brian-dawn
               </div>
             
           
@@ -89,9 +89,63 @@
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to ClojureBridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="track1.html">Track 1</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Track 2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#step-1">Step 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-2">Step 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-3">Step 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clojure-as-a-functional-language">Clojure as a functional language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#koans">Koans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-functions">Common functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#math">Math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#equality">Equality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nil"><code class="docutils literal"><span class="pre">nil</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-types">Common types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keywords">Keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-data-structures">Common data structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lists">Lists</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#vectors">Vectors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sets">Sets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hash-maps">Hash Maps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Exercises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#saving-values-into-names">Saving values into names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conditional-computation-if-statement">Conditional computation: <code class="docutils literal"><span class="pre">if</span></code> statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-your-own-functions">Defining your own functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thinking-functionally">Thinking functionally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#anonymous-functions">Anonymous functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recursion">Recursion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#first-call-holds-for-all-odd-1-3-4">First call <code class="docutils literal"><span class="pre">(holds-for-all?</span> <span class="pre">odd?</span> <span class="pre">[1</span> <span class="pre">3</span> <span class="pre">4])</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#second-call-holds-for-all-odd-3-4">Second call <code class="docutils literal"><span class="pre">(holds-for-all?</span> <span class="pre">odd?</span> <span class="pre">[3</span> <span class="pre">4])</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-call-holds-for-all-odd-4-and-recursive-returns">Third call <code class="docutils literal"><span class="pre">(holds-for-all?</span> <span class="pre">odd?</span> <span class="pre">[4])</span></code> and recursive returns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#details">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#higher-order-functions">Higher-order functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#map">Map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reduce">Reduce</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-on-higher-order-functions">Exercise on higher-order functions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Clojure Resources</a></li>
@@ -142,23 +196,555 @@
             
   <div class="section" id="track-2">
 <h1>Track 2<a class="headerlink" href="#track-2" title="Permalink to this headline">¶</a></h1>
-<p><em>TBD: Here we can bring in the documentation from</em></p>
+<div class="section" id="clojure-as-a-functional-language">
+<h2>Clojure as a functional language<a class="headerlink" href="#clojure-as-a-functional-language" title="Permalink to this headline">¶</a></h2>
+<p>Clojure is a functional language - that means that functions are first class citizens just like
+any other value type you have already encountered (ints/floats/objects etc.).
+This means that we can pass functions as arguments to other functions, returning
+functions from functions, and even manipulating functions.</p>
+</div>
+<div class="section" id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<p>Compared to other languages, Clojure does function calls slightly differently than the majority of common programming languages.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">myFunction</span><span class="o">(</span><span class="s">&quot;hi&quot;</span><span class="o">,</span> <span class="s">&quot;bye&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>In Clojure this might look like the following:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">my-function</span> <span class="s">&quot;hi&quot;</span> <span class="s">&quot;bye&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are a couple differences here, first thing to note is that we are using a different
+case style. In Clojure we don&#8217;t use camel case but instead kebab case which is dash separated.</p>
+<p>To prove we didn&#8217;t just make this up: <a class="reference external" href="http://c2.com/cgi/wiki?KebabCase">link</a></p>
+<p>Another thing is that we&#8217;ve placed the function inside the parenthesis. In Clojure a function
+call is always an open paren followed by the function we want to call, followed by any arguments
+we are passing to the function, followed by a closing paren.</p>
+<p>We also aren&#8217;t separating the arguments with a comma anymore. In Clojure
+commas are simply treated as whitespace so we don&#8217;t need them.</p>
+</div>
+<div class="section" id="koans">
+<h2>Koans<a class="headerlink" href="#koans" title="Permalink to this headline">¶</a></h2>
+<p>Periodically we&#8217;ll mention exercises from the Clojure Koans. These are a series of exercises
+designed to teach Clojure.</p>
+<p>Each one will be an assertion such as the following:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">= </span><span class="nv">true</span> <span class="nv">__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The purpose of these exercises is to alter the <code class="docutils literal"><span class="pre">__</span></code> to make the assertion pass.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">= </span><span class="nv">true</span> <span class="nv">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The koans are done incrementally, as you complete each one it will then move on to the next koan.
+Feel free to go through these at your own pace, or you can follow along this document which will periodically reference the koans.</p>
+<p>To get the koans all setup and running visit the official <a class="reference external" href="http://clojurekoans.com/">koans page</a>.</p>
+<div class="section" id="common-functions">
+<h3>Common functions<a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="math">
+<h4>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h4>
+<p>Unlike common languages, such as JavaScript, in which <code class="docutils literal"><span class="pre">+</span></code> is an operation that is used in arithmetic expressions, and square root <code class="docutils literal"><span class="pre">sqrt</span></code> is a function, in Clojure every action is a function, there is no notion of operators. Additionally all of the
+math operators take a variable number of arguments.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">- </span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">- </span><span class="mi">5</span><span class="p">)</span>
+<span class="mi">-5</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">6</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="equality">
+<h4>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h4>
+<p>We can use the <code class="docutils literal"><span class="pre">=</span></code> function to test whether its arguments are all equal to each other.
+Like the math functions the <code class="docutils literal"><span class="pre">=</span></code> function also takes multiple arguments.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="s">&quot;hello&quot;</span> <span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="nv">true</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nv">true</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nv">false</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nil">
+<h2><code class="docutils literal"><span class="pre">nil</span></code><a class="headerlink" href="#nil" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">nil</span></code> is a special value in Clojure, it means &#8220;nothing&#8221;. It is commonly used when a desired value is not found. We will see examples of its use later. For now, just note that it is not equal to other values:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="nv">nil</span> <span class="nv">false</span><span class="p">)</span>
+<span class="nv">false</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="nv">nil</span> <span class="nv">true</span><span class="p">)</span>
+<span class="nv">false</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="nv">nil</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nv">false</span>
+</pre></div>
+</div>
+<div class="section" id="common-types">
+<h3>Common types<a class="headerlink" href="#common-types" title="Permalink to this headline">¶</a></h3>
+<p>Clojure mostly just uses Java classes under the hood. Lets examine some common types using
+the <code class="docutils literal"><span class="pre">type</span></code> function.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">type</span> <span class="mi">2015</span><span class="p">)</span>
+<span class="nv">java.lang.Long</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">type</span> <span class="mf">3.14</span><span class="p">)</span>
+<span class="nv">java.lang.Double</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">type</span> <span class="s">&quot;clojure&quot;</span><span class="p">)</span>
+<span class="nv">java.lang.String</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">type</span> <span class="nv">true</span><span class="p">)</span>
+<span class="nv">java.lang.Boolean</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="keywords">
+<h3>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h3>
+<p>Periodically you&#8217;ll see things in Clojure programs that have a colon in front of it: <code class="docutils literal"><span class="pre">:red</span></code> <code class="docutils literal"><span class="pre">:some-key</span></code>. These are keywords.</p>
+<p>From the Clojure docs:
+<code class="docutils literal"><span class="pre">Keywords</span> <span class="pre">are</span> <span class="pre">symbolic</span> <span class="pre">identifiers</span> <span class="pre">that</span> <span class="pre">evaluate</span> <span class="pre">to</span> <span class="pre">themselves.</span> <span class="pre">They</span> <span class="pre">provide</span> <span class="pre">very</span> <span class="pre">fast</span> <span class="pre">equality</span> <span class="pre">tests.</span></code>
+So at a high level a keyword is a constant literal, just like the integer <code class="docutils literal"><span class="pre">1234</span></code> or
+the string constant <code class="docutils literal"><span class="pre">&quot;hello&quot;</span></code>. Keywords look and often behave a lot like strings
+with a couple exceptions.</p>
 <ul class="simple">
-<li>https://github.com/clojurebridge-minneapolis/track2-functional</li>
-<li>https://github.com/clojurebridge-minneapolis/clojure-koans</li>
-<li>ClojureScript <a class="reference external" href="https://github.com/clojurebridge-minneapolis/installfest/issues/33">issue #33</a></li>
+<li>They begin with a <code class="docutils literal"><span class="pre">:</span></code> so <code class="docutils literal"><span class="pre">:hi</span></code> is an example keyword, while <code class="docutils literal"><span class="pre">&quot;hi&quot;</span></code> is an example string.</li>
+<li>They can&#8217;t have spaces in them. <code class="docutils literal"><span class="pre">&quot;hi</span> <span class="pre">there&quot;</span></code> may be a valid string but it&#8217;s not a valid
+keyword.</li>
+<li>Keywords get special treatment in Clojure: they act like a function when looking up a value
+in a hash-map - we&#8217;ll introduce hash-maps later.</li>
 </ul>
-<div class="section" id="step-1">
-<h2>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="ss">:red</span>
+<span class="ss">:red</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="ss">:red</span> <span class="ss">:blue</span><span class="p">)</span>
+<span class="nv">false</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="ss">:red</span> <span class="ss">:red</span><span class="p">)</span>
+<span class="nv">true</span>
+</pre></div>
 </div>
-<div class="section" id="step-2">
-<h2>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
 </div>
-<div class="section" id="step-3">
-<h2>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<p>Try to complete the first set of Koans <code class="docutils literal"><span class="pre">01_equalities.clj</span></code></p>
+</div>
+</div>
+<div class="section" id="common-data-structures">
+<h2>Common data structures<a class="headerlink" href="#common-data-structures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<p>A list in Clojure is just a linked list. There are a couple of ways we can create them, the
+first one being the <code class="docutils literal"><span class="pre">list</span></code> function:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">list</span><span class="p">)</span>
+<span class="p">()</span>
+</pre></div>
+</div>
+<p>This gave us an empty list, but we can also supply it with a variable number of arguments to
+initialize the list with:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can efficiently add to the beginning of a linked list using the <code class="docutils literal"><span class="pre">conj</span></code> function:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">conj </span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Accessing the head or tail of the list is possible using the <code class="docutils literal"><span class="pre">first</span></code> and <code class="docutils literal"><span class="pre">rest</span></code> functions.
+Note that while <code class="docutils literal"><span class="pre">first</span></code> returns an element, <code class="docutils literal"><span class="pre">rest</span></code> returns a list.
+We can also access a specific element using the <code class="docutils literal"><span class="pre">nth</span></code> function.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">rest </span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">nth </span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>Finally Clojure has a shorthand for defining lists; instead of calling the list function we can
+use the following:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nv">user=&gt;</span> <span class="o">&#39;</span><span class="p">()</span>
+<span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h4>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Try to complete the second set of Koans <code class="docutils literal"><span class="pre">02_lists.clj</span></code>.</p>
+</div>
+</div>
+<div class="section" id="vectors">
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h3>
+<p>A vector in Clojure is a lot like an array in other languages. That means we can efficiently access
+the index of a vector compared to a list, but adding elements might be a bit more expensive than on
+a list.</p>
+<p>To create a vector we can use the vector function:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">vector </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">vector</span><span class="p">)</span>
+<span class="p">[]</span>
+</pre></div>
+</div>
+<p>We can perform a lot of the same operations on vectors as we can on lists:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">first </span><span class="p">(</span><span class="nb">vector </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">1</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">rest </span><span class="p">(</span><span class="nb">vector </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">nth </span><span class="p">(</span><span class="nb">vector </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+<p>Let&#8217;s try using the <code class="docutils literal"><span class="pre">conj</span></code> function from earlier:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">conj </span><span class="p">(</span><span class="nb">vector </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Wait, this isn&#8217;t what we expect. With a list using <code class="docutils literal"><span class="pre">conj</span></code> added the new element to the front,
+not to the back. This is because the <code class="docutils literal"><span class="pre">conj</span></code> function adds elements where it is most efficient
+for the data structure.</p>
+<p>In a list it is cheapest to add an element to the front, we don&#8217;t
+need to traverse the whole list to get to the end to add the element.</p>
+<p>In a vector it is cheapest to add an element to the end. Because vectors are arrays if we were to
+add to the front, we would need to move every element that was already there down a slot to make
+room for the new element.</p>
+<p>Finally like lists vectors have a shorthand way to create them quickly:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nv">user=&gt;</span> <span class="p">[]</span>
+<span class="p">[]</span>
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h4>Exercises<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Try to complete the third set of Koans <code class="docutils literal"><span class="pre">03_vectors.clj</span></code>.</p>
+</div>
+</div>
+<div class="section" id="sets">
+<h3>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h3>
+<p>Sets are a data-structure that can only contain unique elements. We construct a set with
+the <code class="docutils literal"><span class="pre">set</span></code> function which takes in some other sequence.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">set </span><span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">#</span><span class="p">{</span><span class="mi">1</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">set </span><span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">])</span>
+<span class="o">#</span><span class="p">{</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>So using this method of constructing a set will guarantee us a set of unique elements if we happen
+to have duplicates they just get thrown away.</p>
+<p>Finally Clojure has a shorthand way to create sets.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="o">#</span><span class="p">{</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">}</span>
+<span class="o">#</span><span class="p">{</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>But using the shorthand we can&#8217;t initialize it with duplicate elements.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span>user=&gt; #{1 1 2 3}
+
+IllegalArgumentException Duplicate key: 1  clojure.lang.PersistentHashSet.createWithCheck (PersistentHashSet.java:68)
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h4>Exercises<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Try to complete the fourth set of Koans <code class="docutils literal"><span class="pre">04_sets.clj</span></code>.</p>
+</div>
+</div>
+<div class="section" id="hash-maps">
+<h3>Hash Maps<a class="headerlink" href="#hash-maps" title="Permalink to this headline">¶</a></h3>
+<p>Hash-maps are just like maps or dictionaries in other languages. They store key/value pairs
+and we can efficiently access values in the hash-map by their keys.</p>
+<p>We can create hash-maps with the <code class="docutils literal"><span class="pre">hash-map</span></code> function. This function takes an even number
+of arguments, which is of the format key followed by pair.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">hash-map </span><span class="s">&quot;blue&quot;</span> <span class="mi">30</span> <span class="s">&quot;red&quot;</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So this will create a map, with keys &#8220;blue&#8221; and &#8220;red&#8221; each with an integer as its value.</p>
+<p>While you can use any Clojure elements as keys, most commonly keywords are used for this purpose since lookup by keywords is very fast:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To access values from the keys we can use the <code class="docutils literal"><span class="pre">get</span></code> function which takes a map as its first
+argument and the key for the value we want to retrieve as the second.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user-&gt;</span> <span class="p">(</span><span class="nb">get </span><span class="p">(</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">)</span> <span class="ss">:blue</span><span class="p">)</span>
+<span class="mi">30</span>
+</pre></div>
+</div>
+<p>Note that a map is itself a function that can be applied to look up a value for a key:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user-&gt;</span> <span class="p">((</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">)</span> <span class="ss">:blue</span><span class="p">)</span>
+<span class="mi">30</span>
+</pre></div>
+</div>
+<p>A keyword is also a function that takes a map as a parameter and returns a value associated with this key:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user-&gt;</span> <span class="p">(</span><span class="ss">:blue</span> <span class="p">(</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">))</span>
+<span class="mi">30</span>
+</pre></div>
+</div>
+<p>If a key doesn&#8217;t appear in a map, all three ways of lookup will return <code class="docutils literal"><span class="pre">nil</span></code>:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span>  <span class="p">(</span><span class="nb">get </span><span class="p">(</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">)</span> <span class="ss">:green</span><span class="p">)</span>
+<span class="nv">nil</span>
+<span class="nv">user=&gt;</span> <span class="p">((</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">)</span> <span class="ss">:green</span><span class="p">)</span>
+<span class="nv">nil</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="ss">:green</span> <span class="p">(</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nv">nil</span>
+</pre></div>
+</div>
+<p>We can also build a new map from an old one using the <code class="docutils literal"><span class="pre">assoc</span></code> function</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">assoc </span><span class="p">(</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">)</span> <span class="ss">:green</span> <span class="mi">20</span><span class="p">)</span>
+<span class="p">{</span><span class="ss">:blue</span> <span class="mi">30</span>, <span class="ss">:green</span> <span class="mi">20</span>, <span class="ss">:red</span> <span class="mi">100</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If the key already exists in the map, its value will be replaced by the new one in the resulting map:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">assoc </span><span class="p">(</span><span class="nb">hash-map </span><span class="ss">:blue</span> <span class="mi">30</span> <span class="ss">:red</span> <span class="mi">100</span><span class="p">)</span> <span class="ss">:blue</span> <span class="mi">20</span><span class="p">)</span>
+<span class="p">{</span><span class="ss">:blue</span> <span class="mi">20</span>, <span class="ss">:red</span> <span class="mi">100</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally we have a shorthand to build maps, we don&#8217;t need to use the hash-map function.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">{</span><span class="ss">:red</span> <span class="mi">100</span>, <span class="ss">:blue</span> <span class="mi">30</span><span class="p">}</span>
+<span class="p">{</span><span class="ss">:red</span> <span class="mi">100</span>, <span class="ss">:blue</span> <span class="mi">30</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h4>Exercises<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Try to complete the fifth set of Koans <code class="docutils literal"><span class="pre">05_maps.clj</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="saving-values-into-names">
+<h2>Saving values into names<a class="headerlink" href="#saving-values-into-names" title="Permalink to this headline">¶</a></h2>
+<p>So far we&#8217;ve just been nesting our function calls, what if we wanted to be able to store
+the result of a call into a name so we can easily access it? We can use the <code class="docutils literal"><span class="pre">def</span></code> function
+for this.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">def </span><span class="nv">PI</span> <span class="mf">3.14</span><span class="p">)</span>
+<span class="o">#</span><span class="ss">&#39;user/PI</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">def </span><span class="nv">some-list</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+<span class="o">#</span><span class="ss">&#39;user/some-list</span>
+<span class="nv">user=&gt;</span> <span class="nv">some-list</span>
+<span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nv">user=&gt;</span> <span class="nv">PI</span>
+<span class="mf">3.14</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conditional-computation-if-statement">
+<h2>Conditional computation: <code class="docutils literal"><span class="pre">if</span></code> statement<a class="headerlink" href="#conditional-computation-if-statement" title="Permalink to this headline">¶</a></h2>
+<p>It is very common that the result of a computation depends on a condition. The most straightforward conditional statement in Clojure is <code class="docutils literal"><span class="pre">if</span></code>. It has three parts: the condition, the result when the condition is true, and the result when the condition is false. Using it, we can compute expressions such as the absolute value of a number:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">def </span><span class="nv">x</span> <span class="mi">-5</span><span class="p">)</span>
+<span class="o">#</span><span class="ss">&#39;user/x</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">neg? </span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span><span class="p">)</span> <span class="nv">x</span><span class="p">)</span>
+<span class="mi">5</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">def </span><span class="nv">y</span> <span class="mi">7</span><span class="p">)</span>
+<span class="o">#</span><span class="ss">&#39;user/y</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">neg? </span><span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">- </span><span class="nv">y</span><span class="p">)</span> <span class="nv">y</span><span class="p">)</span>
+<span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-your-own-functions">
+<h2>Defining your own functions<a class="headerlink" href="#defining-your-own-functions" title="Permalink to this headline">¶</a></h2>
+<p>So far we&#8217;ve seen how we can use builtin functions, but how do we define our own?</p>
+<p>We can use the <code class="docutils literal"><span class="pre">fn</span></code> function to create new functions, we can use the <code class="docutils literal"><span class="pre">def</span></code> function from the
+previous section to associate the new function with a name. Lets write a simple square function.</p>
+<p><code class="docutils literal"><span class="pre">fn</span></code> takes two arguments, the first argument is a vector of the arguments and the second is the
+result we want to return.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">def </span><span class="nv">square</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">number</span><span class="p">]</span> <span class="p">(</span><span class="nb">* </span><span class="nv">number</span> <span class="nv">number</span><span class="p">)))</span>
+<span class="o">#</span><span class="ss">&#39;user/square</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">square</span> <span class="mi">5</span><span class="p">)</span>
+<span class="mi">25</span>
+</pre></div>
+</div>
+<p>Notice that we didn&#8217;t need to specify a return statement like we often have to do in other languages.
+In Clojure a function call will return the last expression it evaluates.</p>
+<p>We can also use a shorthand to combine <code class="docutils literal"><span class="pre">def</span></code> and <code class="docutils literal"><span class="pre">fn</span></code> which is <code class="docutils literal"><span class="pre">defn</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">square</span> <span class="p">[</span><span class="nv">number</span><span class="p">]</span> <span class="p">(</span><span class="nb">* </span><span class="nv">number</span> <span class="nv">number</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="thinking-functionally">
+<h2>Thinking functionally<a class="headerlink" href="#thinking-functionally" title="Permalink to this headline">¶</a></h2>
+<p>Functional approach to programming means that a solution is constructed as a composition of functions. Each function returns a new entity that&#8217;s one step closer to the desired results. This is different from the more common imperative approach that keeps changing data and variables in memory (often using loops) until the result is constructed or determined.</p>
+<p>For example, consider determining if a string is a palindrome. In a traditional approach one would have a loop in which an index is changing as the string is being traversed that compares string characters to each other. In a functional approach one would just compare the string to its reverse and return the result:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="kd">defn </span><span class="nv">is-palindrome?</span> <span class="p">[</span><span class="nv">s</span><span class="p">]</span> <span class="p">(</span><span class="nb">= </span><span class="nv">s</span> <span class="p">(</span><span class="nf">clojure.string/reverse</span> <span class="nv">s</span><span class="p">)))</span>
+<span class="o">#</span><span class="ss">&#39;user/is-palindrome?</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">is-palindrome?</span> <span class="s">&quot;anna&quot;</span><span class="p">)</span>
+<span class="nv">true</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">is-palindrome?</span> <span class="s">&quot;ann&quot;</span><span class="p">)</span>
+<span class="nv">false</span>
+</pre></div>
+</div>
+<p>Here the function <code class="docutils literal"><span class="pre">is-palindrome?</span></code> uses functions = and <code class="docutils literal"><span class="pre">clojure.string/reverse</span></code> as its elements. It does not directly iterate over the string in a loop.</p>
+<p>Note that functions that return a boolean traditionally have names that end with a question mark. Such functions are called <em>predicates</em>. Note how the question mark helps you understand what the function call is doing.</p>
+<p>More interesting examples involve working with functions at all levels of the language. Functions are what&#8217;s called <em>first class citizens</em> in functional languages, so you can pass them as parameters to other functions, or even construct them &#8220;on the fly&#8221; like you would calculate numbers.</p>
+<p>Below is a simple, somewhat artificial example of passing a function to a function: suppose we have a vector of at least two elements, and we want to check that both elements satisfy a given condition, but we don&#8217;t know ahead of time what the condition is. Here is the function and some examples of its usage:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="kd">defn </span><span class="nv">condition-holds?</span> <span class="p">[</span><span class="nv">f</span> <span class="nv">v</span><span class="p">]</span> <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">first </span><span class="nv">v</span><span class="p">))</span> <span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">second </span><span class="nv">v</span><span class="p">))))</span>
+<span class="o">#</span><span class="ss">&#39;user/holds-condition?</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">condition-holds?</span> <span class="nv">odd?</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nv">false</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">condition-holds?</span> <span class="nv">is-palindrome?</span> <span class="p">[</span><span class="s">&quot;eye&quot;</span> <span class="s">&quot;bob&quot;</span><span class="p">])</span>
+<span class="nv">true</span>
+</pre></div>
+</div>
+<div class="section" id="anonymous-functions">
+<h3>Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">¶</a></h3>
+<p>In functional languages functions are first class citizens, just like numbers, so you can put them together at any point, they don&#8217;t need to be defined ahead of time.</p>
+<p>In this example we put together a function right in the call to <code class="docutils literal"><span class="pre">condition-holds?</span></code> using the <code class="docutils literal"><span class="pre">fn</span></code> syntax that we have introduced earlier, and it doesn&#8217;t even need a name: it&#8217;s an <em>anonymous function</em>. In this case we are checking if the elements of a vector are less than 10:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">condition-holds?</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">n</span><span class="p">]</span> <span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mi">10</span><span class="p">))</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nv">true</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">condition-holds?</span> <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">n</span><span class="p">]</span> <span class="p">(</span><span class="nb">&lt; </span><span class="nv">n</span> <span class="mi">10</span><span class="p">))</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">15</span><span class="p">])</span>
+<span class="nv">false</span>
+</pre></div>
+</div>
+<p>There is an even shorter notation for anonymous functions known as a <em>function literal</em>. Here the <code class="docutils literal"><span class="pre">#(</span> <span class="pre">)</span></code> denotes the body of the function, and the arguments are referred to as <code class="docutils literal"><span class="pre">%1,</span> <span class="pre">%2</span></code>, etc., or just <code class="docutils literal"><span class="pre">%</span></code> if there is only one. Here is the same example as above, only with the function literal:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">condition-holds?</span> <span class="o">#</span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">%</span> <span class="mi">10</span><span class="p">)</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nv">true</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">condition-holds?</span> <span class="o">#</span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">%</span> <span class="mi">10</span><span class="p">)</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">15</span><span class="p">])</span>
+<span class="nv">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>Exercises<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Try to complete the sixth set of Koans <code class="docutils literal"><span class="pre">06_functions.clj</span></code>.</p>
+</div>
+<div class="section" id="recursion">
+<h3>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h3>
+<p>But what if we want to check that a condition holds for all elements of a vector, but we don&#8217;t know how long the vector is? There are several ways of accomplishing it.</p>
+<p>Here we will look at the approach called <em>recursion</em> which breaks the vector into the first element and the rest of the elements, does some work on the element (in our case checks if it satisfies a given condition), and then <em>calls the same function</em> again <em>on the rest</em> of the vector if needed.</p>
+<p>Developing recursive functions is a bit more involved process than what we have done so far, so let&#8217;s build it step-by-step.</p>
+<p>When developing a function, it is useful to start by writing down how you expect it to work:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">odd?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">-1</span><span class="p">])</span>
+<span class="nv">true</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">odd?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">])</span>
+<span class="nv">false</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">holds-for-all?</span> <span class="o">#</span><span class="p">(</span><span class="nb">&lt; </span><span class="nv">%</span> <span class="mi">5</span><span class="p">)</span> <span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="nv">false</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">holds-for-all?</span> <span class="o">#</span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">%</span> <span class="mi">5</span><span class="p">)</span> <span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<span class="nv">true</span>
+</pre></div>
+</div>
+<p>Obviously, this doesn&#8217;t work yet because the function <code class="docutils literal"><span class="pre">holds-for-all?</span></code> doesn&#8217;t exist yet. But these cases help us understand how the function works:</p>
+<ol class="simple">
+<li>If there is only one element, it returns the result of the predicate on that one element (see the last two cases).</li>
+<li>If there is more than one element then it returns true only if the predicate is true on the first element and on the rest of them.</li>
+</ol>
+<p>The first case (one element) is called the <em>base</em> cases: the function immediately returns the answer, there is no &#8220;rest of the vector&#8221; to look at. Let&#8217;s sketch out this case in code, assuming that &#8216;f&#8217; is the predicate and &#8216;v&#8217; is the vector: <code class="docutils literal"><span class="pre">(if</span> <span class="pre">(empty?</span> <span class="pre">(rest</span> <span class="pre">v))</span> <span class="pre">(f</span> <span class="pre">(first</span> <span class="pre">v))</span> <span class="pre">....</span></code> (we don&#8217;t know yet what gets returned in the case when the predicate is false).</p>
+<p>Note that the base case happens when there is only one element in the vector, and we check it by checking if the rest of the elements is empty.</p>
+<p>The second case is the so-called <em>recursive step</em>: it combines the result for the first element with the result of the same computation on the rest of them. This is where we will be calling the function recursively to determine if the predicate holds for all elements in the rest of the vector. Since our function works on any sequence of elements (by design), it will work on the rest of the elements of <code class="docutils literal"><span class="pre">v</span></code>.</p>
+<p>Although this seems a bit weird, let&#8217;s write down what the recursive step looks like, almost literally translating the second case from English to code: &#8216;(and (f (first v)) (holds-for-all? f (rest v)))`. One thing that may be a bit tricky here is that we need to pass not only the rest of the vector, but also the predicate to the recursive function call. This is simply because our function <em>does</em> take two parameters and will give an error when called with just one.</p>
+<p>When we combine the two cases above and add the necessary syntax, we get:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defn </span><span class="nv">holds-for-all?</span> <span class="p">[</span><span class="nv">f</span> <span class="nv">v</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">empty?</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">v</span><span class="p">))</span> <span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">first </span><span class="nv">v</span><span class="p">))</span>
+    <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">first </span><span class="nv">v</span><span class="p">))</span> <span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">f</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">v</span><span class="p">)))))</span>
+</pre></div>
+</div>
+<p>Now let&#8217;s write out step-by-step what happens when this function is called.
+Suppose our predicate is <code class="docutils literal"><span class="pre">odd?</span></code> and the vector is <code class="docutils literal"><span class="pre">[1</span> <span class="pre">3</span> <span class="pre">4]</span></code>:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">odd?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We will go through each recursive call, one at a time:</p>
+<div class="section" id="first-call-holds-for-all-odd-1-3-4">
+<h4>First call <code class="docutils literal"><span class="pre">(holds-for-all?</span> <span class="pre">odd?</span> <span class="pre">[1</span> <span class="pre">3</span> <span class="pre">4])</span></code><a class="headerlink" href="#first-call-holds-for-all-odd-1-3-4" title="Permalink to this headline">¶</a></h4>
+<p>The condition <code class="docutils literal"><span class="pre">(empty?</span> <span class="pre">(rest</span> <span class="pre">[1</span> <span class="pre">3</span> <span class="pre">4])</span></code> returns false, so the function will go to the recursive step, not the base case. It will be evaluating the expression</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nf">odd?</span> <span class="p">(</span><span class="nb">first </span><span class="p">[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">]))</span> <span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">odd?</span> <span class="p">(</span><span class="nb">rest </span><span class="p">[</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">])))</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal"><span class="pre">and</span></code> cannot be evaluated until the recursive call returns, so it will be sitting in computer memory waiting for the result of the second call to <code class="docutils literal"><span class="pre">holds-for-all?</span></code>.</p>
+</div>
+<div class="section" id="second-call-holds-for-all-odd-3-4">
+<h4>Second call <code class="docutils literal"><span class="pre">(holds-for-all?</span> <span class="pre">odd?</span> <span class="pre">[3</span> <span class="pre">4])</span></code><a class="headerlink" href="#second-call-holds-for-all-odd-3-4" title="Permalink to this headline">¶</a></h4>
+<p>Now let&#8217;s see what happens in the second call.
+In order to determine the result of the <code class="docutils literal"><span class="pre">and</span></code> in the first call, we need to compute the result of the second part, which is</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">odd?</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Once again, the rest of the vector is not empty, the function goes into the recursive step:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nf">odd?</span> <span class="p">(</span><span class="nb">first </span><span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">]))</span> <span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">odd?</span> <span class="p">(</span><span class="nb">rest </span><span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">])))</span>
+</pre></div>
+</div>
+<p>The first part of <code class="docutils literal"><span class="pre">and</span></code> is <code class="docutils literal"><span class="pre">(odd?</span> <span class="pre">(first</span> <span class="pre">[3</span> <span class="pre">4]))</span></code> and returns true. The second part requires another recursive call:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">holds-for-all?</span> <span class="nv">odd?</span> <span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Now we have a second call waiting for the result of the third call in order to find out what its <code class="docutils literal"><span class="pre">and</span></code> returns.</p>
+</div>
+<div class="section" id="third-call-holds-for-all-odd-4-and-recursive-returns">
+<h4>Third call <code class="docutils literal"><span class="pre">(holds-for-all?</span> <span class="pre">odd?</span> <span class="pre">[4])</span></code> and recursive returns<a class="headerlink" href="#third-call-holds-for-all-odd-4-and-recursive-returns" title="Permalink to this headline">¶</a></h4>
+<p>In the third call we check the condition <code class="docutils literal"><span class="pre">(empty?</span> <span class="pre">[4])</span></code>, and it&#8217;s now true. This means that, according to the <code class="docutils literal"><span class="pre">if</span></code> statement, we just return the result of <code class="docutils literal"><span class="pre">(odd?</span> <span class="pre">(first</span> <span class="pre">[4])</span></code>. This result is <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<p>The third call to the function is now done and returns <code class="docutils literal"><span class="pre">false</span></code> to the second call that&#8217;s waiting for it in order to compute its <code class="docutils literal"><span class="pre">and</span></code>. Its computation now becomes <code class="docutils literal"><span class="pre">(and</span> <span class="pre">true</span> <span class="pre">false)</span></code> which evaluates to <code class="docutils literal"><span class="pre">false</span></code>, the second function call is done, and returns to the first call in the recursive sequence which is still waiting to finish its computation of <code class="docutils literal"><span class="pre">and</span></code>. Once again, the computation is  <code class="docutils literal"><span class="pre">(and</span> <span class="pre">true</span> <span class="pre">false)</span></code> which produces <code class="docutils literal"><span class="pre">false</span></code>, and that&#8217;s what gets returned from the entire sequence of calls, which is what we expected since the vector <code class="docutils literal"><span class="pre">[1</span> <span class="pre">3</span> <span class="pre">4]</span></code> does not have only odd elements.</p>
+<p>Walking through a recursive function helps you understand how it works. However, you don&#8217;t have to do it every time you write a recursive function: typically just breaking down the problem into a base case and a recursive step and constructing the results in both cases is enough.</p>
+</div>
+<div class="section" id="details">
+<h4>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h4>
+<p>There are a few details that we have skipped over in order to emphasize the main ideas. Feel free to read about these details now, or come back to them later.</p>
+<ol class="simple">
+<li>You may be wondering what happens if the first even element is not in the last position of the vector: will the function go all the way to the end, or start returning earlier? The answer is: it will return earlier because <code class="docutils literal"><span class="pre">and</span></code> is what&#8217;s called <em>short-circuiting</em>: it evaluates left to right, and stops and returns as soon as it knows the answer. Thus <code class="docutils literal"><span class="pre">(and</span> <span class="pre">false</span> <span class="pre">&lt;anything&gt;)</span></code> returns <code class="docutils literal"><span class="pre">false</span></code> immediately. If the first element of a vector is even, the function will return without going into the recursive call since <code class="docutils literal"><span class="pre">and</span></code> already knows that the answer is <code class="docutils literal"><span class="pre">false</span></code>. In general, however, you need to be careful since many ways of using the result of a recursive call are not short-circuiting.</li>
+<li>Our base case for the function is a one-element vector (its rest is empty). However, typically such functions are written with the base case being just an empty vector. You may be wondering what should be returned for an empty vector: do all its elements satisfy the condition? For instance, are they all odd? The answer is, yes. If there are no elements in a vector, all its elements satisfy any property whatsoever (they are odd, even, blue, tasty....) since there are no elements that fail the condition. On your own, try to rewrite the function with an empty vector base case.</li>
+<li>We have also simplified one important thing: we keep referring to the argument of the function as a vector, but in fact any sequence of elements will be fine (a list will do, for instance). Moreover, taking the rest of a vector gives you a sequence of elements, but not a vector, so after the first call we will be passing a sequence, not a vector to all subsequent ones! This is not important for understanding how recursion works in this case, but will be useful to know for the future.</li>
+<li>Finally, you may be wondering: isn&#8217;t recursion very inefficient? We have a bunch of <code class="docutils literal"><span class="pre">and</span></code> expressions waiting for results of computations, doesn&#8217;t it take memory and time to manage? The answer is, it may be inefficient if one isn&#8217;t careful. However, most functional languages use a mechanism known as <em>tail recursion</em> (and a few other tricks) to implement recursion efficiently. We are not going into the details of this here.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="higher-order-functions">
+<h3>Higher-order functions<a class="headerlink" href="#higher-order-functions" title="Permalink to this headline">¶</a></h3>
+<p>A higher-order function is one that either takes a function as input or returns a function as
+output. In Clojure we can treat functions as values just like any other type. This is one
+of the really powerful things of functional programming in general.</p>
+<p>To explore this further we&#8217;ll go over 3 built-in higher order functions that are integral
+to a functional programmers toolbox.</p>
+<div class="section" id="map">
+<h4>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">map</span></code> is a function that takes a function as its first argument and a sequence as its second
+and applies the function to each element building a new list from that.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">map </span><span class="nv">square</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">1</span> <span class="mi">4</span> <span class="mi">9</span><span class="p">)</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">map </span><span class="nv">square</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="mi">1</span> <span class="mi">4</span> <span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So we passed square as a value, and either a list or a vector and got a new list built.</p>
+</div>
+<div class="section" id="filter">
+<h4>Filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">filter</span></code> works like <code class="docutils literal"><span class="pre">map</span></code> in the sense that it also takes a function as its first argument
+and a sequence as its second. The function passed to <code class="docutils literal"><span class="pre">filter</span></code> must return a boolean.
+Like <code class="docutils literal"><span class="pre">map</span></code> we will walk through each element of the sequence and apply the function to it,
+if the function we passed in evaluates to <code class="docutils literal"><span class="pre">true</span></code> on the element we will keep it, if it&#8217;s <code class="docutils literal"><span class="pre">false</span></code>
+we will drop the element from the sequence.</p>
+<p>Lets use a built-in function <code class="docutils literal"><span class="pre">even?</span></code> which returns <code class="docutils literal"><span class="pre">true</span></code> if the number we pass it is even, otherwise
+<code class="docutils literal"><span class="pre">false</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">even?</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nv">false</span>
+<span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">even?</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nv">true</span>
+</pre></div>
+</div>
+<p>Now lets pass <code class="docutils literal"><span class="pre">even?</span></code> to <code class="docutils literal"><span class="pre">filter</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">filter </span><span class="nv">even?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reduce">
+<h4>Reduce<a class="headerlink" href="#reduce" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">reduce</span></code> also takes two arguments, the first one is a function and the second is a sequence just
+like <code class="docutils literal"><span class="pre">map</span></code> and <code class="docutils literal"><span class="pre">filter</span></code>. The function we pass in must take two arguments instead of one.</p>
+<p><code class="docutils literal"><span class="pre">reduce</span></code> applies the function to the first element of the sequence and the second. It then
+applies the result of the first call and applies it to the third element of the sequence.
+It then walks through the rest of the sequence.</p>
+<p>A quick example is we can reduce <code class="docutils literal"><span class="pre">+</span></code> over a sequence of numbers to add them all together.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">reduce + </span><span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">])</span>
+<span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-on-higher-order-functions">
+<h3>Exercise on higher-order functions<a class="headerlink" href="#exercise-on-higher-order-functions" title="Permalink to this headline">¶</a></h3>
+<p>Write a function that computes the number of palindrome numbers in a given range. A number is a palindrome if its digits form the same number if reversed. For instance, <code class="docutils literal"><span class="pre">21512</span></code> is a palindrome. The function that you are writing should take two non-negative integer numbers <code class="docutils literal"><span class="pre">n</span></code> and <code class="docutils literal"><span class="pre">m</span></code> (such that <code class="docutils literal"><span class="pre">n</span> <span class="pre">&lt;=</span> <span class="pre">m</span></code>) and return the number of palindromes in the range from <code class="docutils literal"><span class="pre">n</span></code> to <code class="docutils literal"><span class="pre">m</span></code> (including <code class="docutils literal"><span class="pre">n</span></code>, not including <code class="docutils literal"><span class="pre">m</span></code>). For instance, given 5 and 15, it should return 6 since there are 6 palindromes in this range: 5, 6, 7, 8, 9, 11.</p>
+<p>Use higher-order functions (<code class="docutils literal"><span class="pre">map,</span> <span class="pre">filter,</span> <span class="pre">reduce</span></code>).</p>
+<p>Some helpful functions:</p>
+<p><code class="docutils literal"><span class="pre">str</span></code> converts numbers into strings. See <a class="reference external" href="https://clojuredocs.org/clojure.core/str">its documentation</a> for more details.</p>
+<p><code class="docutils literal"><span class="pre">range</span></code> produces a sequence of all integers in a given range. Once again, consult <a class="reference external" href="https://clojuredocs.org/clojure.core/range">its documentation</a> for details.</p>
+<p>Note that your function just need to return the number of palindromes, not the palindromes themselves.</p>
+</div>
 </div>
 </div>
 
