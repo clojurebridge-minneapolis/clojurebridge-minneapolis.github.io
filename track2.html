@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                Sunday Oct 30 2016 @ 16:30:00 peterschwarz
+                Sunday Oct 30 2016 @ 16:25:16 brian-dawn
               </div>
             
           
@@ -91,15 +91,11 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Track 2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#clojure-as-a-functional-language">Clojure as a functional language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#koans">Koans</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#common-functions">Common functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#math">Math</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#equality">Equality</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#nil"><code class="docutils literal"><span class="pre">nil</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#koans">Koans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clojure-basics">Clojure Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#math">Math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#equality">Equality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nil">nil</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#common-types">Common types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#keywords">Keywords</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises</a></li>
@@ -215,7 +211,7 @@ functions from functions, and even manipulating functions.</p>
 </div>
 <p>There are a couple differences here, first thing to note is that we are using a different
 case style. In Clojure we don&#8217;t use camel case but instead kebab case which is dash separated.</p>
-<p>To prove we didn&#8217;t just make this up: <a class="reference external" href="http://c2.com/cgi/wiki?KebabCase">link</a></p>
+<p><a class="reference external" href="http://c2.com/cgi/wiki?KebabCase">We promise we didn&#8217;t make this up!</a></p>
 <p>Another thing is that we&#8217;ve placed the function inside the parenthesis. In Clojure a function
 call is always an open paren followed by the function we want to call, followed by any arguments
 we are passing to the function, followed by a closing paren.</p>
@@ -237,10 +233,12 @@ designed to teach Clojure.</p>
 <p>The koans are done incrementally, as you complete each one it will then move on to the next koan.
 Feel free to go through these at your own pace, or you can follow along this document which will periodically reference the koans.</p>
 <p>To get the koans all setup and running visit the official <a class="reference external" href="http://clojurekoans.com/">koans page</a>.</p>
-<div class="section" id="common-functions">
-<h3>Common functions<a class="headerlink" href="#common-functions" title="Permalink to this headline">¶</a></h3>
+<p>For the koans we recommend using <a class="reference external" href="https://atom.io/">Atom</a>, or your preferred editor should work great.</p>
+</div>
+<div class="section" id="clojure-basics">
+<h2>Clojure Basics<a class="headerlink" href="#clojure-basics" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="math">
-<h4>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h4>
+<h3>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h3>
 <p>Unlike common languages, such as JavaScript, in which <code class="docutils literal"><span class="pre">+</span></code> is an operation that is used in arithmetic expressions, and square root <code class="docutils literal"><span class="pre">sqrt</span></code> is a function, in Clojure every action is a function, there is no notion of operators. Additionally all of the
 math operators take a variable number of arguments.</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
@@ -259,7 +257,7 @@ math operators take a variable number of arguments.</p>
 </div>
 </div>
 <div class="section" id="equality">
-<h4>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h4>
+<h3>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h3>
 <p>We can use the <code class="docutils literal"><span class="pre">=</span></code> function to test whether its arguments are all equal to each other.
 Like the math functions the <code class="docutils literal"><span class="pre">=</span></code> function also takes multiple arguments.</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="s">&quot;hello&quot;</span> <span class="s">&quot;hello&quot;</span><span class="p">)</span>
@@ -271,11 +269,12 @@ Like the math functions the <code class="docutils literal"><span class="pre">=</
 </pre></div>
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="nil">
-<h2><code class="docutils literal"><span class="pre">nil</span></code><a class="headerlink" href="#nil" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">nil</span></code> is a special value in Clojure, it means &#8220;nothing&#8221;. It is commonly used when a desired value is not found. We will see examples of its use later. For now, just note that it is not equal to other values:</p>
+<h3>nil<a class="headerlink" href="#nil" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">nil</span></code> is a special value in Clojure, it means &#8220;nothing&#8221;.
+You might know it as <code class="docutils literal"><span class="pre">null</span></code> in other programming languages.
+It is commonly used when a desired value is not found.
+We will see examples of its use later. For now, just note that it is not equal to other values:</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="nv">nil</span> <span class="nv">false</span><span class="p">)</span>
 <span class="nv">false</span>
 <span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="nv">nil</span> <span class="nv">true</span><span class="p">)</span>
@@ -283,6 +282,7 @@ Like the math functions the <code class="docutils literal"><span class="pre">=</
 <span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">= </span><span class="nv">nil</span> <span class="mi">0</span><span class="p">)</span>
 <span class="nv">false</span>
 </pre></div>
+</div>
 </div>
 <div class="section" id="common-types">
 <h3>Common types<a class="headerlink" href="#common-types" title="Permalink to this headline">¶</a></h3>
