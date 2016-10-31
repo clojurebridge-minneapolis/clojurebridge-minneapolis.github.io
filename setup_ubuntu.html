@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 17:27:44 brian-dawn
+                Monday Oct 31 2016 @ 17:20:19 brian-dawn
               </div>
             
           
@@ -99,7 +99,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#starting-a-terminal">Starting a terminal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-git-and-ruby">Installing Git and Ruby</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-java">Installing Java</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installing-nightcode">Installing Nightcode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-leiningen">Installing Leiningen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-the-heroku-command-line-interface-cli">Installing the Heroku Command Line Interface (CLI)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-your-setup">Testing your setup</a></li>
@@ -183,49 +182,10 @@ root@mylaptop# apt-get install git git-core git-man ruby
 </div>
 <div class="section" id="installing-java">
 <h2>Installing Java<a class="headerlink" href="#installing-java" title="Permalink to this headline">¶</a></h2>
-<p>Typically you can use the Java that&#8217;s packaged or your Linux
-distribution (e.g. for Debian and Ubuntu it&#8217;s the package
-<strong>openjdk-8-jdk</strong>). However because we&#8217;re using Nightcode and
-Nightcode <em>requires</em> the Oracle JDK you will need to download
-and install it from the <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle Java SE Downloads</a> page.</p>
-<p>You can install the Oracle JDK one of your subdirectories like this:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ mkdir -p ~/src/oracle/
-clojurista@mylaptop$ cd ~/src/oracle/
-clojurista@mylaptop$ tar -zxf jdk-8u112-linux-x64.tar.gz
-clojurista@mylaptop$ export JAVA_HOME=$HOME/src/oracle/jdk1.8.0_112
-clojurista@mylaptop$ export PATH=$JAVA_HOME/bin:/usr/local/heroku/bin:$HOME/bin:$PATH
-clojurista@mylaptop$ which java
-/home/clojurista/src/oracle/jdk1.8.0_112/bin/java
-clojurista@mylaptop$ java -version
-java version &quot;1.8.0_112&quot;
-Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, mixed mode)
-clojurista@mylaptop$
+<p>On Ubuntu you should be able to install Java with:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>sudo apt install default-jdk
 </pre></div>
 </div>
-<p>The details of Java&#8217;s version may differ from what you see above; that is perfectly fine.</p>
-<p><em>NOTE: your <code class="docutils literal"><span class="pre">~/bin</span></code> directory was also added to your PATH because we will put the <strong>nightcode</strong> and <strong>lein</strong> launcher scripts there and the <code class="docutils literal"><span class="pre">/usr/local/heroku/bin</span></code> directory was added to your PATH because we will put the <strong>heroku</strong> launcher script there</em></p>
-</div>
-<div class="section" id="installing-nightcode">
-<h2>Installing Nightcode<a class="headerlink" href="#installing-nightcode" title="Permalink to this headline">¶</a></h2>
-<p>On the <a class="reference external" href="https://sekao.net/nightcode/">Nightcode home page</a> you can download
-and install a <code class="docutils literal"><span class="pre">*.deb</span></code> for Debian/Ubuntu, <code class="docutils literal"><span class="pre">*.rpm</span></code> for RedHat/Fedora,
-or <code class="docutils literal"><span class="pre">*.jar</span></code> file for any other distribution.</p>
-<p>If you download the <code class="docutils literal"><span class="pre">*.jar</span></code> you can place it in your <code class="docutils literal"><span class="pre">~/bin</span></code> directory and
-use our handy launcher script. NOTE: for this method we also install the
-Clojure jar here to get started:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ cd ~/bin
-clojurista@mylaptop$ mv ~/Downloads/Nightcode*.jar ./
-clojurista@mylaptop$ curl -O https://raw.githubusercontent.com/clojurebridge-minneapolis/installfest/master/docs/linux/nightcode
-clojurista@mylaptop$ chmod +x nightcode
-</pre></div>
-</div>
-<p>Now you should be able to launch it by typing <code class="docutils literal"><span class="pre">nightcode</span></code> in a terminal:</p>
-<p><img alt="Nightcode" src="_images/nc1.png" /></p>
-<p>This is starting a REPL... which we will learn about soon. It&#8217;s a special
-terminal for Clojure. At the REPL prompt type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">2</span> <span class="pre">3)</span></code> and press Return.
-Did you get the answer <code class="docutils literal"><span class="pre">5</span></code> back?
-You will learn more about that in the workshop.</p>
 </div>
 <div class="section" id="installing-leiningen">
 <h2>Installing Leiningen<a class="headerlink" href="#installing-leiningen" title="Permalink to this headline">¶</a></h2>
@@ -234,7 +194,8 @@ You will learn more about that in the workshop.</p>
 <p><img alt="Leiningen site" src="_images/leiningen_site.png" />
 <img alt="Leiningen site" src="_images/lein_install.png" /></p>
 <p>After that, run the following commands in your terminal:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ cd ~/bin
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ mkdir ~/bin
+clojurista@mylaptop$ cd ~/bin
 clojurista@mylaptop$ mv ~/Downloads/lein ./
 clojurista@mylaptop$ chmod +x lein
 clojurista@mylaptop$ lein version
@@ -289,26 +250,11 @@ clojurista@mylaptop$
 </div>
 <div class="section" id="testing-your-setup">
 <h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
-<p>You have set up Java, Nightcode, Leiningen, Git, and Heroku on your computer &#8211; all the tools you will need for this course. Before starting, we need to test them out.</p>
+<p>You have set up Java, Atom, Leiningen, Git, and Heroku on your computer &#8211; all the tools you will need for this course. Before starting, we need to test them out.</p>
 <p>Go to your terminal and download a copy of the <a class="reference external" href="https://github.com/heroku/clojure-getting-started">clojure-getting-started</a> repository:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ mkdir -p ~/src/github/heroku
 clojurista@mylaptop$ git clone https://github.com/heroku/clojure-getting-started.git
 clojurista@mylaptop$ cd clojure-getting-started
-clojurista@mylaptop$
-</pre></div>
-</div>
-<p>Now in Nightcode click the <strong>Import</strong> button and select the <strong>clojure-getting-started</strong> directory:</p>
-<p><img alt="Nightcode" src="_images/nc21.png" /></p>
-<p>Open the <code class="docutils literal"><span class="pre">web.clj</span></code> file by opening up the <code class="docutils literal"><span class="pre">src</span></code> and <code class="docutils literal"><span class="pre">clojure-getting-started</span></code> directories. Then change the line <code class="docutils literal"><span class="pre">:body</span> <span class="pre">&quot;Hello</span> <span class="pre">from</span> <span class="pre">Heroku&quot;})</span></code> with
-<code class="docutils literal"><span class="pre">:body</span> <span class="pre">&quot;Hello</span> <span class="pre">Clojurista</span> <span class="pre">from</span> <span class="pre">Heroku!&quot;})</span></code> (i.e. you can put in your
-name or anything you want)!</p>
-<p><img alt="Nightcode" src="_images/nc31.png" /></p>
-<p>Now click the <strong>Save</strong> button. We&#8217;ll save this change in <strong>git</strong> by
-making the following commit:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ git commit -a -m &#39;modified greeting&#39;
-git commit -a -m &#39;modified greeting&#39;
-[master 2824daa] modified greeting
- 1 file changed, 1 insertion(+), 1 deletion(-)
 clojurista@mylaptop$
 </pre></div>
 </div>
