@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 01:28:17 gdallen
+                Monday Oct 31 2016 @ 11:41:21 tmarble
               </div>
             
           
@@ -95,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#what-is-functional-programming">What is &#8220;functional programming&#8221;?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#why-clojure">Why Clojure??</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#open-source-why-the-community-is-important">Open Source: why the Community is important</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-journey-begins">A journey begins...</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="welcome.html#using-git-to-save-your-programs">Using git to save your programs</a></li>
@@ -150,82 +151,153 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="what-is-programming">
+  <p><strong>Why Clojure?</strong></p>
+<div class="section" id="what-is-programming">
 <h1>What is programming?<a class="headerlink" href="#what-is-programming" title="Permalink to this headline">¶</a></h1>
-<p>This section will be fixed in <a class="reference external" href="https://github.com/clojurebridge-minneapolis/installfest/issues/32">issue #32</a></p>
-<p>We should include the YOU ARE HERE infographic from <a class="reference external" href="https://github.com/clojurebridge-minneapolis/installfest/issues/25">issue #25</a></p>
-<p><em>Use the meal planning analogy: an algorithm is a like a recipe.</em></p>
-<p><em>Think of a way to demonstrate the idea of imperative programming (mutations) in the analogy</em></p>
+<p>Programs are a set of instructions for a computer to follow.</p>
+<p>Computer programming is about expressing the instructions in
+a language that can be translated down to the detailed steps that
+a microprocessor can understand.</p>
+<p>Programs that do something interesting enough that we would
+recognize &#8211; like sending an e-mail, uploading a photo or
+making a restaurant reservation &#8211; are, themselves, made up of
+many smaller programs.</p>
+<p>Software developers often start with a big goal like
+&#8220;make a restaurant reservation application&#8221; and break it up
+into smaller pieces. In fact this process happens repeatedly
+until the pieces are tiny and bite-sized.</p>
+<p>Because everyone likes to eat let&#8217;s use preparing an Italian
+dinner as an analogy. The goal is:</p>
+<ul class="simple">
+<li>Italian Dinner</li>
+</ul>
+<p>So let&#8217;s start by breaking that into independent parts: we&#8217;ll combine all three parts to make the meal.</p>
+<ul class="simple">
+<li>Italian Dinner<ol>
+<li>Fettuccine Alfredo</li>
+<li>Salad</li>
+<li>Red Wine</li>
+</ol>
+</li>
+</ul>
+<p>We can even break the parts into steps:</p>
+<ul class="simple">
+<li>Italian Dinner<ol>
+<li>Fettuccine Alfredo<ul>
+<li>Cook pasta</li>
+<li>Make Alfredo sauce</li>
+</ul>
+</li>
+<li>Salad<ul>
+<li>Cut veggies</li>
+<li>Make homemade vinaigrette</li>
+</ul>
+</li>
+<li>Red Wine</li>
+</ol>
+</li>
+</ul>
+<p>Now each of the steps (except maybe making the sauce :) is short and straightforward.</p>
+<p>In computer lingo we would say that each of these steps are &#8220;functions&#8221;:
+each is designed to accomplish a specific task. A &#8220;program&#8221; is just
+a big function that&#8217;s built on top of lots of other little functions.</p>
 </div>
 <div class="section" id="what-is-functional-programming">
 <h1>What is &#8220;functional programming&#8221;?<a class="headerlink" href="#what-is-functional-programming" title="Permalink to this headline">¶</a></h1>
-<p>Functional programming means programs are comprised of many, small functions:
-each of which take some input and provide some output</p>
-<ul class="simple">
-<li>don&#8217;t need to think about changes outside the function</li>
-<li>functions are small</li>
-<li>take shapes in, return shapes out (<em>geometry &#8211; vector/map example</em>)</li>
-</ul>
-<p><em>Use with the analogy</em></p>
+<p>The words &#8220;functional programming&#8221; mean more than just programming
+with functions. It means programming with small functions that
+take some input and provide some output without depending on
+other knowledge of how &#8220;the system&#8221; is running.</p>
+<p>By contrast &#8220;imperative programming&#8221; describes functions that
+are changing things in &#8220;the system&#8221; that you have to remember.
+Set the variable <em>X</em> to $19.95 and the variable <em>Y</em> to 3.
+At first the &#8220;change this, then change that...&#8221; approach
+seems easy to understand until you get a lot of details that
+you have to keep in your head to understand the function.</p>
+<p>In &#8220;functional programming&#8221; the idea is to have short
+functions where you can <em>see</em> everything that&#8217;s happening
+without having to remember what&#8217;s going on outside the function
+(i.e. in &#8220;the system&#8221;). Clojure programmers like to talk about
+functions taking in data of a certain shape and returning
+data of a different shape. The data could be numbers or text
+or collections of things.</p>
 </div>
 <div class="section" id="why-clojure">
 <h1>Why Clojure??<a class="headerlink" href="#why-clojure" title="Permalink to this headline">¶</a></h1>
-<p>LISP is a classic functional programming language which dates back to 1954.
-<em>explain homiconicity</em></p>
-<p>LISP has generally been used in academia (note <strong>ITA</strong> as an exception),
-has evolved relatively slowly and has a modest set of available libraries.</p>
-<p>In designing Clojure Rich Hickey combined the good parts of LISP (functional
-programming) and combined it with the powerful and popular Java Virtual Machine.
+<p>Clojure is a modern adaptation of of the classic functional programming
+language LISP (which stands for list processing language) which dates
+back to 1954!</p>
+<p>In LISP everything is a list. The functions you write are lists.
+The data for your functions are lists. The clever bonus of having
+everything is a list is that programs and data <em>look the same</em>.
+That means we can have functions that create or improve other functions
+because they all look like data!</p>
+<p>Many programmers are surprised by LISP because the parentheses are
+always on the outside:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">italian</span><span class="o">-</span><span class="n">dinner</span> <span class="n">main</span><span class="o">-</span><span class="n">course</span> <span class="n">side</span> <span class="n">beverage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>... because many popular computer languages put the function name
+first (instead of at the beginning of the list of arguments)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">italian_dinner</span><span class="p">(</span><span class="n">main_course</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">beverage</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In designing Clojure Rich Hickey combined the good parts of LISP
+and combined it with the powerful Java Virtual Machine.
 As a result Clojure is an <em>opinionated</em> LISP that...</p>
 <ul class="simple">
 <li>Is simpler to learn and understand (much easier than Java)</li>
-<li>Has higher performance and better platform support thanks to the Java Virtual Machine
-(note also: JavaScript, CLR)</li>
-<li>Provides easy interoperation with many existing Java libraries</li>
+<li>Has higher performance and works on a broad range of computers thanks to the Java Virtual Machine (<em>NOTE: Clojure also works on JavaScript and the CLR</em>)</li>
+<li>Provides easy inter-operation with many existing Java libraries (makes it practical to write real-world programs)</li>
 <li>Can be used for both client and server development (ClojureScript has one of the
 best stories for web development)</li>
 </ul>
 <p>And it turns out the Clojure community is wonderful</p>
 <ul class="simple">
 <li>Tends to be full of explorers: people that are curious, eager to learn and happy to help each other</li>
-<li>Typically big companies are hesitant to adopt new technologies and Clojure
-is growing in progressively more commercial use.</li>
-<li>Values diversity (conference opportunity grants, ClojureBridge)</li>
+<li>Even though typically big companies are hesitant to adopt new technologies Clojure is beginning to see more commercial use.</li>
+<li>Values diversity (e.g. conference opportunity grants, ClojureBridge)</li>
 </ul>
 </div>
 <div class="section" id="open-source-why-the-community-is-important">
 <h1>Open Source: why the Community is important<a class="headerlink" href="#open-source-why-the-community-is-important" title="Permalink to this headline">¶</a></h1>
-<p>What is open source software?</p>
+<p>Clojure is open source software... what does that mean?</p>
+<p>Open source software is...</p>
 <ul class="simple">
-<li><em>volunteer</em></li>
-<li><em>gratis, hack on copyright &#8211; so we can share!</em></li>
-<li><em>built on the shoulders of giants</em></li>
-<li><em>examples</em></li>
-<li>not just code, community: user groups, online, conferences</li>
-<li>contribution: using, filing bugs, fixing documentation, editing code</li>
-<li>Why OSS is better<ul>
-<li>investment in learning</li>
-<li>integrate - make it work for me, scratch an itch</li>
-<li>people are dialed into their passion</li>
-<li>privacy and security</li>
+<li>Designed to be shared for free with everyone (using a hack on copyright)</li>
+<li>Created by volunteers (and increasingly by companies)</li>
+<li>Published publicly to encourage collaboration and improvement</li>
 </ul>
-</li>
-<li>Why diversity in tech (esp. OSS) is important<ul>
+<p>Typical examples are Linux (runs in every Android phone), the Firefox web browser,
+and the Libre Office suite of tools.</p>
+<p>Why makes open source software great?</p>
+<ol class="simple">
+<li>Volunteers work on projects that they are passionate about</li>
+<li>You can adapt and change it to make it work for you</li>
+<li>The investment in learning an open source program often pays off because (good ones) often last a long time</li>
+<li>Because the code is open anyone can inspect it for security weaknesses or privacy vulnerabilities.</li>
+<li>Everyone can get involved simply by being a user, reporting bugs, working on documentation and, yes, contributing code.</li>
+</ol>
+<p>Why is diversity in technology (especially open source software) important?</p>
+<ul class="simple">
 <li>Women are 50% of users, but only 15% contributors</li>
 <li>For any software to be successful it <em>has</em> to take the needs of users into account</li>
-<li>We want OSS to win: we need YOU!</li>
+<li>In order to make better software we need YOU!</li>
 </ul>
-</li>
-</ul>
-<p>Today you will publish an program on the Internet!</p>
+</div>
+<div class="section" id="a-journey-begins">
+<h1>A journey begins...<a class="headerlink" href="#a-journey-begins" title="Permalink to this headline">¶</a></h1>
+<p>Today you will publish a program on the Internet!</p>
 <p>After today you can continue your learning...</p>
 <ul class="simple">
-<li>Join the clojure.mn user group</li>
-<li>Continue to converse with people you&#8217;ve met on Slack</li>
-<li>Join us at the Conj - registration is free! <em>note: lambda ladies, opp grants</em></li>
-<li>Going further GSOC (e.g. Maria Gellar), Outreachy</li>
-<li>Code academies (e.g. Prime)</li>
+<li>Join the <a class="reference external" href="http://www.meetup.com/clojuremn/">clojure.mn</a> user group</li>
+<li>Continue to converse with people you&#8217;ve met on <a class="reference external" href="http://clojurebridge-minneapolis.github.io/setup.html#instructions-for-all-slack">Slack</a></li>
+<li>Join us at the <a class="reference external" href="http://2016.clojure-conj.org/">Clojure Conj</a> - registration is free for ClojureBridge alumnae! <em>note: lambda ladies, opp grants</em></li>
+<li>Going further with the <a class="reference external" href="https://developers.google.com/open-source/gsoc/">Google Summer of Code</a> (e.g. <a class="reference external" href="https://www.youtube.com/watch?v=Elg17s_nwDg">Maria Geller&#8217;s work on ClojureScript</a>) and <a class="reference external" href="https://www.gnome.org/outreachy/">Outreachy</a></li>
+<li>Code academies (e.g. <a class="reference external" href="https://primeacademy.io/">Prime Digital Academy</a>)</li>
 </ul>
+<p>Software is everywhere!</p>
+<p><em>speaker note: reveal the secret now</em></p>
 </div>
 
 
