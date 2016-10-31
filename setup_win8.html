@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 17:03:07 tmarble
+                Monday Oct 31 2016 @ 16:42:27 brian-dawn
               </div>
             
           
@@ -97,7 +97,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#starting-a-command-prompt">Starting a command prompt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-java">Installing Java</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-leiningen">Installing Leiningen</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installing-light-table">Installing Light Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-atom">Installing Atom</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-setup-with-heroku">Get setup with Heroku</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-your-setup">Testing your setup</a></li>
 </ul>
@@ -165,7 +165,7 @@
 <li>Start a command prompt</li>
 <li>Get Java installed</li>
 <li>Get Leiningen installed</li>
-<li>Get Light Table installed</li>
+<li>Get Atom installed</li>
 <li>Get Heroku installed (includes Git)</li>
 <li>Test installation</li>
 </ul>
@@ -195,12 +195,11 @@
 <p>Leiningen is a tool used on the command line to manage Clojure projects.</p>
 <p>Next, go back to <a class="reference external" href="http://leiningen-win-installer.djpowell.net/">the Leiningen Windows installer site</a> and download the file linked as &#8220;leiningen-win-installer.&#8221; Run this executable and follow the &#8220;Detailed installation&#8221; section at the Leiningen Windows Installer site. At the end of the installation, leave &#8220;Run a Clojure REPL&#8221; checked before you click &#8220;Finish.&#8221; If a terminal window opens that looks like the one on the Leiningen Windows installer site, then you are good to go.</p>
 </div>
-<div class="section" id="installing-light-table">
-<h2>Installing Light Table<a class="headerlink" href="#installing-light-table" title="Permalink to this headline">¶</a></h2>
-<p>Go to the <a class="reference external" href="http://www.lighttable.com/">Light Table site</a>. On the page there, you should see a set of buttons that have download links for Light Table. Click the &#8220;Win&#8221; button and you will download a .zip file.</p>
-<p><img alt="Light Table downloads" src="_images/light-table-download1.png" /></p>
-<p>Unzip this file (either by finding it in your Downloads folder and double-clicking it, or by choosing &#8220;Open&#8221; when downloading.) Inside the .zip file, there is a a directory called &#8220;Light Table&#8221;. Drag this to your desktop. (If you know what you are doing and want this somewhere else, that is fine.)</p>
-<p>Inside the Light Table directory, there is an application called Light Table. Right-click it and choose &#8220;Pin to Start Menu&#8221; so you can start it more quickly.</p>
+<div class="section" id="installing-atom">
+<h2>Installing Atom<a class="headerlink" href="#installing-atom" title="Permalink to this headline">¶</a></h2>
+<p>Go to the <a class="reference external" href="http://atom.io">Atom site</a> and click the download link.</p>
+<p>There should now be a file named AtomSetup.exe in your Downloads folder. Double-click the file to
+run the Atom installer.</p>
 </div>
 <div class="section" id="get-setup-with-heroku">
 <h2>Get setup with Heroku<a class="headerlink" href="#get-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
@@ -234,7 +233,7 @@
 </div>
 <div class="section" id="testing-your-setup">
 <h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
-<p>You have set up Java, Leiningen, Light Table, Git, and Heroku on your computer, all the tools you will need for this program. Before starting, we need to test them out. Make sure you have a terminal (OS X) or command prompt (Windows) open for testing. We will just call this a terminal from now on.</p>
+<p>You have set up Java, Leiningen, Atom, Git, and Heroku on your computer, all the tools you will need for this program. Before starting, we need to test them out. Make sure you have a terminal (OS X) or command prompt (Windows) open for testing. We will just call this a terminal from now on.</p>
 <p>Go to your terminal and run the following command:</p>
 <p><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/heroku/clojure-sample.git</span></code></p>
 <p>This will check out a sample Clojure application from GitHub, a central repository for lots of source code. Your terminal should look similar to this picture:</p>
@@ -246,11 +245,7 @@
 <p>This could take a long time, and will download many other pieces of code it relies on. You should see lines that start with <code class="docutils literal"><span class="pre">Retrieving</span> <span class="pre">...</span></code> on your screen. When it finishes, your terminal should look like the following:</p>
 <p><img alt="Testing lein repl" src="_images/testing-step22.png" /></p>
 <p>This is starting a REPL, which we will learn about soon. It&#8217;s a special terminal for Clojure. At the REPL prompt, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> and hit enter. Did you get the answer <code class="docutils literal"><span class="pre">2</span></code> back? You will learn more about that in the course. For now, press the Control button and D button on your keyboard together (abbreviated as Ctrl+D). This should take you out of the Clojure REPL and back to your normal terminal prompt.</p>
-<p>Now, start Light Table. Once it is started, press the Control button and Space Bar together (abbreviated Ctrl+Space). This is how you start giving Light Table a command. Start typing the word &#8220;instarepl&#8221; and you should see a menu of options, like below. Choose &#8220;Instarepl: open a clojure instarepl.&#8221;</p>
-<p><img alt="Testing Light Table - starting instarepl" src="_images/testing-step32.png" /></p>
-<p>At the bottom of the screen, you will see a cube moving and some text about connecting and installing dependencies. Once that stops moving, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> into the window. It should look like the following image:</p>
-<p><img alt="Testing Light Table - running in the instarepl" src="_images/testing-step42.png" /></p>
-<p>If that worked, great! Close Light Table. We only have one more thing to test, Heroku.</p>
+<p>We only have one more thing to test, Heroku.</p>
 <p>Go back to your terminal. You should still be in the <code class="docutils literal"><span class="pre">clojure-sample</span></code> directory.</p>
 <p>Run this command:</p>
 <p><code class="docutils literal"><span class="pre">heroku</span> <span class="pre">create</span></code></p>
@@ -266,12 +261,6 @@ heroku open
 <p>Your browser should open (and take a long time to load) and you should see a website like the following:</p>
 <p><img alt="Testing heroku working" src="_images/testing-step62.png" /></p>
 <p>Congratulations! That website is running code you have on your computer that you have uploaded. You have actually made a very simple Clojure app, and your computer is all set up to make more.</p>
-<div class="section" id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>If you receive errors while running Light Table about Java or JDK, these may be resolved by finishing the installation of Leiningen first. If not, see a TA to look at your environment variables.</li>
-</ul>
-</div>
 <div class="section" id="try-the-koans">
 <h3>Try the koans<a class="headerlink" href="#try-the-koans" title="Permalink to this headline">¶</a></h3>
 <p>If you&#8217;re a track 2 student, try to tackle running the <a class="reference internal" href="koans.html"><span class="doc">koans</span></a>.</p>

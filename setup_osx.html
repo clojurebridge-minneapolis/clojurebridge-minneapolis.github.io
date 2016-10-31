@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 17:03:07 tmarble
+                Monday Oct 31 2016 @ 16:42:27 brian-dawn
               </div>
             
           
@@ -95,7 +95,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#starting-a-terminal">Starting a terminal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#making-sure-java-is-installed">Making sure Java is installed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-leiningen">Installing Leiningen</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installing-light-table">Installing Light Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-atom">Installing Atom</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#getting-setup-with-heroku">Getting setup with Heroku</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-your-setup">Testing your setup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#try-the-koans">Try the koans</a></li>
@@ -166,7 +166,7 @@
 <li><a class="reference external" href="#starting-a-terminal">Start a terminal</a></li>
 <li><a class="reference external" href="#making-sure-java-is-installed">Make sure Java is installed</a></li>
 <li><a class="reference external" href="#installing-leiningen">Get Leiningen installed</a></li>
-<li><a class="reference external" href="#installing-light-table">Get Light Table installed</a></li>
+<li><a class="reference external" href="#installing-atom">Get Atom installed</a></li>
 <li><a class="reference external" href="#getting-setup-with-heroku">Get Heroku installed (includes Git)</a></li>
 <li><a class="reference external" href="#testing-your-setup">Test installation</a></li>
 </ul>
@@ -200,11 +200,10 @@ sudo chmod a+x /usr/local/bin/lein
 </div>
 <p>After you run the above commands, run the <code class="docutils literal"><span class="pre">lein</span> <span class="pre">version</span></code> command. It should take a while to run, as it will download some resources it needs the first time. If it completes successfully, you are golden! If not, ask an instructor for help.</p>
 </div>
-<div class="section" id="installing-light-table">
-<h2>Installing Light Table<a class="headerlink" href="#installing-light-table" title="Permalink to this headline">¶</a></h2>
-<p>Go to the <a class="reference external" href="http://www.lighttable.com/">Light Table site</a>. On the page there, you should see a set of buttons that have download links for Light Table. Click the &#8220;OS X 10.7+&#8221; button and you will download a .zip file.</p>
-<p><img alt="Light Table downloads" src="_images/light-table-download.png" /></p>
-<p>There should now be a file named LightTableMac.zip in your Downloads folder. Double-click the file to unzip it, then move LightTable.app to your Applications folder.</p>
+<div class="section" id="installing-atom">
+<h2>Installing Atom<a class="headerlink" href="#installing-atom" title="Permalink to this headline">¶</a></h2>
+<p>Go to the <a class="reference external" href="http://atom.io">Atom site</a> and click the download link.</p>
+<p>There should now be a file named atom-mac.zip in your Downloads folder. Double-click the file to unzip it, then move Atom.app to your Applications folder.</p>
 </div>
 <div class="section" id="getting-setup-with-heroku">
 <h2>Getting setup with Heroku<a class="headerlink" href="#getting-setup-with-heroku" title="Permalink to this headline">¶</a></h2>
@@ -227,7 +226,7 @@ sudo chmod a+x /usr/local/bin/lein
 </div>
 <div class="section" id="testing-your-setup">
 <h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
-<p>You have set up Java, Leiningen, Light Table, Git, and Heroku on your computer&#8211;all the tools you will need for this course. Before starting, we need to test them out.</p>
+<p>You have set up Java, Leiningen, Atom, Git, and Heroku on your computer&#8211;all the tools you will need for this course. Before starting, we need to test them out.</p>
 <p>Go to your terminal and run the following command:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/heroku/clojure-sample.git
 </pre></div>
@@ -245,12 +244,7 @@ sudo chmod a+x /usr/local/bin/lein
 <p>This could take a long time, and will download many other pieces of code it relies on. You should see lines that start with <code class="docutils literal"><span class="pre">Retrieving</span> <span class="pre">...</span></code> on your screen. When it finishes, your terminal should look like the following:</p>
 <p><img alt="Testing lein repl" src="_images/testing-step2.png" /></p>
 <p>This is starting a REPL, which we will learn about soon. It&#8217;s a special terminal for Clojure. At the REPL prompt, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> and press Return. Did you get the answer <code class="docutils literal"><span class="pre">2</span></code> back? You will learn more about that in the course. For now, press the Control button and D button on your keyboard together (abbreviated as Ctrl+D). This should take you out of the Clojure REPL and back to your normal terminal prompt.</p>
-<p>Now, start Light Table. Once it is started, press the Control button and Space Bar together (abbreviated Ctrl+Space). This is how you start giving Light Table a command. Start typing the word &#8220;instarepl&#8221; and you should see a menu of options, like below. Choose &#8220;Instarepl: open a clojure instarepl.&#8221;</p>
-<p><img alt="Testing Light Table - starting instarepl" src="_images/testing-step3.png" /></p>
-<p>At the bottom of the screen, you will see a cube moving and some text about connecting and installing dependencies. Once that stops moving, type <code class="docutils literal"><span class="pre">(+</span> <span class="pre">1</span> <span class="pre">1)</span></code> into the window. It should look like the following image:</p>
-<p><img alt="Testing Light Table - running in the instarepl" src="_images/testing-step4.png" /></p>
-<p>If that worked, great! Close Light Table. We only have one more thing to test, Heroku.</p>
-<p>Go back to your terminal. You should still be in the <code class="docutils literal"><span class="pre">clojure-sample</span></code> directory.</p>
+<p>You should still be in the <code class="docutils literal"><span class="pre">clojure-sample</span></code> directory.</p>
 <p>Run this command:</p>
 <p><code class="docutils literal"><span class="pre">heroku</span> <span class="pre">create</span></code></p>
 <p>There should be output about something being created. A URL will be displayed. Look at the following example:</p>
