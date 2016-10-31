@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Try Clojure Koans in Nightcode &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  <title>Github &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="index.html"/> 
+    <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="index.html"/>
+        <link rel="up" title="Installfest" href="setup.html"/>
+        <link rel="next" title="OS X Setup" href="setup_osx.html"/>
+        <link rel="prev" title="Atom" href="atom.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -82,8 +85,23 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Installfest</a></li>
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="setup.html">Installfest</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setup.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#what-we-are-installing">What we are installing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="setup.html#instructions-for-all">Instructions for all</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="slack.html">Slack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atom.html">Atom</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Github</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup-at-a-github-account">Setup at a Github account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extra-credit-setting-up-ssh">Extra credit: setting up <strong>ssh</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#instructions-by-operating-system">Instructions by operating system</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to ClojureBridge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="track1.html">Track 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="track2.html">Track 2</a></li>
@@ -119,11 +137,13 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Try Clojure Koans in Nightcode</li>
+          <li><a href="setup.html">Installfest</a> &raquo;</li>
+      
+    <li>Github</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/setup_new_koans.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/github.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -133,41 +153,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="try-clojure-koans-in-nightcode">
-<h1>Try Clojure Koans in Nightcode<a class="headerlink" href="#try-clojure-koans-in-nightcode" title="Permalink to this headline">¶</a></h1>
-<p><em>NOTE: This page is now obsolete (for reference only!)</em></p>
-<div class="section" id="clone-our-version-of-the-clojure-koans">
-<h2>Clone our version of the Clojure Koans<a class="headerlink" href="#clone-our-version-of-the-clojure-koans" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ mkdir -p ~/src/github/clojurebridge-minneapolis
-clojurista@mylaptop $ cd ~/src/github/clojurebridge-minneapolis
-clojurista@mylaptop $ git clone https://github.com/clojurebridge-minneapolis/clojure-koans.git
-clojurista@mylaptop $ cd clojure-koans
-</pre></div>
+  <div class="section" id="github">
+<h1>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setup-at-a-github-account">
+<h2>Setup at a Github account<a class="headerlink" href="#setup-at-a-github-account" title="Permalink to this headline">¶</a></h2>
+<p>You will use Github to publish your application program.</p>
+<p>The first setup is <a class="reference external" href="https://github.com/join">setting up a github account</a>.</p>
+<p>At your leisure you can visit the <a class="reference external" href="https://help.github.com/articles/about-your-profile/">about your profile</a> to learn more about github and how
+to customize your profile.</p>
 </div>
-</div>
-<div class="section" id="make-a-new-git-branch-for-your-work">
-<h2>Make a new git branch for your work<a class="headerlink" href="#make-a-new-git-branch-for-your-work" title="Permalink to this headline">¶</a></h2>
-<p>Since you will be modifying the repo while working through the Koans
-you can do that on a branch (so <code class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></code> and <code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code> show you what you&#8217;ve accomplished). <em>NOTE: you can name your branch whatever you want!</em></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop $ git branch clojurista
-clojurista@mylaptop $ git checkout clojurista
-</pre></div>
-</div>
-</div>
-<div class="section" id="open-the-koans-repo-in-nightcode">
-<h2>Open the Koans repo in Nightcode<a class="headerlink" href="#open-the-koans-repo-in-nightcode" title="Permalink to this headline">¶</a></h2>
-<p>Start Nightcode and then open the clojure-koans project.</p>
-<p>Expand/open: src / koans / 01_equalities.clj</p>
-<p>In the lower box click &#8220;Run with REPL&#8221;, then type <code class="docutils literal"><span class="pre">(exec</span> <span class="pre">&quot;run&quot;)</span></code></p>
-</div>
-<div class="section" id="solve-a-koan">
-<h2>Solve a Koan<a class="headerlink" href="#solve-a-koan" title="Permalink to this headline">¶</a></h2>
-<p>Replace the missing value <code class="docutils literal"><span class="pre">__</span></code> with the correct value (in this case <code class="docutils literal"><span class="pre">true</span></code>).</p>
-<p><em>NOTE: the &#8220;meditation&#8221; lists the file and line number of the current koan.</em></p>
-<p>Press Control-s (or Command-s) to save the file.</p>
-<p>You <em>should</em> see the next question pop up in the REPL area (if the answer is correct).</p>
-<p>If the same Koan comes up again try a different answer!</p>
-<p><em>Hint: You can use the mini-REPL box on the lower left hand corner to try out expressions</em></p>
+<div class="section" id="extra-credit-setting-up-ssh">
+<h2>Extra credit: setting up <strong>ssh</strong><a class="headerlink" href="#extra-credit-setting-up-ssh" title="Permalink to this headline">¶</a></h2>
+<p>Whenever you upload anything (like a change to your program) to github
+it will need to know your username and password. Entering these
+credentials every time can quickly become tedious.</p>
+<p>The way to simplify the process is to create an <strong>ssh</strong> key pair (<em>ssh</em> stands for
+secure shell). When you create your own <strong>ssh</strong> key pair there is a private
+key (which is only ever on your computer) and a public key (that you can share
+with any site that needs to know your credentials).</p>
+<p>Once you set this up and provide your private <strong>ssh</strong> key password on
+your computer the first time you won&#8217;t have to enter any passwords
+every time you want <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></code> something to github.</p>
+<p>See the <a class="reference external" href="https://help.github.com/categories/ssh/">detailed documentation</a>
+on getting <strong>ssh</strong> setup for github.</p>
 </div>
 </div>
 
@@ -175,6 +183,15 @@ clojurista@mylaptop $ git checkout clojurista
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="setup_osx.html" class="btn btn-neutral float-right" title="OS X Setup" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="atom.html" class="btn btn-neutral" title="Atom" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
