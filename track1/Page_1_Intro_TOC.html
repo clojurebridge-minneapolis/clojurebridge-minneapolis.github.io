@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 17:39:29 brian-dawn
+                Monday Oct 31 2016 @ 23:21:21 tmarble
               </div>
             
           
@@ -94,17 +94,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-chatter-app-goals-tools">The Chatter App Goals &amp; Tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#specific-goal-of-workshop">Specific Goal of Workshop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-benefits-learning-opportunities">Additional Benefits &amp; Learning Opportunities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-name-required-tools-required-tools-a"><a name="required_tools">Required Tools</a></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#readme">Readme</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#readme">README</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#app">App</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#running-the-server-entering-commands-in-the-terminal">Running The Server &amp; Entering Commands in the terminal</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#moving-forward">Moving Forward</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#copyright-and-license">Copyright and License</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-server-entering-commands-in-the-terminal">Running The Server &amp; Entering Commands in the Terminal</a></li>
 </ul>
 </li>
 </ul>
@@ -114,9 +108,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Page_4_Change_code.html">Chapter 4: Branches, Merges, Commits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Page_5_More_code_changes.html">Chapter 5: More Code Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Page_6_Push_to_live.html">Chapter 6: Push to Live</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
@@ -181,7 +172,7 @@
 <h3>Specific Goal of Workshop<a class="headerlink" href="#specific-goal-of-workshop" title="Permalink to this headline">¶</a></h3>
 <p>Create a web app using Clojure code.</p>
 <p>We will introduce you to Clojure by creating and deploying a web app where you and your friends can post messages to each other.</p>
-<p><img alt="" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/finished%20app.png" /></p>
+<p><img alt="finished app" src="../_images/finished-app.png" /></p>
 </div>
 <div class="section" id="additional-benefits-learning-opportunities">
 <h3>Additional Benefits &amp; Learning Opportunities<a class="headerlink" href="#additional-benefits-learning-opportunities" title="Permalink to this headline">¶</a></h3>
@@ -190,74 +181,22 @@
 <li>Basic Clojure syntax</li>
 <li>REPL (Read Eval Print Loop)</li>
 <li>Leiningen for project automation</li>
-<li>Git for version control (branches, merges, commits)</li>
+<li>Git for version control</li>
 <li>Heroku deployment</li>
 </ul>
 </div>
-<div class="section" id="a-name-required-tools-required-tools-a">
-<h3><a name="required_tools">Required Tools</a><a class="headerlink" href="#a-name-required-tools-required-tools-a" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Java 1.7+</li>
-<li>Leiningen 2.5+</li>
-<li>Git 2.1+</li>
-<li>Firefox with Firebug</li>
-<li>The Heroku Toolbelt</li>
-</ul>
-<p><em>These should have all been installed at the Friday night Install Fest</em></p>
-</div>
 </div>
 <div class="section" id="readme">
-<h2>Readme<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
+<h2>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
 <p>This is the standard structure of most coding projects. You will have a Readme file that will provide a basic overview of the project and the programs you need to open the project.</p>
 <div class="section" id="app">
 <h3>App<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h3>
 <p>In this curriculum we will create a web app, the Chatter app, that displays posted messages.</p>
 </div>
-<div class="section" id="prerequisites">
-<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
-<p>You will need <a class="reference external" href="https://github.com/technomancy/leiningen">Leiningen</a> 2.0.0 or above installed.</p>
-</div>
 <div class="section" id="running-the-server-entering-commands-in-the-terminal">
-<h3>Running The Server &amp; Entering Commands in the terminal<a class="headerlink" href="#running-the-server-entering-commands-in-the-terminal" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="server">
-<h4>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h4>
-<p>Confirm your server is running properly. To start a web server for the application, enter the following command in the terminal:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lein</span> <span class="o">--</span><span class="n">version</span>
-</pre></div>
-</div>
-<p>This will confirm what version of lein and what version of java you have on your machine.</p>
-</div>
-<div class="section" id="entering-commands">
-<h4>Entering Commands<a class="headerlink" href="#entering-commands" title="Permalink to this headline">¶</a></h4>
-<p>Confirm you have all the required software/apps installed prior to starting your project. The <a class="reference external" href="#required_tools">required tools</a> were installed during <em>Install Fest</em> on Friday night.</p>
-<p>We will show examples of commands in terminal (also called the command line). Our prompt is the dollar sign; everything <em>after</em> the dollar sign is the command you enter. You do not need to type <code class="docutils literal"><span class="pre">$:</span></code> in your terminal. We may we enter multiple commands in the same snippet <p>—</p>
- the dollar sign indicates a new command to enter. You should enter each command individually.</p>
-<p>The terminal, or command line, you use may have different prompts (<code class="docutils literal"><span class="pre">$:</span></code>), only enter the text after the prompt.</p>
-<p>Open your terminal and enter the commands below to confirm you have the correct tools installed.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: lein -version
-Leiningen 2.5.1 on Java 1.8.0_40-internal OpenJDK 64-Bit Server VM
-
-$: git --version
-git version 2.1.4
-
-$: heroku --version
-heroku-toolbelt/3.25.0 (x86_64-linux-gnu) ruby/2.1.5
-You have no installed plugins.
-</pre></div>
-</div>
-<p>Only enter the first line in the command line; the following lines are the results of your command and indicate the versions of software you have installed on your computer.</p>
-<p>If your commands and results look like the example above, you are ready to move on and start working on your Chatter app.</p>
-</div>
-</div>
-</div>
-<div class="section" id="moving-forward">
-<h2>Moving Forward<a class="headerlink" href="#moving-forward" title="Permalink to this headline">¶</a></h2>
-<p>Once you confirm your server is working properly, move to the next page where were will briefly go over what Clojure is, what the Web is and how we interact with it, and how HTML works.</p>
-<p>Next page, <a class="reference internal" href="Page_2_Big_Picture.html"><span class="doc">Chapter 2: Big Picture</span></a></p>
-<div class="section" id="copyright-and-license">
-<h3>Copyright and License<a class="headerlink" href="#copyright-and-license" title="Permalink to this headline">¶</a></h3>
-<p>Copyright © 2015 Chris Koehnen</p>
-<p>Licensed under the <a class="reference external" href="http://opensource.org/licenses/MIT">MIT LICENSE</a></p>
+<h3>Running The Server &amp; Entering Commands in the Terminal<a class="headerlink" href="#running-the-server-entering-commands-in-the-terminal" title="Permalink to this headline">¶</a></h3>
+<p>Open a terminal window where you can type in commands (which we&#8217;ll use in
+the next step).</p>
 </div>
 </div>
 </div>

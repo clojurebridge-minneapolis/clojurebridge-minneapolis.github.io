@@ -36,7 +36,7 @@
     <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="../index.html"/>
         <link rel="up" title="Track 1" href="../track1.html"/>
         <link rel="next" title="Heroku" href="Page_6_Push_to_live.html"/>
-        <link rel="prev" title="Chapter 4: Branches, Merges, Commits" href="Page_4_Change_code.html"/> 
+        <link rel="prev" title="Chapter 4: Merges and Commits" href="Page_4_Change_code.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 17:39:29 brian-dawn
+                Monday Oct 31 2016 @ 23:21:21 tmarble
               </div>
             
           
@@ -110,9 +110,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Page_6_Push_to_live.html">Chapter 6: Push to Live</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
@@ -167,18 +164,44 @@
   <div class="section" id="chapter-5-more-code-changes">
 <h1>Chapter 5: More Code Changes<a class="headerlink" href="#chapter-5-more-code-changes" title="Permalink to this headline">¶</a></h1>
 <p>Now let&#8217;s change the app&#8217;s main page from &#8220;Hello, World&#8221; to something a little more chatty.</p>
-<p>First, let&#8217;s create and checkout a new branch called, <code class="docutils literal"><span class="pre">view-messages</span></code>. If you need a refresher on <a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">creating and checking out branches</a>, review Chapter 4. Once you are on the new <code class="docutils literal"><span class="pre">view-messages</span></code> branch, we&#8217;ll move on to updating the code.</p>
 <div class="section" id="adding-hiccup">
 <h2>Adding Hiccup<a class="headerlink" href="#adding-hiccup" title="Permalink to this headline">¶</a></h2>
-<p>We need to write code that will generate HTML. To do this, we will use a library called <code class="docutils literal"><span class="pre">hiccup</span></code>. We don&#8217;t have this library yet, so we&#8217;re going to add it. Adding a new library requires two steps:</p>
+<p>We need to write code that will generate HTML. To do this, we will use a library called <code class="docutils literal"><span class="pre">hiccup</span></code>. A library is a separate set of functions that we can add to our program. We don&#8217;t have this library yet, so we&#8217;re going to add it. Adding a new library requires two steps:</p>
 <ol class="simple">
 <li>Add the library to the dependency section of the <code class="docutils literal"><span class="pre">project.clj</span></code> file. This tells lein your program needs another program.</li>
 </ol>
-<p>Add hiccup by updating the <code class="docutils literal"><span class="pre">project.clj</span></code> file to look like this:</p>
-<div class="highlight-clojure"><div class="highlight"><pre><span></span>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.7.0&quot;</span><span class="p">]</span>
-                 <span class="p">[</span><span class="nv">compojure</span> <span class="s">&quot;1.4.0&quot;</span><span class="p">]</span>
-                 <span class="p">[</span><span class="nv">ring/ring-defaults</span> <span class="s">&quot;0.1.5&quot;</span><span class="p">]</span>
-                 <span class="p">[</span><span class="nv">hiccup</span> <span class="s">&quot;1.0.5&quot;</span><span class="p">]]</span>
+<p>Add hiccup by updating the <code class="docutils literal"><span class="pre">project.clj</span></code> file to look like this
+(in fact we&#8217;re updating a bunch of old libary versions here):</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">defproject </span><span class="nv">chatter</span> <span class="s">&quot;0.1.0-SNAPSHOT&quot;</span>
+  <span class="ss">:description</span> <span class="s">&quot;clojure web app for displaying messages&quot;</span>
+  <span class="ss">:url</span> <span class="s">&quot;http://example.com/FIXME&quot;</span>
+  <span class="ss">:min-lein-version</span> <span class="s">&quot;2.0.0&quot;</span>
+  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.8.0&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">compojure</span> <span class="s">&quot;1.5.1&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">ring/ring-core</span> <span class="s">&quot;1.5.0&quot;</span>
+                  <span class="ss">:exclusions</span> <span class="p">[</span><span class="nv">org.clojure/tools.reader</span><span class="p">]]</span>
+                 <span class="p">[</span><span class="nv">ring</span> <span class="s">&quot;1.5.0&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">ring/ring-jetty-adapter</span> <span class="s">&quot;1.5.0&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">ring/ring-defaults</span> <span class="s">&quot;0.2.1&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">hiccup</span> <span class="s">&quot;1.0.5&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">hickory</span> <span class="s">&quot;0.7.0&quot;</span><span class="p">]</span>
+                 <span class="p">[</span><span class="nv">environ</span> <span class="s">&quot;1.1.0&quot;</span><span class="p">]]</span>
+  <span class="ss">:plugins</span> <span class="p">[[</span><span class="nv">lein-ring</span> <span class="s">&quot;0.9.7&quot;</span><span class="p">]</span>
+            <span class="p">[</span><span class="nv">lein-environ</span> <span class="s">&quot;1.0.0&quot;</span><span class="p">]]</span>
+  <span class="ss">:ring</span> <span class="p">{</span><span class="ss">:handler</span> <span class="nv">chatter.handler/app</span>
+         <span class="ss">:init</span> <span class="nv">chatter.handler/init</span>
+         <span class="ss">:destroy</span> <span class="nv">chatter.handler/destroy</span><span class="p">}</span>
+  <span class="ss">:aot</span> <span class="ss">:all</span>
+  <span class="ss">:main</span> <span class="nv">chatter.handler</span>
+  <span class="ss">:profiles</span>
+  <span class="p">{</span><span class="ss">:dev</span>
+   <span class="p">{</span><span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">javax.servlet/servlet-api</span> <span class="s">&quot;2.5&quot;</span><span class="p">]</span>
+                   <span class="p">[</span><span class="nv">ring/ring-mock</span> <span class="s">&quot;0.3.0&quot;</span><span class="p">]]}</span>
+   <span class="ss">:production</span>
+   <span class="p">{</span><span class="ss">:ring</span>
+    <span class="p">{</span><span class="ss">:open-browser?</span> <span class="nv">false</span>, <span class="ss">:stacktraces?</span> <span class="nv">false</span>, <span class="ss">:auto-reload?</span> <span class="nv">false</span><span class="p">}</span>
+    <span class="ss">:env</span> <span class="p">{</span><span class="nv">production</span> <span class="nv">true</span><span class="p">}}}</span>
+  <span class="ss">:uberjar-name</span> <span class="s">&quot;chatter-standalone.jar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="simple">
@@ -207,10 +230,7 @@
 </pre></div>
 </div>
 <p>Now <code class="docutils literal"><span class="pre">http://localhost:3000</span></code> displays &#8220;Our Chat App&#8221;.  Right-click and select <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code> to see  it&#8217;s now proper HTML complete with <code class="docutils literal"><span class="pre">head</span></code>, <code class="docutils literal"><span class="pre">title</span></code>, and <code class="docutils literal"><span class="pre">body</span></code>.</p>
-<p>The hiccup function(*) <code class="docutils literal"><span class="pre">page/html5</span></code> generates an HTML page. It expects Clojure vectors with symbols representing corresponding HTML tags. Hiccup will automatically add the closing tag when it reaches the end of the vector.</p>
-<ul class="simple">
-<li><em>&lt;&lt;&lt; include screenshot &gt;&gt;&gt;</em></li>
-</ul>
+<p>The hiccup function <code class="docutils literal"><span class="pre">page/html5</span></code> generates an HTML page. It expects Clojure vectors with symbols representing corresponding HTML tags. Hiccup will automatically add the closing tag when it reaches the end of the vector.</p>
 <p>Compare the hiccup to HTML in <code class="docutils literal"><span class="pre">View</span> <span class="pre">Page</span> <span class="pre">Source</span></code> to the HTML we wrote by hand earlier.</p>
 <div class="section" id="how-does-hiccup-work">
 <h3>How Does Hiccup Work?<a class="headerlink" href="#how-does-hiccup-work" title="Permalink to this headline">¶</a></h3>
@@ -262,7 +282,7 @@
 <p><code class="docutils literal"><span class="pre">generate-message-view</span></code> is a function that takes no arguments. It calls a hiccup function <code class="docutils literal"><span class="pre">page/html5</span></code> to generate html from a vector representing the <code class="docutils literal"><span class="pre">head</span></code> sections and a vector representing the <code class="docutils literal"><span class="pre">body</span></code> elements of the html.</p>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, and refresh the browser to make sure our page still works. From the outside, we shouldn&#8217;t see a change. The page should still display &#8220;Our Chat App&#8221; and the html should be identical. Now, let&#8217;s double check our git status:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
-On branch view-messages
+On branch master
 Changes not staged for commit:
    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
    (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
@@ -273,46 +293,44 @@ Changes not staged for commit:
 no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </pre></div>
 </div>
-<p>That looks right so <a class="reference external" href="/track1/Page_4_Change_code.html#adding-and-committing-the-changes">add, commit, merge the changes back to master, and then push to GitHub</a>.  Then, delete the <code class="docutils literal"><span class="pre">view-messages</span></code> branch. You should see the commit numbers go up on GitHub.</p>
+<p>That looks right so <a class="reference external" href="/track1/Page_4_Change_code.html#adding-and-committing-the-changes">add, commit, and then push to GitHub</a>.</p>
 </div>
 </div>
 <div class="section" id="adding-messages">
 <h2>Adding Messages<a class="headerlink" href="#adding-messages" title="Permalink to this headline">¶</a></h2>
 <p>Our app is not displaying messages, nor do we have a way of adding messages. Let&#8217;s make that happen now.</p>
-<p><a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">Create and check out a branch to work on</a>.</p>
-<p>Let&#8217;s change the app so it displays messages. We&#8217;ll represent the messages as a vector of maps. Each map will have a <code class="docutils literal"><span class="pre">:name</span></code> and <code class="docutils literal"><span class="pre">:message</span></code>key and the corresponding value, in quotes.  For example, the code below will represent blue&#8217;s first post.</p>
+<p>Let&#8217;s change the app so it displays messages. We&#8217;ll represent the messages as a vector of maps. Each map will have a <code class="docutils literal"><span class="pre">:name</span></code> and <code class="docutils literal"><span class="pre">:message</span></code> key and the corresponding value, in quotes.  For example, the code below will represent blue&#8217;s first post.</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>This is a map with two keys.</p>
-<ol>
-<li> `:name` is "blue", because blue posted it</li>
-<li>`:message` is the content of the post
-and its value is "blue's first post".</li>
-</ol><p>Programs often need to associate keys with values and the usual data structure for doing that are hash tables. Clojure calls them maps and they look like this:</p>
-<p><code class="docutils literal"><span class="pre">clojure</span></code></p>
-<p><code class="docutils literal"><span class="pre">(def</span> <span class="pre">cities</span></code></p>
-<p><code class="docutils literal"><span class="pre">{&quot;Tokyo&quot;</span> <span class="pre">37900000</span></code></p>
-<p><code class="docutils literal"><span class="pre">&quot;Delhi&quot;</span> <span class="pre">26580000</span></code></p>
-<p><code class="docutils literal"><span class="pre">&quot;Seoul&quot;</span> <span class="pre">26100000})</span></code></p>
+<p>This is a map with two keys:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">:name</span></code> is &#8220;blue&#8221;, because blue posted it</li>
+<li><code class="docutils literal"><span class="pre">:message</span></code> is the content of the post and its value is &#8220;blue&#8217;s first post&#8221;</li>
+</ul>
+<p>Programs often need to associate keys with values and the usual data structure for doing that are hash tables. Clojure calls them maps and they look like this:</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">cities</span>
+  <span class="p">{</span><span class="s">&quot;Tokyo&quot;</span> <span class="mi">37900000</span>
+   <span class="s">&quot;Delhi&quot;</span> <span class="mi">26580000</span>
+   <span class="s">&quot;Seoul&quot;</span> <span class="mi">26100000</span><span class="p">})</span>
+</pre></div>
+</div>
 <p>Here <code class="docutils literal"><span class="pre">cities</span></code> is a hash table whose <em>keys</em> are strings (in this case the names of cities) and the <em>values</em> are the populations of each city.</p>
 <p>To get a value from a map, pass the map and key into the <code class="docutils literal"><span class="pre">get</span></code> function. For example,</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">get </span><span class="nv">cities</span> <span class="s">&quot;Tokyo&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>returns 37900000. When the keys are keywords, you can also use the keyword as a function that takes the map and returns the values.</p>
+<p>returns <code class="docutils literal"><span class="pre">37900000</span></code>. When the keys are keywords, you can also use the keyword as a function that takes the map and returns the values.</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:name</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">})</span>
 </pre></div>
 </div>
-<p>returns &#8220;blue&#8221;.</p>
-<blockquote>
-<div><div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:message</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">})</span>
+<p>returns <code class="docutils literal"><span class="pre">&quot;blue&quot;</span></code>.</p>
+<div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:message</span> <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;blue&#39;s first post&quot;</span><span class="p">})</span>
 </pre></div>
 </div>
-<p>returns &#8220;blue&#8217;s first post&#8221;.</p>
-</div></blockquote>
-<p>Maps are everywhere in Clojure and are used for many things where other languages might use objects.</p>
-<p>Let&#8217;s call the vector simply <code class="docutils literal"><span class="pre">chat-messages</span></code> and hard code(*) some samples to get started. Add a chat-messages variable to <code class="docutils literal"><span class="pre">handler.clj</span></code>.</p>
+<p>returns <code class="docutils literal"><span class="pre">&quot;blue's</span> <span class="pre">first</span> <span class="pre">post&quot;</span></code>.</p>
+<p>Maps are everywhere in Clojure and are used for keeping track of collections of things.</p>
+<p>Let&#8217;s call the vector simply <code class="docutils literal"><span class="pre">chat-messages</span></code> and start with some sample messages to get started. Add a chat-messages variable to <code class="docutils literal"><span class="pre">handler.clj</span></code>.</p>
 <p>After the ns expression, add:</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">def </span><span class="nv">chat-messages</span> <span class="p">[{</span><span class="ss">:name</span> <span class="s">&quot;blue&quot;</span> <span class="ss">:message</span> <span class="s">&quot;hello, world&quot;</span><span class="p">}</span>
                     <span class="p">{</span><span class="ss">:name</span> <span class="s">&quot;red&quot;</span> <span class="ss">:message</span> <span class="s">&quot;red is my favorite color&quot;</span><span class="p">}</span>
@@ -336,8 +354,7 @@ and its value is "blue's first post".</li>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code> and refresh the browser.</p>
 <p>This blows up spectacularly.</p>
-<p><img alt="" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/illegal-argument-exception.jpg" /></p>
-<p><a class="reference external" href="#"></a></p>
+<p><img alt="illegal-argument-exception" src="../_images/illegal-argument-exception.jpg" /></p>
 <p>This is a stack trace - it gives us an idea what the program was doing when it hit the problem. Ignore all the files that aren&#8217;t ones you wrote for the project. In my case, the first file of interest is
 <code class="docutils literal"><span class="pre">handler.clj</span></code>, line 14, the <code class="docutils literal"><span class="pre">generate-message-view</span></code> function.</p>
 <p>The exception message on the top, <code class="docutils literal"><span class="pre">&quot;...</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">element</span> <span class="pre">name&quot;</span></code>, is a clue to what&#8217;s wrong.  Elements are what fragments of html are called.  Hiccup is responsible for generating html from Clojure symbols. The problem is that we&#8217;ve got a map with symbols in it and hiccup thinks they&#8217;re html.  They&#8217;re not, so it creates an error.</p>
@@ -355,7 +372,7 @@ and its value is "blue's first post".</li>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, and refresh the browser.</p>
 <p>This fixes the exception but it&#8217;s ugly.</p>
-<p><img alt="ugly hack" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/ugly.jpg" /></p>
+<p><img alt="ugly hack" src="../_images/ugly.jpg" /></p>
 <p>Let&#8217;s take the messages and put them in a table using HTML&#8217;s <code class="docutils literal"><span class="pre">table</span></code>, <code class="docutils literal"><span class="pre">tr</span></code>, and <code class="docutils literal"><span class="pre">td</span></code> elements.  We&#8217;re going to write a function that takes a
 message and creates an HTML row. Then, inside a <code class="docutils literal"><span class="pre">table</span></code>, we&#8217;re going to apply that function to all of our messages.</p>
 <p>Clojure uses <code class="docutils literal"><span class="pre">defn</span></code> to create a function, but those functions are named. Sometimes, we want a specialized function that isn&#8217;t reusable. For those cases, Clojure has a way of creating an anonymous function.</p>
@@ -396,7 +413,7 @@ the message hashmap are keywords, we can use them as functions to get the values
 </pre></div>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code>, then refresh the browser.  Our hard-coded messages should now display in the page.</p>
-<p><img alt="hard coded messages" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/hardcoded.jpg" /></p>
+<p><img alt="hard coded messages" src="../_images/hardcoded.jpg" /></p>
 </div>
 <div class="section" id="forms">
 <h2>Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
@@ -500,7 +517,7 @@ the message hashmap are keywords, we can use them as functions to get the values
 </pre></div>
 </div>
 <p>Save <code class="docutils literal"><span class="pre">handler.clj</span></code> and refresh the browser. We should now have a form on the page where a user could submit a new message.</p>
-<p><img alt="unwired form" src="https://github.com/clojurebridge-minneapolis/track1-chatter/raw/master/images/unwired-form.jpg" /></p>
+<p><img alt="unwired form" src="../_images/unwired-form.jpg" /></p>
 </div>
 <div class="section" id="wiring-the-form">
 <h2>Wiring the form<a class="headerlink" href="#wiring-the-form" title="Permalink to this headline">¶</a></h2>
@@ -717,12 +734,11 @@ name-two expression-two]
 <span class="p">(</span><span class="k">def </span><span class="nv">app</span> <span class="p">(</span><span class="nf">wrap-params</span> <span class="nv">app-routes</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">Add, commit, merge the changes to master, push master to GitHub</a>, and delete the branch.</p>
+<p><a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">Add, commit, push to GitHub</a></p>
 </div>
 <div class="section" id="bootstrap">
 <h2>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h2>
 <p>The app is working but is ugly. We can improve it by using CSS and JavaScript from a package of software called Twitter Bootstrap.</p>
-<p><a class="reference external" href="/track1/Page_4_Change_code.html#branch-the-code">Create and checkout a new branch.</a></p>
 <p>In the head section of our HTML, we&#8217;re going to include Bootstrap:</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span>   <span class="p">[</span><span class="ss">:head</span>
     <span class="p">[</span><span class="ss">:title</span> <span class="s">&quot;chatter&quot;</span><span class="p">]</span>
@@ -792,7 +808,7 @@ name-two expression-two]
         <a href="Page_6_Push_to_live.html" class="btn btn-neutral float-right" title="Heroku" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Page_4_Change_code.html" class="btn btn-neutral" title="Chapter 4: Branches, Merges, Commits" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Page_4_Change_code.html" class="btn btn-neutral" title="Chapter 4: Merges and Commits" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

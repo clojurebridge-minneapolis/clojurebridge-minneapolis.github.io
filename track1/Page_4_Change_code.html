@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Chapter 4: Branches, Merges, Commits &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  <title>Chapter 4: Merges and Commits &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 17:39:29 brian-dawn
+                Monday Oct 31 2016 @ 23:21:21 tmarble
               </div>
             
           
@@ -93,19 +93,13 @@
 <li class="toctree-l2"><a class="reference internal" href="Page_2_Big_Picture.html">Chapter 2: Big Picture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Page_3_Start_project.html">Chapter 3: Starting the Project</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 4: Branches, Merges, Commits</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#a-name-branch-the-code-branch-the-code-a"><a name="branch-the-code">Branch the code</a></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changing-readme-md">Changing README.md</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-and-committing-the-changes">Adding And Committing The Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#merging-the-changes">Merging The Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deleting-the-fix-readme-branch">Deleting the fix-readme branch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pushing-to-github">Pushing to GitHub</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Page_5_More_code_changes.html">Chapter 5: More Code Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Page_6_Push_to_live.html">Chapter 6: Push to Live</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
@@ -143,7 +137,7 @@
       
           <li><a href="../track1.html">Track 1</a> &raquo;</li>
       
-    <li>Chapter 4: Branches, Merges, Commits</li>
+    <li>Chapter 4: Merges and Commits</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -157,52 +151,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="chapter-4-branches-merges-commits">
-<h1>Chapter 4: Branches, Merges, Commits<a class="headerlink" href="#chapter-4-branches-merges-commits" title="Permalink to this headline">¶</a></h1>
-<p>In this section, we will alter the code. We will start with something small and fix the <code class="docutils literal"><span class="pre">readme.md.</span></code> Before we do that, we want to branch the code to ensure we can track the changes we make. Branching the code is a version control method; we keep the original files on the master branch and create a separate branch where we will make the changes. When we are confident our changes are correct, we will merge the new branch to the existing master branch. The updated files on the new branch essentially overwrite the files on the master branch.</p>
-<div class="section" id="a-name-branch-the-code-branch-the-code-a">
-<h2><a name="branch-the-code">Branch the code</a><a class="headerlink" href="#a-name-branch-the-code-branch-the-code-a" title="Permalink to this headline">¶</a></h2>
-<p>Branching tells git that we are making changes to the current set of files and that we want to have a specific name for this version. To check what branch you are currently on, enter:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
-On branch master
-Your branch is up-to-date with &#39;origin/master&#39;.
-nothing to commit, working directory clean
-</pre></div>
-</div>
-<p>This tells us we are currently on the master branch. This is where the original code lives, we want to create a new branch where we can make changes. To create a new branch, use the &#8220;git branch&#8221; command and name the new branch. Let&#8217;s call our new branch &#8220;fix-readme&#8221;. This is a reminder to ourselves what kind of changes we are making in this new branch.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git branch fix-readme
-</pre></div>
-</div>
-<p>If you enter <code class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span></code> without the specific branch name, the terminal will list all branches that exist in this directory.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git branch
-fix-readme
-* master
-</pre></div>
-</div>
-<p>Notice there are now two branches, <code class="docutils literal"><span class="pre">master</span></code> and <code class="docutils literal"><span class="pre">fix-readme</span></code>. The asterisk (*) indicates which branch you are on. In the command above, you see we are on the master branch. We want to switch to the <code class="docutils literal"><span class="pre">fix-readme</span></code> branch. We do this by &#8220;checking out&#8221; the branch we want to be on. Then we will confirm we are on the new branch.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git checkout fix-readme
-Switched to branch &#39;fix-readme&#39;
-
-
-$: git branch
-* fix-readme
-master
-
-
-$: git status
-On branch fix-readme
-nothing to commit, working directory clean
-</pre></div>
-</div>
-<p>We&#8217;ve confirmed we are now on the <code class="docutils literal"><span class="pre">fix-readme</span></code> branch.</p>
-<p>It&#8217;s important to check out the branch when making changes. Git does not do it automatically, so you can end up committing changes to the <code class="docutils literal"><span class="pre">master</span></code> branch. This usually isn&#8217;t disastrous, but it&#8217;s often very messy to clean up if things go wrong and it&#8217;s difficult to keep track of versions.</p>
-</div>
+  <div class="section" id="chapter-4-merges-and-commits">
+<h1>Chapter 4: Merges and Commits<a class="headerlink" href="#chapter-4-merges-and-commits" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we will alter the code. We will start with something small and fix the <code class="docutils literal"><span class="pre">README.md.</span></code></p>
 <div class="section" id="changing-readme-md">
 <h2>Changing README.md<a class="headerlink" href="#changing-readme-md" title="Permalink to this headline">¶</a></h2>
 <p>Open the <code class="docutils literal"><span class="pre">README.md</span></code> file in your editor and replace the two &#8220;FIXMEs&#8221; with different text. Save the file.</p>
 <p>Now, if you ask git for the status, it will show that <code class="docutils literal"><span class="pre">README.md</span></code> has changed.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
-On branch fix-readme
+On branch master
 Changes not staged for commit:
 (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
 (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
@@ -237,7 +194,7 @@ index 9493433..718893f 100644
 <p><code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code> is telling us the <code class="docutils literal"><span class="pre">README.md</span></code> file changed. In the example above, we removed the line that said &#8220;FIXME&#8221; and added a line saying &#8220;This is a web app that will display posted messages.&#8221; We also changed the FIXME in the copyright to an email address. You should see the specific changes you made in your command line.</p>
 <p>Since we changed the description in the <code class="docutils literal"><span class="pre">README.md</span></code>, we might as well change the description in <code class="docutils literal"><span class="pre">project.clj</span></code> file. Make the change and save that file too. Now the git status should be:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
-On branch fix-readme
+On branch master
 Changes not staged for commit:
   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
@@ -251,14 +208,14 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
 </div>
 <div class="section" id="adding-and-committing-the-changes">
 <h2>Adding And Committing The Changes<a class="headerlink" href="#adding-and-committing-the-changes" title="Permalink to this headline">¶</a></h2>
-<p>Now that our the changes in the editor are saved, let&#8217;s add and commit the changes to our new branch. <em>Adding</em> files to the branch puts the updated files on the branch. <em>Committing</em> the updated files to the branch saves creates a specific version of the branch - it puts a timestamp and version description of the current state of the branch. You must add, then commit files to the branch.</p>
+<p>Now that our the changes in the editor are saved, let&#8217;s add and commit the changes. <em>Adding</em> files prepares to upload the updated files. <em>Committing</em> actually records a snapshot of files &#8211; it puts a timestamp and version description of the current state of the project.</p>
 <p>First, <em>add</em> the specific file(s) with &#8220;<code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code> + file name&#8221; to the branch you are on:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$: git add README.md project.clj
 </pre></div>
 </div>
 <p>Confirm the file was added by checking the status:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
-On branch fix-readme
+On branch master
 Changes to be committed:
   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
 
@@ -266,19 +223,20 @@ modified:   README.md
 modified:   project.clj
 </pre></div>
 </div>
-<p>Two files have been added (modified) and the changes can be <em>committed</em> to the branch. When you enter the <code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code> command, make sure to enter a description of the changes you are committing; this will help you identify versions and changes. Add a quick note after the file names <code class="docutils literal"><span class="pre">-m</span> <span class="pre">&quot;comment</span> <span class="pre">on</span> <span class="pre">changes&quot;</span></code>.</p>
+<p>Two files have been added (modified) and the changes can be
+<em>committed</em>. When you enter the <code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code> command, make sure to enter a description of the changes you are committing; this will help you identify versions and changes. Add a quick note after the file names <code class="docutils literal"><span class="pre">-m</span> <span class="pre">&quot;comment</span> <span class="pre">on</span> <span class="pre">changes&quot;</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ git commit -m &quot;fixing README.md description&quot;
-[fix-readme 57aff88] fixing README.md description
+[master 57aff88] fixing README.md description
  2 files changed, 3 insertions(+), 3 deletions(-)
 </pre></div>
 </div>
-<p>Check the branch status again:</p>
+<p>Check the status again:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$: git status
-On branch fix-readme
+On branch master
 nothing to commit, working directory clean
 </pre></div>
 </div>
-<p>Git status reports no uncommitted changes because we successfully committed the updated files to the <code class="docutils literal"><span class="pre">fix-readme</span></code> branch.</p>
+<p>Git status reports no uncommitted changes because we successfully committed the updated files.</p>
 <p>You can also the check the log to see what commits have been made, when they were made, and the brief comment on the commit.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$: git log
 commit 57aff889c81698394faf8568b63f14130d32599a
@@ -294,55 +252,7 @@ Date:   Sun Dec 28 16:43:37 2014 -0600
     initial commit
 </pre></div>
 </div>
-<p>You see two commits: the last commit from our original branch (initial commit) and our new commit (fixing README.md description).</p>
-</div>
-<div class="section" id="merging-the-changes">
-<h2>Merging The Changes<a class="headerlink" href="#merging-the-changes" title="Permalink to this headline">¶</a></h2>
-<p>Once we are satisfied with the updated files and they are successfully committed on the <code class="docutils literal"><span class="pre">fix-readme</span></code> branch, we&#8217;ll merge those changes on to the <code class="docutils literal"><span class="pre">master</span></code> branch. This means we are going to overwrite the existing files (or add new files) on the master branch.</p>
-<p>First, go to the <code class="docutils literal"><span class="pre">master</span></code> branch and check its log.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git checkout master
-Switched to branch &#39;master&#39;
-Your branch is up-to-date with &#39;origin/master&#39;.
-
-$: git log
-commit 44a560f1653770afac01aea2c9279a7af46a46eb
-Author: crkoehnen &lt;crkoehnen@gmail.com&gt;
-Date:   Sun Dec 28 16:43:37 2014 -0600
-
-    initial commit
-</pre></div>
-</div>
-<p>Note that <code class="docutils literal"><span class="pre">master</span></code> is lagging behind the <code class="docutils literal"><span class="pre">fix-readme</span></code> branch. It doesn&#8217;t have the commit with the README changes. We will fix that by merging our <code class="docutils literal"><span class="pre">fix-me</span></code> branch into the <code class="docutils literal"><span class="pre">master</span></code> branch.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git merge fix-readme
-Updating 44a560f..57aff88
-Fast-forward
- README.md   | 4 ++--
- project.clj | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
-</pre></div>
-</div>
-<p>The merge brought in the changes. If we check the log, we&#8217;ll see two commits now. The initial commit and our &#8220;readme.md&#8221; changes.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git log
-commit 57aff889c81698394faf8568b63f14130d32599a
-Author: crkoehnen &lt;crkoehnen@gmail.com&gt;
-Date:   Sun Dec 28 17:33:41 2014 -0600
-
-    fixing README.md description
-
-commit 44a560f1653770afac01aea2c9279a7af46a46eb
-Author: crkoehnen &lt;crkoehnen@gmail.com&gt;
-Date:   Sun Dec 28 16:43:37 2014 -0600
-
-    initial commit
-</pre></div>
-</div>
-</div>
-<div class="section" id="deleting-the-fix-readme-branch">
-<h2>Deleting the fix-readme branch<a class="headerlink" href="#deleting-the-fix-readme-branch" title="Permalink to this headline">¶</a></h2>
-<p>Now that we&#8217;ve pulled the changes from the <code class="docutils literal"><span class="pre">fix-readme</span></code> branch into <code class="docutils literal"><span class="pre">master</span></code>, we no longer need the <code class="docutils literal"><span class="pre">fix-readme</span></code> branch, so let&#8217;s delete it.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$: git branch -d fix-readme
-</pre></div>
-</div>
+<p>You see two commits: the last commit from our initial commit and our new commit (fixing README.md description).</p>
 </div>
 <div class="section" id="pushing-to-github">
 <h2>Pushing to GitHub<a class="headerlink" href="#pushing-to-github" title="Permalink to this headline">¶</a></h2>

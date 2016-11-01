@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Monday Oct 31 2016 @ 17:39:29 brian-dawn
+                Monday Oct 31 2016 @ 23:21:21 tmarble
               </div>
             
           
@@ -95,9 +95,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Page_4_Change_code.html">Chapter 4: Branches, Merges, Commits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Page_5_More_code_changes.html">Chapter 5: More Code Changes</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 6: Push to Live</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-1">Step 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-2">Step 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../track1.html#step-3">Step 3</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../track2.html">Track 2</a></li>
@@ -219,8 +216,8 @@
 <p>These new methods of starting the app are closer to what Heroku will use to start the app.</p>
 <p>We also need a Procfile in the top directory containing the line <code class="docutils literal"><span class="pre">web:</span> <span class="pre">java</span> <span class="pre">$JVM_OPTS</span> <span class="pre">-cp</span> <span class="pre">target/chatter-standalone.jar</span> <span class="pre">clojure.main</span> <span class="pre">-m</span> <span class="pre">chatter.handler</span></code></p>
 <p>Stop the server using control-c, then restart with the command:</p>
-<p><code class="docutils literal"><span class="pre">lein</span> <span class="pre">with-profile</span> <span class="pre">trampoline</span> <span class="pre">run</span></code></p>
-<p>If the local web page still works; add and commit your changes, then merge your branch back into master.  Push the master branch to github.</p>
+<p><code class="docutils literal"><span class="pre">lein</span> <span class="pre">run</span></code></p>
+<p>If the local web page still works; add and commit your changes, then push to github.</p>
 <p>Now we&#8217;ll deploy to heroku with the following commands:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">heroku</span> <span class="pre">create</span></code></li>
