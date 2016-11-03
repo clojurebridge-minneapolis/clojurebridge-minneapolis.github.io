@@ -1,0 +1,1084 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chapter 2: Concurrency &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ClojureBridgeMN Documentation November 4-5, 2016 documentation" href="index.html"/>
+        <link rel="up" title="Track 2" href="track2.html"/>
+        <link rel="next" title="Chapter 3: ClojureScript" href="cljs.html"/>
+        <link rel="prev" title="Chapter 1: Clojure as a functional language" href="clojure_functional.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ClojureBridgeMN Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                Thursday Nov 3 2016 @ 09:28:27 tmarble
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Installfest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to ClojureBridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="track1.html">Track 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="track2.html">Track 2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="clojure_functional.html">Chapter 1: Clojure as a functional language</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 2: Concurrency</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#goals">Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#our-story-so-far">Our story so far...</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-conflict">The Conflict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-quest">The Quest</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#some-definitions">Some Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-approach">The approach</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-conversation-database">The Conversation Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-algorithm">The Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#attempt-1-basic-mutable-data">Attempt #1: Basic Mutable Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constructing-the-database">Constructing the database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-the-algorithm">Implementing the algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-the-implementation">Testing the implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-implementing-the-algorithm">Re-implementing the algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-went-wrong">What went wrong</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualizing-mutable-data">Visualizing Mutable Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#attempt-2-coordination-with-locking">Attempt #2: Coordination with Locking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-theory">The theory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-implementation">The implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Testing the implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-analysis">The analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#attempt-3-the-immutable-approach">Attempt #3: The Immutable Approach</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-immutable-data">What is immutable data?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-we-change-it">How can we change it?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-better">Is it better?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#in-conclusion">In conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cljs.html">Chapter 3: ClojureScript</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Clojure Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Connect with the Clojure Community</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ClojureBridgeMN Documentation</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="track2.html">Track 2</a> &raquo;</li>
+      
+    <li>Chapter 2: Concurrency</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/concurrency.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chapter-2-concurrency">
+<h1>Chapter 2: Concurrency<a class="headerlink" href="#chapter-2-concurrency" title="Permalink to this headline">¶</a></h1>
+<p><strong>The Chat Returns</strong></p>
+<p>This is based on the <a class="reference external" href="https://github.com/clojurebridge-minneapolis/track2-functional/">track2-functional</a> repository.</p>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To demonstrate some of Clojure&#8217;s tools for managing concurrency.</li>
+<li>To illustrate higher order functions and functional composition.</li>
+</ul>
+</div>
+<div class="section" id="our-story-so-far">
+<h2>Our story so far...<a class="headerlink" href="#our-story-so-far" title="Permalink to this headline">¶</a></h2>
+<p>The track1 curricula presents a guide for building a simple web-based
+chat application.  The application allows it&#8217;s users to read a single,
+shared conversation and post new messages with using the name and
+message content of their choosing.</p>
+<div class="section" id="the-conflict">
+<h3>The Conflict<a class="headerlink" href="#the-conflict" title="Permalink to this headline">¶</a></h3>
+<p>Because of the anonymous nature our the chat application, it quickly
+becomes very popular.  Because the application does not attempt to limit
+the length of the conversation history, it soon runs out of available
+memory and stops accepting new messages.  This leads frequently restarting
+the program, losing all messages, and fielding complaints from the users
+of the system.</p>
+</div>
+<div class="section" id="the-quest">
+<h3>The Quest<a class="headerlink" href="#the-quest" title="Permalink to this headline">¶</a></h3>
+<p>After an in-depth study of the problem, it is determined that the
+application&#8217;s behavior can be fixed, and the expectations of the users
+accommodated, by:</p>
+<ul class="simple">
+<li>Limiting the number of messages kept in the chat history.</li>
+<li>Keeping a running total of all the messages ever posted.</li>
+<li>Retaining a count of the number of messages posted by each user.</li>
+</ul>
+<p>In this section we will present a pattern for implementing these features,
+followed by a series of <strong>solutions</strong> that provide varying degrees
+<strong>correctness</strong>.</p>
+</div>
+</div>
+<div class="section" id="some-definitions">
+<h2>Some Definitions<a class="headerlink" href="#some-definitions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Mutable:  Something that can be changed (mutated).</li>
+<li>Immutable:  Something that is unchangeable.</li>
+<li>Imperative:  A command, sometimes a request.</li>
+<li>Expression:  A symbol or combination of symbols which can be
+evaluated to produce a result.</li>
+</ul>
+</div>
+<div class="section" id="the-approach">
+<h2>The approach<a class="headerlink" href="#the-approach" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-conversation-database">
+<h3>The Conversation Database<a class="headerlink" href="#the-conversation-database" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li>The chat conversation will be stored in a <code class="docutils literal"><span class="pre">Map</span></code>, a collection of
+key/value pairs, also known as an <em>associative array</em>, <em>dictionary</em>,
+or <em>hash</em>.</li>
+<li>This <code class="docutils literal"><span class="pre">Map</span></code> will contain four (4) fields:</li>
+</ol>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">limit</span></code>:  A number indicating the maximum number of messages to retain.</li>
+<li><code class="docutils literal"><span class="pre">messages</span></code>:  A list holding the message history.</li>
+<li><code class="docutils literal"><span class="pre">counts</span></code>:  Another <code class="docutils literal"><span class="pre">Map</span></code> where each key is the name of a user and each
+value is the number of messages sent by that user.</li>
+<li><code class="docutils literal"><span class="pre">total</span></code>:  A counter of all messages sent over the lifetime of this
+conversation.</li>
+</ul>
+<p>Or, to put it more simply, a JSON representation of the conversation database
+would look like this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>{ &quot;limit&quot;    : 20,
+  &quot;messages&quot; : [
+                { &quot;name&quot;: &quot;Alice&quot;,
+                  &quot;message&quot;: &quot;Has anyone seen the white rabbit?&quot;
+                },
+                { &quot;name&quot;: &quot;White Rabbit&quot;,
+                  &quot;message&quot;: &quot;I&#39;m Late!&quot;
+                }
+              ],
+  &quot;total&quot;    : 2,
+  &quot;counts&quot;   : { &quot;Alice&quot;: 1,
+                 &quot;White Rabbit&quot;: 1
+               }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-algorithm">
+<h3>The Algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>When a new message is received:</p>
+<ol class="simple">
+<li>Create a new message record using the <code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">message</span></code> provided by
+the user.</li>
+<li>Add this new message record to the front of the chat history.</li>
+<li>If the conversation contains more messages than what the <code class="docutils literal"><span class="pre">limit</span></code> specifies,
+then remove the excess entries from the tail of the list.</li>
+<li>Increment the <code class="docutils literal"><span class="pre">total</span></code> counter for the conversation.</li>
+<li>Find the message count for the user, and increment that too.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="attempt-1-basic-mutable-data">
+<h2>Attempt #1: Basic Mutable Data<a class="headerlink" href="#attempt-1-basic-mutable-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="constructing-the-database">
+<h3>Constructing the database<a class="headerlink" href="#constructing-the-database" title="Permalink to this headline">¶</a></h3>
+<p>In order to illustrate some of the differences in how mutable and immutable
+data types are used, this example will build a conversation database using
+Java&#8217;s basic, mutable <code class="docutils literal"><span class="pre">HashMap</span></code> and <code class="docutils literal"><span class="pre">LinkedList</span></code> classes rather than Clojure&#8217;s
+native, immutable, persistent maps, lists, and vectors.  Because this example
+uses specific Java classes, Clojure&#8217;s <em>Java interop</em> support is used to
+create and interact with these native Java classes and objects.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn new-mutable-conversation-db
+  [message-limit]
+  (let [conversation (new HashMap)]
+    (.put conversation :limit    message-limit)
+    (.put conversation :total    0)
+    (.put conversation :counts   (new HashMap))
+    (.put conversation :messages (new LinkedList))))
+    conversation
+    ))
+</pre></div>
+</div>
+<p>The example above is written in an imperative style, as a series of commands.</p>
+<ol class="simple">
+<li>Construct a new <code class="docutils literal"><span class="pre">HashMap</span></code> and give it then name <code class="docutils literal"><span class="pre">conversation</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">put</span></code> four new entries into the <code class="docutils literal"><span class="pre">HashMap</span></code>, defining a fresh conversation.</li>
+<li>Return the configured <code class="docutils literal"><span class="pre">conversation</span></code>.</li>
+</ol>
+<p>If <code class="docutils literal"><span class="pre">conversation</span></code> wasn&#8217;t present, and the function ended with one of the calls
+to <code class="docutils literal"><span class="pre">(.put</span> <span class="pre">conversation</span> <span class="pre">...)</span></code> instead, then the function would try to return
+the result from that <code class="docutils literal"><span class="pre">(.put</span> <span class="pre">...)</span></code> call, which would be nothing, <code class="docutils literal"><span class="pre">nil</span></code>, since
+a <code class="docutils literal"><span class="pre">put</span></code> on a <code class="docutils literal"><span class="pre">Map</span></code> is a <code class="docutils literal"><span class="pre">void</span></code> method in Java.</p>
+<p>Fortunately, Clojure provides a simpler way to write the same code with less
+repetition, and less room for human error.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn new-mutable-conversation-db
+  [message-limit]
+  (doto (new HashMap)
+    (.put :limit    message-limit)
+    (.put :total    0)
+    (.put :counts   (new HashMap))
+    (.put :messages (new LinkedList))))
+</pre></div>
+</div>
+<p>This <code class="docutils literal"><span class="pre">doto</span></code> form will take it&#8217;s first argument, a new <code class="docutils literal"><span class="pre">HashMap</span></code> in this
+case, then use it as the first argument to each of the <code class="docutils literal"><span class="pre">(.put</span> <span class="pre">...)</span></code> calls,
+and return the now mutated object.  Clojure contains many such shorthand
+forms to reduce common redundancies, and ensure consistent behavior.</p>
+</div>
+<div class="section" id="implementing-the-algorithm">
+<h3>Implementing the algorithm<a class="headerlink" href="#implementing-the-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>Clojure is designed for writing expression-oriented, functional logic with
+immutable values, but as we saw in the conversation constructor above, the
+language doesn&#8217;t prevent you from writing imperative, mutating logic when
+needed.  Mutable data and imperative logic go hand-in-hand.  Since this
+function will be adding a new message to a mutable conversation database,
+the code has an imperative flow to it.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn mutating-add-message
+  [conversation name new-message]
+  (let [limit    (.get conversation :limit)
+        total    (.get conversation :total)
+        counts   (.get conversation :counts)
+        messages (.get conversation :messages)]
+
+    (doto counts
+      (.put name (inc (.getOrDefault counts name 0))))
+
+    (doto messages
+      (.addFirst (doto (new HashMap)
+                   (.put :name name)
+                   (.put :message new-message))))
+
+    (loop []
+      (when (&lt; limit (.size messages))
+            (.removeLast messages)
+            (recur)))
+
+    (doto conversation
+      (.put :total (inc total)))))
+
+</pre></div>
+</div>
+<p>To restate this in English:</p>
+<ol class="simple">
+<li>Get the <code class="docutils literal"><span class="pre">:limit</span></code>, <code class="docutils literal"><span class="pre">:total</span></code>, <code class="docutils literal"><span class="pre">:counts</span></code>, and <code class="docutils literal"><span class="pre">:messages</span></code> fields
+from the received conversation.</li>
+<li>Update the <code class="docutils literal"><span class="pre">counts</span></code> by incrementing the count for the provided <code class="docutils literal"><span class="pre">name</span></code>.</li>
+<li>Construct a new message and add it to the front of the <code class="docutils literal"><span class="pre">messages</span></code> list.</li>
+<li>Remove any excess <code class="docutils literal"><span class="pre">messages</span></code> using a loop</li>
+<li>Update the <code class="docutils literal"><span class="pre">total</span></code> number of messages for the conversation.</li>
+<li>Return the conversation.</li>
+</ol>
+<p>Each of the steps mutates, or changes, the conversation data in-place.
+This is likely a familiar pattern, but as we shall discover not only is
+the code more verbose than equivalent expression based, functional code,
+making it safe for multithreaded use can be challenge.</p>
+<p>Now that we have these two functions <code class="docutils literal"><span class="pre">new-mutable-conversation-db</span></code> and
+<code class="docutils literal"><span class="pre">mutating-add-message</span></code> we can now run some simple experiments using these
+functions.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (new-mutable-conversation-db 20)
+
+{:counts {}, :limit 20, :total 0, :messages ()}
+
+=&gt; (mutating-add-message
+     (new-mutable-conversation-db 20)
+     &quot;Alice&quot;
+     &quot;Friends, Romans, countryman&quot;)
+
+{:counts {&quot;Alice&quot; 1}, :limit 20, :total 1,
+ :messages ({:name &quot;Alice&quot;, :message &quot;Friends, Romans, countryman&quot;})}
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-the-implementation">
+<h3>Testing the implementation<a class="headerlink" href="#testing-the-implementation" title="Permalink to this headline">¶</a></h3>
+<p>Since we expect multiple people to use this application simultaneously,
+having a test case that can simulate this type of parallel activity would
+let us verify the correctness of our code.</p>
+<p>First let&#8217;s load the test code, and then switch to namespace so that we
+can use some of the tests.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (load &quot;/chatter/handler_test&quot;)
+
+nil
+
+=&gt; (in-ns &#39;chatter.handler-test)
+
+ #&lt;Namespace chatter.handler-test&gt;
+</pre></div>
+</div>
+<p>In the <code class="docutils literal"><span class="pre">chatter.handler-test</span></code> namespace you can find a
+<code class="docutils literal"><span class="pre">simulate-conversation</span></code> function that provides an example of we can write
+a test that exercises our code in parallel.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn simulate-conversation
+  [constructor message-limit add-message message-count]
+  (let [conv     (constructor message-limit)
+        names    [&quot;Alice&quot; &quot;Bob&quot; &quot;Cindy&quot; &quot;Doug&quot;]
+        messages [&quot;Hello&quot;
+                  &quot;Good news everyone!&quot;
+                  &quot;What are we going to do tonight Brain?&quot;]]
+    (doall
+      (pmap (partial add-message conv)
+            (take message-count (cycle names))
+            (take message-count (cycle messages))
+            ))
+    conv))
+</pre></div>
+</div>
+<p>This <code class="docutils literal"><span class="pre">simulate-conversation</span></code> function takes four arguments.  Two of those
+arguments, <code class="docutils literal"><span class="pre">constructor</span></code> and <code class="docutils literal"><span class="pre">add-message</span></code>, are expected to be functions.
+The simulator will use the <code class="docutils literal"><span class="pre">constructor</span></code> function to create a new
+conversation of <code class="docutils literal"><span class="pre">message-limit</span></code> messages.  The <code class="docutils literal"><span class="pre">add-message</span></code> function will
+be used to add <code class="docutils literal"><span class="pre">message-count</span></code> messages to the conversation.</p>
+<blockquote>
+<div><p><strong>A few amazing features</strong></p>
+<p><strong>Infinite Lists:</strong>
+Computers do not have infinite memory, storage, or processing capacity, so
+something like infinite lists may sound like a strange capability.  The
+simulator creates two small lists, <code class="docutils literal"><span class="pre">names</span></code> and <code class="docutils literal"><span class="pre">messages</span></code> that it will use
+for the <code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">message</span></code> arguments when calling the <code class="docutils literal"><span class="pre">add-message</span></code>
+function.  Passing these small lists to the <code class="docutils literal"><span class="pre">cycle</span></code> function will return an
+infinite list that cycles through the list of provided values.  From this
+infinite list the simulator will <code class="docutils literal"><span class="pre">take</span></code> a finite number of values.  This is
+made possible by <em>Lazy Evaluation</em>.  By using a lazily generated list the
+program will likely never have a full copy of the list in memory at any
+time.  The contents of the list will be generated as it is read. As new
+values are read from the beginning of the list they will be discarded,
+leaving the remainder of the list, which is just the continuation of the
+lazy list, will retained.</p>
+<p>For fun you can try this out in your REPL, but remember to <code class="docutils literal"><span class="pre">take</span></code> a limited
+number of values, otherwise
+an infinite list can crash the REPL.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (take 10 (cycle [&quot;Alice&quot; &quot;Bob&quot; &quot;Cindy&quot; &quot;Doug&quot;]))
+
+(&quot;Alice&quot; &quot;Bob&quot; &quot;Cindy&quot; &quot;Doug&quot; &quot;Alice&quot; &quot;Bob&quot; &quot;Cindy&quot; &quot;Doug&quot; &quot;Alice&quot; &quot;Bob&quot;)
+</pre></div>
+</div>
+<p><strong>Currying:</strong>
+If you look for uses of <code class="docutils literal"><span class="pre">add-message</span></code> in the <code class="docutils literal"><span class="pre">simulate-conversation</span></code> function,
+you will find it wrapped with the <code class="docutils literal"><span class="pre">partial</span></code> function.  This is a form of
+<em>functional composition</em>.  For example, if I wanted a function that doubles
+a number, I could use <code class="docutils literal"><span class="pre">partial</span></code> along with the multiplication function to
+to combine <code class="docutils literal"><span class="pre">*</span></code> with an argument of <code class="docutils literal"><span class="pre">2</span></code> thus <em>composing</em> a doubling function.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(def double (partial * 2))
+</pre></div>
+</div>
+<p>Calling <code class="docutils literal"><span class="pre">(double</span> <span class="pre">5)</span></code> would become <code class="docutils literal"><span class="pre">(*</span> <span class="pre">2</span> <span class="pre">5)</span></code>.  In the simulator, I always
+want to call the <code class="docutils literal"><span class="pre">add-message</span></code> function on <code class="docutils literal"><span class="pre">conv</span></code>, so <code class="docutils literal"><span class="pre">partial</span></code> takes care
+of that for me, and turns <code class="docutils literal"><span class="pre">add-message</span></code> into a function of two arguments
+instead of three.</p>
+<p><strong>Easy Parallelism:</strong>
+Like the <code class="docutils literal"><span class="pre">map</span></code> function, <code class="docutils literal"><span class="pre">pmap</span></code> will apply a function to each entry in a
+list of values, and return a new list composed of the results.
+Additionally, <code class="docutils literal"><span class="pre">pmap</span></code> will apply these functions in parallel using a pool
+of threads.  For long-running tasks, this can reduce the total time needed
+to process the entire collection.</p>
+</div></blockquote>
+<p>Let&#8217;s run the conversation simulator and see what we get.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (simulate-conversation
+      new-mutable-conversation-db 20
+      mutating-add-message 500)
+
+NoSuchElementException   java.util.LinkedList.removeLast (LinkedList.java:283)
+</pre></div>
+</div>
+<p>The shock, the horror, the failure.  The simple explanation for failures like
+this is that Java&#8217;s simple data structures, like LinkedList and HashMap,
+aren&#8217;t &#8220;thread safe&#8221;, they can&#8217;t be modified by two threads at the same time.</p>
+</div>
+<div class="section" id="re-implementing-the-algorithm">
+<h3>Re-implementing the algorithm<a class="headerlink" href="#re-implementing-the-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>Java, and many other languages, provide concurrent, thread-safe versions
+of common collections types.  So let&#8217;s whip up an alternate implementation of
+<code class="docutils literal"><span class="pre">new-mutable-conversation-db</span></code>.  This version will be called
+<code class="docutils literal"><span class="pre">new-mutable-concurrent-conversation-db</span></code> and will use alternate, thread-safe
+collections.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn new-mutable-concurrent-conversation-db
+  [message-limit]
+  (doto (new ConcurrentHashMap)
+    (.put :limit    message-limit)
+    (.put :total    0)
+    (.put :counts   (new ConcurrentHashMap))
+    (.put :messages (new ConcurrentLinkedDeque))))
+</pre></div>
+</div>
+<p>The two classes chosen, <code class="docutils literal"><span class="pre">ConcurrentHashMap</span></code> and <code class="docutils literal"><span class="pre">ConcurrentLinkedDequeu</span></code>,
+implement the same interfaces as their simpler non-thread-safe counterparts.
+So we can still use the <code class="docutils literal"><span class="pre">mutating-add-message</span></code> function without any changes
+to add messages to a conversation.  Below are some simple test to verify
+the new constructor function works, and that <code class="docutils literal"><span class="pre">mutating-add-message</span></code> can
+update it correctly.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (new-mutable-concurrent-conversation-db 20)
+
+{:counts {}, :limit 20, :total 0, :messages #&lt;ConcurrentLinkedDeque []}
+
+=&gt; (mutating-add-message
+     (new-mutable-concurrent-conversation-db 20)
+     &quot;Alice&quot;
+     &quot;Friends, Romans, countryman&quot;)
+
+{:counts {&quot;Alice&quot; 1}, :limit 20, :total 1,
+ :messages #&lt;ConcurrentLinkedDeque [{:name=Alice, :message=Friends, Romans, countryman}]&gt;}
+</pre></div>
+</div>
+<p>So far, so good.  Next let&#8217;s try using it with the parallel simulator and
+see how it holds up.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (simulate-conversation
+     new-mutable-concurrent-conversation-db 20
+     mutating-add-message 500)
+
+{:counts { ... }, :limit 20, :total ...,
+ :messages #&lt;ConcurrentLinkedDeque [ ... ]&gt;}
+</pre></div>
+</div>
+<p>For brevity, the result has been truncated.  To quickly check the results,
+the value of <code class="docutils literal"><span class="pre">:total</span></code> should by 500, and the sum of the per-user message
+counts should also be 500.  If the values you see don&#8217;t add up, then try
+running the simulation and checking the results a couple more times to see
+what comes back.</p>
+</div>
+<div class="section" id="what-went-wrong">
+<h3>What went wrong<a class="headerlink" href="#what-went-wrong" title="Permalink to this headline">¶</a></h3>
+<p>After studying the results from simulator using conversations constructed
+from either basic mutable collections or even thread-safe collections,
+it should be apparent developing thread-safe code can be very challenging.
+There are very fundamental reasons for this complexity, as the problem
+doesn&#8217;t just exist in the choice of data structures, but exists all the
+way down to the most basic level of the computing machinery, and is even
+present everywhere in the physical world.</p>
+<p>The most basic reason these coordination problems exist is because there are
+three steps that need to occur for any change to be made.  First the current
+state of the thing you wish to change must be observed.  Second, a new state,
+or value, will be calculated based on the observed state.  Last, the data
+will be updated with the new value or state.  If two or more tasks are
+actively observing, calculating, and updating even a single address in memory,
+changes made by one task are invalidating the observations and calculations
+made by the other tasks, but the other tasks continue on anyway, oblivious to
+these changes.  This leads to lost changes, or changes that are inconsistent
+with other changes.</p>
+<p>For example, let&#8217;s imagine a program has been written where two threads
+attempt to increment the same number in memory.  If one thread reads the
+value, increments it, and writes it back to memory all before the other
+thread performs the same steps, then we will see that the original value
+was incremented twice.  On the other hand, if both threads read the value
+before the other has made the change, then both threads will independently
+increment the same value, and calculate the same result.  Each thread will
+then write it&#8217;s result back to memory, and outcome will be the original
+value only incremented once instead of twice.</p>
+</div>
+<div class="section" id="visualizing-mutable-data">
+<h3>Visualizing Mutable Data<a class="headerlink" href="#visualizing-mutable-data" title="Permalink to this headline">¶</a></h3>
+<p><img src="https://i.vimeocdn.com/video/511735825_1280x939.jpg"
+alt="Mutating Data" width="426" height="313"/>
+<a class="reference external" href="https://player.vimeo.com/video/122669829?byline=0&amp;portrait=0">Mutating State</a></p>
+</div>
+</div>
+<div class="section" id="attempt-2-coordination-with-locking">
+<h2>Attempt #2: Coordination with Locking<a class="headerlink" href="#attempt-2-coordination-with-locking" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-theory">
+<h3>The theory<a class="headerlink" href="#the-theory" title="Permalink to this headline">¶</a></h3>
+<p>One way of coordinating changes across threads is through <em>locking</em>.  With
+locking we can create a barrier that will only allow one thread access to
+a variable at a time.  The first thread to acquire the lock will continue
+with it&#8217;s work.  Any other threads that attempt to acquire the lock while
+it&#8217;s being held will pause until the lock has been released.</p>
+</div>
+<div class="section" id="the-implementation">
+<h3>The implementation<a class="headerlink" href="#the-implementation" title="Permalink to this headline">¶</a></h3>
+<p>Since locking is something that is performed to coordinate changes to a
+variable, we will write a new function for adding messages to the
+conversation database.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn locking-add-message
+  [conversation name message]
+  (locking conversation
+    (mutating-add-message conversation name message)))
+</pre></div>
+</div>
+<p>This is simple enough.  Just like the <code class="docutils literal"><span class="pre">mutating-add-message</span></code> function, this
+function takes the same three arguments, <code class="docutils literal"><span class="pre">conversation</span></code>, <code class="docutils literal"><span class="pre">name</span></code>, and
+<code class="docutils literal"><span class="pre">message</span></code>.  It uses the <code class="docutils literal"><span class="pre">locking</span></code> function to acquire a lock on the
+<code class="docutils literal"><span class="pre">conversation</span></code> variable it received, and then reuses the existing
+<code class="docutils literal"><span class="pre">mutating-add-message</span></code> function to perform the change.  Syntactically we
+can see how <code class="docutils literal"><span class="pre">locking</span></code> the <code class="docutils literal"><span class="pre">conversation</span></code> literally wraps the call to
+<code class="docutils literal"><span class="pre">mutating-add-message</span></code>.</p>
+</div>
+<div class="section" id="id1">
+<h3>Testing the implementation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s try running the simulator with the new <code class="docutils literal"><span class="pre">locking-add-message</span></code> function.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (simulate-conversation
+     new-mutable-conversation-db 20
+     locking-add-message 500)
+
+{:counts {&quot;Bob&quot; 125, &quot;Alice&quot; 125, &quot;Cindy&quot; 125, &quot;Doug&quot; 125},
+ :limit 20, :total 500,
+ :messages ( ... )}
+
+
+=&gt; (simulate-conversation
+     new-mutable-concurrent-conversation-db 20
+     locking-add-message 500)
+
+{:counts {&quot;Bob&quot; 125, &quot;Alice&quot; 125, &quot;Cindy&quot; 125, &quot;Doug&quot; 125},
+ :limit 20, :total 500,
+ :messages #&lt;ConcurrentLinkedDeque [ ... ]&gt;}
+
+</pre></div>
+</div>
+<p>These results are much better.  The <code class="docutils literal"><span class="pre">:total</span></code> field matches the number of
+messages added to the conversation, and the per-user <code class="docutils literal"><span class="pre">:counts</span></code> also add up
+to the expected number of messages.  Now we can update our application to
+build the conversation database with either the <code class="docutils literal"><span class="pre">new-mutable-conversation-db</span></code>
+or the <code class="docutils literal"><span class="pre">new-mutable-concurrent-conversation-db</span></code> and add messages with the
+<code class="docutils literal"><span class="pre">locking-add-message</span></code> function and all should be well.</p>
+<p>The changes can be made in the <code class="docutils literal"><span class="pre">chatter.handler</span></code> namespace.  Find the
+definition of <code class="docutils literal"><span class="pre">CONVERSATION-DB</span></code> and update it to use the constructor of
+your choice, then navigate down a little further and update the route
+for <code class="docutils literal"><span class="pre">(POST</span> <span class="pre">&quot;/&quot;</span> <span class="pre">[]</span> <span class="pre">...)</span></code> to call <code class="docutils literal"><span class="pre">locking-add-message</span></code> instead of
+<code class="docutils literal"><span class="pre">mutating-add-message</span></code>.</p>
+<p>The server can be started from the command-line using the command
+<code class="docutils literal"><span class="pre">lein</span> <span class="pre">ring</span> <span class="pre">server</span></code>, or can be started from within the REPL using the command
+<code class="docutils literal"><span class="pre">(start-server)</span></code>.  Either of these options should open up your web brower
+and direct it to the application.  Go ahead and add a couple messages to
+make sure it works for you.</p>
+<p>With the server running there is another round of testing we can perform.
+Because almost all of the data in the conversation database is used to build
+the HTML shown to the user, we could develop a test that sends a new message
+to the server, the same way your web browser would, then reads the HTML
+response, and reconstructs the state the conversation database was in
+at the time the page was generated.  With this reconstructed view of the
+conversation database, the test can verify a couple of requirements:</p>
+<ol class="simple">
+<li>The total number of messages equals the sum of the per-user message counts.</li>
+<li>The conversation contains the message sent by the test.</li>
+</ol>
+<p>If you are interested in seeing how the conversation data is extracted from
+the rendered HTML, you can review and experiment with the functions
+<code class="docutils literal"><span class="pre">parse-chat-response</span></code>, <code class="docutils literal"><span class="pre">extract-chat-user-counts</span></code>, and <code class="docutils literal"><span class="pre">extract-chat-messages</span></code>.</p>
+<p>In the meantime, you can use the <code class="docutils literal"><span class="pre">post-message</span></code> function to send a message to
+your server, and display the parsed response.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn post-message
+  [url name message]
+  (parse-chat-response
+    (http/post url {:form-params {:name name :msg message}
+                    :as :stream})))
+
+=&gt; (post-message
+     &quot;http://localhost:8000/&quot;
+     &quot;The Cat&quot;
+     &quot;I&#39;m hungry!&quot;)
+
+{:messages ({:name &quot;The Cat&quot;, :message &quot;I&#39;m hungry!&quot;}),
+ :counts {&quot;The Cat&quot; 1},
+ :total 1}
+</pre></div>
+</div>
+<p>In this example the URL <code class="docutils literal"><span class="pre">http://localhost:8000/</span></code> should match the URL shown
+in your browser.</p>
+<p>The only piece of information missing from the reconstructed conversation
+is the message limit.  If we knew this, we could also confirm that the number
+of messages never exceeded that limit, but we will let that slide.</p>
+<p>Building on <code class="docutils literal"><span class="pre">post-message</span></code> we can write a <code class="docutils literal"><span class="pre">post-message-and-check</span></code> function
+to inspect the result and ensure it meets the expectations.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn post-message-and-check
+  [url name message]
+  (let [expected-message {:name name :message message}
+        conv (post-message url name message)]
+    (and (is (some (partial = expected-message)
+                   (:messages conv))
+             &quot;Must see my own new message&quot;)
+
+         (is (= (:total conv)
+                (reduce + (vals (:counts conv))))
+             &quot;Total must equal the sum of the user counts&quot;)
+         conv)
+    )))
+
+=&gt; (post-message-and-check
+     &quot;http://localhost:8000/&quot;
+     &quot;The Cat&quot;
+     &quot;Still hungry!&quot;)
+
+true
+</pre></div>
+</div>
+<p>Now that the pieces are in place, the <code class="docutils literal"><span class="pre">simulate-conversation</span></code> function can
+once again be used to simulate a conversation using HTTP calls instead of
+just operating directly on local data.  If we look at the
+<code class="docutils literal"><span class="pre">post-message-and-check</span></code> function the arguments it expects are similar to
+both the <code class="docutils literal"><span class="pre">mutating-add-message</span></code> and <code class="docutils literal"><span class="pre">locking-add-message</span></code> functions.  The
+second and third arguments are identical, the only difference is the first
+argument to <code class="docutils literal"><span class="pre">post-message-and-check</span></code> is a URL instead of a data structure.
+So, in place of the constructor function, we can pass
+<code class="docutils literal"><span class="pre">(constantly</span> <span class="pre">&quot;http://localhost:8000&quot;)</span></code> and <code class="docutils literal"><span class="pre">nil</span></code> as the two constructor
+parameters to <code class="docutils literal"><span class="pre">simulate-conversation</span></code>.  Another pair of arguments that
+would work are <code class="docutils literal"><span class="pre">identity</span></code> and <code class="docutils literal"><span class="pre">&quot;http://localhost:8000/&quot;</span></code>.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (simulate-conversation
+     (constantly &quot;http://localhost:8000/&quot;) nil
+     post-message-and-check 500)
+</pre></div>
+</div>
+<p>At this stage, this will likely produce a long series of failure messages.</p>
+<p>What could have gone wrong?  Every time the program adds a new message, it
+uses <code class="docutils literal"><span class="pre">locking</span></code> to ensure no other user is also adding a message, and then
+uses the updated data to render the page.  What happens when we are reading
+the data from the conversation?  The <code class="docutils literal"><span class="pre">locking</span></code> function hasn&#8217;t been used
+anywhere that reads data yet, just for the updating.  So if one thread were
+updating the data, another thread, or even several threads, could still read
+from the conversation while the update is in progress, and before the data
+is once again consistent.  This means that we not only need to lock all places
+where the conversation data is modified, we also need to use <code class="docutils literal"><span class="pre">locking</span></code> when
+the data is being read and rendered into HTML.  This affects not only the
+<code class="docutils literal"><span class="pre">(POST</span> <span class="pre">&quot;/&quot;</span> <span class="pre">[]</span> <span class="pre">...</span> <span class="pre">)</span></code> route used to add a new message, but also the
+<code class="docutils literal"><span class="pre">(GET</span> <span class="pre">&quot;/&quot;</span> <span class="pre">[]</span> <span class="pre">...</span> <span class="pre">)</span></code> used to just display the chat messages.</p>
+<p>In a small program, like this chat server, finding every place that the
+conversation data is used isn&#8217;t terribly difficult, but in larger programs
+tracking every place that some data structure is used and ensuring that
+proper locking has been maintained can be a significant amount of effort.
+To globally ensure the consistency of the conversation data, we can use a
+function, idiomatically referred to as <em>middleware</em>, that intercepts every
+request made to the server.  This function can enforce the lock on the
+conversation database, and then the application will always return consistent
+information.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn wrap-with-lock
+  [handler]
+  (fn [request]
+    (locking CONVERSATION-DB
+      (handler request))))
+</pre></div>
+</div>
+<p>In this <code class="docutils literal"><span class="pre">wrap-with-lock</span></code> function we can see the use of a functional
+programming technique called <em>functional composition</em>.  The <code class="docutils literal"><span class="pre">handler</span></code>
+argument to <code class="docutils literal"><span class="pre">wrap-with-lock</span></code> will be a function that can handle the incoming
+requests.  The <code class="docutils literal"><span class="pre">wrap-with-lock</span></code> will return a new function, as indicated by
+the <code class="docutils literal"><span class="pre">(fn</span> <span class="pre">[request]</span> <span class="pre">...</span> <span class="pre">)</span></code> form that will receive the <code class="docutils literal"><span class="pre">request</span></code> first, acquire
+a lock on the <code class="docutils literal"><span class="pre">CONVERSATION-DB</span></code>, and then pass the <code class="docutils literal"><span class="pre">request</span></code> to the original
+<code class="docutils literal"><span class="pre">handler</span></code> function.  Using this technique of wrapping a function in another
+function we can progressively build up increasingly elaborate request
+handling pipelines while keeping each individual step as simple as it needs
+to be.  Another instance of <em>functional composition</em> is the <code class="docutils literal"><span class="pre">partial</span></code>
+function used in <code class="docutils literal"><span class="pre">simulate-conversation</span></code> to construct a new function with
+fewer arguments.</p>
+</div>
+<div class="section" id="the-analysis">
+<h3>The analysis<a class="headerlink" href="#the-analysis" title="Permalink to this headline">¶</a></h3>
+<p>Writing programs that can accurately and consistently manage changes to
+mutable data structures across multiple active threads is very difficult.
+Often the shortcomings in the code won&#8217;t be caught through basic correctness
+testing, but are found in the wild, on active production systems, where the
+impact may range from merely obnoxious to very disruptive and damaging.
+Finding every instance in a large program where two procedures may share,
+and possibly make changes to, the same data structure often borders on
+impossible.</p>
+<p>This is a small program with an easy to find hinge point through which all
+data in and out of a single data structure will pass.  Because of this simple
+design, controlling access to the data through locking is relatively easy
+to accomplish.  However there is a significant down side to this approach:
+only one thread, representing the actions of one user, can interact with
+the conversation data in any way at any time.  The core of the application
+has become serialized, single-threaded, and the ability to serve many
+users at once has been substantially diminished.</p>
+</div>
+</div>
+<div class="section" id="attempt-3-the-immutable-approach">
+<h2>Attempt #3: The Immutable Approach<a class="headerlink" href="#attempt-3-the-immutable-approach" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-immutable-data">
+<h3>What is immutable data?<a class="headerlink" href="#what-is-immutable-data" title="Permalink to this headline">¶</a></h3>
+<p>Fortunately, Clojure provides a simpler alternative to the lock-and-mutate
+approach.  Clojure&#8217;s standard collections types are very different from the
+collections typically found in imperative languages.  Most importantly,
+they are immutable.  Immutable collections cannot be modified after they
+have been constructed.  If a value can&#8217;t be modified, it can be shared and
+reused without the need to worry about modifications of any sort.  No matter
+how many times the value is shared, it will never be modified.  This removes
+the need for techniques like <em>defensive copying</em> and <em>read-locking</em>.</p>
+<p>It may sound strange to try to work with immutable data, but it&#8217;s surprisingly
+easy in Clojure.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (let [profile {:given-name &quot;Grace&quot;
+                  :family-name &quot;Hopper&quot;}]
+     (assoc profile :title &quot;Rear Admiral&quot;))
+
+{:given-name &quot;Grace&quot; :family-name &quot;Hopper&quot; :title &quot;Rear Admiral&quot;}
+</pre></div>
+</div>
+<p>In the example above a <code class="docutils literal"><span class="pre">Map</span></code> is created with the keys <code class="docutils literal"><span class="pre">:given-name</span></code> and
+<code class="docutils literal"><span class="pre">:family-name</span></code>.  This map value is then given the name <code class="docutils literal"><span class="pre">profile</span></code>.  The
+last line <code class="docutils literal"><span class="pre">(assoc</span> <span class="pre">profile</span> <span class="pre">:title</span> <span class="pre">&quot;Rear</span> <span class="pre">Admiral&quot;)</span></code> returns a new map,
+containing all of the keys and values in the original <code class="docutils literal"><span class="pre">profile</span></code> map, but
+with an additional entry for <code class="docutils literal"><span class="pre">:title</span></code>.  Functions like <code class="docutils literal"><span class="pre">assoc</span></code>, <code class="docutils literal"><span class="pre">dissoc</span></code>,
+<code class="docutils literal"><span class="pre">conj</span></code>, and <code class="docutils literal"><span class="pre">cons</span></code> don&#8217;t modify the collections they operate on, but instead
+always return new collections that reuse the structure of the original value
+when possible, but always return a new immutable collection.  Also you may
+have noticed that since these functions always return a new value, they
+can be more easily written as expressions, rather than imperative statements.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(def safe-inc
+  (fnil inc 0))
+
+(defn new-immutable-conversation-db
+  [message-limit]
+  {:limit message-limit})
+
+(defn immutable-add-message
+  [{:keys [limit total counts messages] :as conversation} name message]
+  {:limit    limit
+   :total    (safe-inc total)
+   :counts   (update-in counts [name] safe-inc)
+   :messages (take limit
+                   (cons {:name name :message message}
+                         messages))})
+</pre></div>
+</div>
+<p>The three functions implement approximately the same functionality present
+in <code class="docutils literal"><span class="pre">new-mutable-conversation-db</span></code> and <code class="docutils literal"><span class="pre">mutating-add-message</span></code>.</p>
+<p>First, the <code class="docutils literal"><span class="pre">safe-inc</span></code> function is composed with <code class="docutils literal"><span class="pre">fnil</span></code> and <code class="docutils literal"><span class="pre">inc</span></code>.  This
+provides a variation of <code class="docutils literal"><span class="pre">inc</span></code> that will replace <code class="docutils literal"><span class="pre">nil</span></code> arguments with <code class="docutils literal"><span class="pre">0</span></code>.
+So <code class="docutils literal"><span class="pre">(safe-inc</span> <span class="pre">nil)</span></code> returns <code class="docutils literal"><span class="pre">1</span></code> instead of throwing a <code class="docutils literal"><span class="pre">NullPointerException</span></code>.</p>
+<p>Second, the <code class="docutils literal"><span class="pre">new-immutable-conversation-db</span></code> constructs an empty conversation
+database.  Because all of the functions that will be used to &#8220;add&#8221; a message
+are null-safe, there is no need to pre-populate any fields other than the
+<code class="docutils literal"><span class="pre">limit</span></code>.</p>
+<p>Last, is the <code class="docutils literal"><span class="pre">immutable-add-message</span></code> function.  Just like the
+<code class="docutils literal"><span class="pre">mutating-add-message</span></code> defined earlier, this function will take three
+arguments: a conversation database, a name, and a new message.  Unlike
+the <code class="docutils literal"><span class="pre">mutating-add-message</span></code> function, this function will leave the original
+conversation database unchanged and return an entirely new conversation
+database that reflects what the new state of the conversation is after the
+new information has been added.</p>
+<ol class="simple">
+<li>A shorthand syntax called <em>destructuring</em> is used to get important
+fields from the original conversation.  This removes several redundant
+lines of code.</li>
+<li>An entirely new map is created using the <code class="docutils literal"><span class="pre">{</span> <span class="pre">}</span></code> map literal form.  No
+need to explicitly call a constructor.</li>
+<li>The value of the <code class="docutils literal"><span class="pre">:limit</span></code> field is copied from the original conversation.</li>
+<li>The <code class="docutils literal"><span class="pre">:total</span></code> field is populated by incrementing the original <code class="docutils literal"><span class="pre">total</span></code> with
+<code class="docutils literal"><span class="pre">safe-inc</span></code> so it doesn&#8217;t matter if it was initially <code class="docutils literal"><span class="pre">nil</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">:counts</span></code> field is updated using the very clever <code class="docutils literal"><span class="pre">update-in</span></code> function.
+The <code class="docutils literal"><span class="pre">update-in</span></code> function &#8220;updates&#8221; a map by applying a function, <code class="docutils literal"><span class="pre">safe-inc</span></code>
+to the value of a key, <code class="docutils literal"><span class="pre">name</span></code>.  This increments the message counter for the
+user who submitted the message.</li>
+<li>Finally, the <code class="docutils literal"><span class="pre">:messages</span></code> field is updated.  The new message item is
+constructed with the literal <code class="docutils literal"><span class="pre">{:name</span> <span class="pre">name</span> <span class="pre">:message</span> <span class="pre">message}</span></code>.  This
+message item is added to the front of the <code class="docutils literal"><span class="pre">messages</span></code> list using <code class="docutils literal"><span class="pre">cons</span></code>.
+If <code class="docutils literal"><span class="pre">messages</span></code> is <code class="docutils literal"><span class="pre">nil</span></code>, <code class="docutils literal"><span class="pre">cons</span></code> will return a new list.  Then <code class="docutils literal"><span class="pre">take</span></code> is
+used to trim the <code class="docutils literal"><span class="pre">messages</span></code> list down to <code class="docutils literal"><span class="pre">limit</span></code> entries.</li>
+</ol>
+<p>Compared to the <code class="docutils literal"><span class="pre">mutating-add-message</span></code> function, this function is much more
+succinct, and hopefully, the intended result is more evident.</p>
+</div>
+<div class="section" id="how-can-we-change-it">
+<h3>How can we change it?<a class="headerlink" href="#how-can-we-change-it" title="Permalink to this headline">¶</a></h3>
+<p>Immutable values that can be shared, retained, and reused are great, but
+this chat application really does need to add and update it&#8217;s data, and
+preserve the changes.</p>
+<p>To safely manage changing values, Clojure provides Atoms.  One way of picturing
+an atom is as a box that can hold one, and only one, thing.  The value held
+in this box can be replaced with a new value through a very specific set of
+steps.</p>
+<ol class="simple">
+<li>The value held be the atom is retrieved.</li>
+<li>A function is applied to this value, returning a new value.</li>
+<li>The new value will replace the current value if, and only if, the current
+value has not already been replaced by another task.</li>
+<li><strong>If the current value of the box, doesn&#8217;t match the original value, then
+the process is repeated from the beginning.</strong>
+Through these steps, the logic needed to change a value is encapsulated in
+a function.  Intermediate values, like those that would exist in a mutating
+process, are never saved in the atom.  The atom can be asked for it&#8217;s current
+value at any time, and you can be confident the value returned will be
+consistent for that point in time.</li>
+</ol>
+<p>To work with atoms we will use two functions <code class="docutils literal"><span class="pre">deref</span></code> and <code class="docutils literal"><span class="pre">swap!</span></code>.  The
+<code class="docutils literal"><span class="pre">deref</span></code> function will return the current contents of an atom, and <code class="docutils literal"><span class="pre">swap!</span></code>
+will be used to change the contents of the atom with a function.</p>
+<p>So, let&#8217;s look at an example and see how this might work.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(defn new-atomic-conversation-db
+  [limit]
+  (atom (new-immutable-conversation-db limit)))
+
+(defn atomic-add-message
+  [conversation-atom name new-message]
+  (swap! conversation-atom immutable-add-message name new-message))
+</pre></div>
+</div>
+<p>In these new functions, both the <code class="docutils literal"><span class="pre">new-immutable-conversation-db</span></code> and the
+<code class="docutils literal"><span class="pre">immutable-add-message</span></code> functions have been reused.  The
+<code class="docutils literal"><span class="pre">new-atomic-conversation-db</span></code> builds a new immutable conversation database,
+and wraps that value in an atom.  The <code class="docutils literal"><span class="pre">atomic-add-message</span></code> function will
+expect to receive an atom containing one of these immutable conversations.
+The <code class="docutils literal"><span class="pre">swap!</span></code> function will pull out the current contents of the atom, and
+apply the <code class="docutils literal"><span class="pre">immutable-add-message</span></code> function to the contents, and will provide
+the <code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">new-message</span></code> values as extra arguments.  Here&#8217;s a way of
+visualizing how <code class="docutils literal"><span class="pre">swap!</span></code> will apply a function and extra arguments to the
+contents of an atom.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(=  (swap! conversation-atom immutable-add-message name new-message)
+    (immutable-add-message (deref conversation-atom) name new-message) )
+</pre></div>
+</div>
+<p>Now to prove that atoms plus immutable values is both consistent and thread
+safe, let&#8217;s run this atomic conversation through the conversation simulator</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (simulate-conversation new-atomic-conversation-db 20 atomic-add-message 500)
+
+ #&lt;Atom@452bceb5: {:limit 20, :total 500,
+                   :counts {&quot;Bob&quot; 125, &quot;Doug&quot; 125, &quot;Alice&quot; 125, &quot;Cindy&quot; 125},
+                   :messages ( ... )}&gt;
+</pre></div>
+</div>
+<p>These results look good, the <code class="docutils literal"><span class="pre">:total</span></code> matches the number of messages we
+asked it to add, and the sum of the per-user <code class="docutils literal"><span class="pre">:counts</span></code> adds up to the total.</p>
+</div>
+<div class="section" id="is-it-better">
+<h3>Is it better?<a class="headerlink" href="#is-it-better" title="Permalink to this headline">¶</a></h3>
+<p>Correctness and consistency are always essential qualities for any
+computational tool we use, but you may be wondering what the performance
+characteristics are.  If two threads are trying to update the same atom,
+one of those will compute a new value for the atom and succeed immediately,
+but the other thread will go through all the work of calculating a new
+value, determine the contents of the atom has already been change, then
+throw away it&#8217;s work and start over.  That sounds like a lot of wasted
+effort.</p>
+<p>In the <code class="docutils literal"><span class="pre">handler-test</span></code> namespace, there is another function called
+<code class="docutils literal"><span class="pre">parallel-add-messages</span></code> this function provides another level of testing
+beyond the conversation simulator.  This test case will run the simulator
+against different versions of the chat algorithm, check the final conversation
+state for correctness, and time how long the process took.  Go ahead and
+uncomment (remove the leading <code class="docutils literal"><span class="pre">;</span></code> character) from the following groups
+of functions:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>         ;;  This should work
+         new-mutable-conversation-db
+         locking-add-message
+         identity
+
+         ;;  This should work too
+         new-mutable-concurrent-conversation-db
+         locking-add-message
+         identity
+
+         ;;  This should work and should perform noticeably better
+         new-atomic-conversation-db
+         atomic-add-message
+         deref
+</pre></div>
+</div>
+<p>Now reload the namespace, run the test, and examine it&#8217;s results.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>=&gt; (parallel-add-messages)
+
+Simulation completed in 1076ms: new-mutable-conversation-db locking-add-message
+
+Simulation completed in 1438ms: new-mutable-concurrent-conversation-db locking-add-message
+
+Simulation completed in 120ms: new-atomic-conversation-db atomic-add-message
+nil
+</pre></div>
+</div>
+<p>The actual times will vary from system to system, and from run-to-run, but
+the overall rankings should be consistent.  The combination of Java&#8217;s
+concurrent data types, and <code class="docutils literal"><span class="pre">locking-add-message</span></code> will be the slowest,
+followed by the simple mutable types implementation with locking, and
+the atomic implementations will be substantially faster.</p>
+<p>It turns out that &#8220;locking&#8221; a value is not cheap, and every time a program
+locks a value that no other thread attempts to access, referred to as an
+<em>uncontested lock</em>, the effort of creating the lock is wasted.  With the
+atomic approach, no locking is required to safely read a value, and the
+computational work of calculating a new value and throwing it away is
+usually less than the cost of maintaining locks.  Additionally, the
+amount of development time needed to ensure the correct implementation
+of a concurrent algorithm is dramatically when using atoms.</p>
+<p>Let&#8217;s wrap up by updating the chat application to use these functions.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(def CONVERSATION-DB
+  (new-atomic-conversation-db 20))
+
+(defroutes app-routes
+  (GET &quot;/&quot; [] (generate-message-view @CONVERSATION-DB))
+  (POST &quot;/&quot; {params :params}
+    (let [name-param (get params &quot;name&quot;)
+          msg-param (get params &quot;msg&quot;)
+          new-messages (atomic-add-message CONVERSATION-DB
+                                           name-param msg-param)]
+      (generate-message-view new-messages name-param)
+      ))
+  (route/resources &quot;/&quot;)
+  (route/not-found &quot;Not Found&quot;))
+
+(def app
+  (wrap-params app-routes))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="in-conclusion">
+<h2>In conclusion<a class="headerlink" href="#in-conclusion" title="Permalink to this headline">¶</a></h2>
+<p>...</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cljs.html" class="btn btn-neutral float-right" title="Chapter 3: ClojureScript" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clojure_functional.html" class="btn btn-neutral" title="Chapter 1: Clojure as a functional language" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 ClojureBridgeMN volunteers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'November 4-5, 2016',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
