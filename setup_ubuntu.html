@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Friday Nov 4 2016 @ 11:08:44 tmarble
+                Friday Nov 4 2016 @ 12:46:16 tmarble
               </div>
             
           
@@ -260,11 +260,14 @@ clojurista@mylaptop$ cd clojure-getting-started
 clojurista@mylaptop$
 </pre></div>
 </div>
-<p>Now you can start the sample application on your laptop using <strong>lein repl</strong>.
-The first two Clojure commands start the application. You can then
+<p>Now you can start the sample application on your laptop using <strong>lein
+repl</strong>.  This could take a long time, and will download many other
+pieces of code it relies on. You should see lines that start with
+<code class="docutils literal"><span class="pre">Retrieving</span> <span class="pre">...</span></code> on your screen.</p>
+<p>Below you see the first two Clojure commands start the application. You can then
 visit the application webpage on your laptop at
 <a class="reference external" href="http://localhost:5000">http://localhost:5000</a>.
-Then you can shut down the application and exit with the last
+Then you can shut down the application and <code class="docutils literal"><span class="pre">(quit)</span></code> with the last
 two commmands.</p>
 <ol class="simple">
 <li><code class="docutils literal"><span class="pre">lein</span> <span class="pre">repl</span></code></li>
@@ -273,7 +276,7 @@ two commmands.</p>
 <li>Now you can open the web page at <a class="reference external" href="http://localhost:5000">http://localhost:5000</a>
 <img alt="heroku test page" src="_images/nc41.png" /></li>
 <li><code class="docutils literal"><span class="pre">(.stop</span> <span class="pre">server)</span></code></li>
-<li><code class="docutils literal"><span class="pre">(exit)</span></code></li>
+<li><code class="docutils literal"><span class="pre">(quit)</span></code></li>
 </ol>
 <div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ lein repl
 Retrieving environ/environ.lein/0.3.1/environ.lein-0.3.1.pom from clojars
@@ -309,7 +312,7 @@ open http://localhost:5000
 user=&gt; (.stop server)
 2016-10-28 14:06:15.811:INFO:oejs.ServerConnector:nREPL-worker-1: Stopped ServerConnector@379cb9a6{HTTP/1.1}{0.0.0.0:5000}
 nil
-user=&gt; (exit)
+user=&gt; (quit)
 Bye for now!
 clojurista@mylaptop$
 </pre></div>
