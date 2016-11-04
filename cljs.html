@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Friday Nov 4 2016 @ 12:46:16 tmarble
+                Friday Nov 4 2016 @ 14:07:41 tmarble
               </div>
             
           
@@ -94,7 +94,10 @@
 <li class="toctree-l2"><a class="reference internal" href="koans.html">Chapter 2: Clojure Koans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="concurrency.html">Chapter 3: Concurrency</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Chapter 4: ClojureScript</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#figwheel">figwheel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#watch-the-flappy-bird-demo-video">Watch the flappy bird demo video</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-flappy-bird-demo">Clone flappy-bird-demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#try-clojurescript-with-flappy-bird">Try ClojureScript with flappy bird</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#going-further">Going further</a></li>
 </ul>
 </li>
 </ul>
@@ -149,9 +152,89 @@
             
   <div class="section" id="chapter-4-clojurescript">
 <h1>Chapter 4: ClojureScript<a class="headerlink" href="#chapter-4-clojurescript" title="Permalink to this headline">¶</a></h1>
-<p><em>NOTE: this page is under construction</em></p>
-<div class="section" id="figwheel">
-<h2>figwheel<a class="headerlink" href="#figwheel" title="Permalink to this headline">¶</a></h2>
+<p>This exercise is to simply give you:</p>
+<ul class="simple">
+<li>a taste of interactive development using ClojureScript (you get a CLJS REPL <em>in the browser</em>)</li>
+<li>examples of JavaScript interop</li>
+<li>pointers to go further</li>
+</ul>
+<div class="section" id="watch-the-flappy-bird-demo-video">
+<h2>Watch the flappy bird demo video<a class="headerlink" href="#watch-the-flappy-bird-demo-video" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://www.youtube.com/watch?v=KZjFVdU8VLI">video</a> only 6 minutes, but gives you the context for flappy-bird.</p>
+<p>Next read (but don&#8217;t follow the instructions yet) the <a class="reference external" href="http://rigsomelight.com/2014/05/01/interactive-programming-flappy-bird-clojurescript.html">blog post</a> about this flappy bird demo.</p>
+</div>
+<div class="section" id="clone-flappy-bird-demo">
+<h2>Clone flappy-bird-demo<a class="headerlink" href="#clone-flappy-bird-demo" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ve updated the flappy-bird-demo in our ClojureBridgeMN organization so
+you can benefit from the latest versions of libraries. After you
+clone it check out our branch with the modifications (because we&#8217;re
+hoping Bruce will accept our changes in a Pull Request).</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ git clone git clone https://github.com/clojurebridge-minneapolis/flappy-bird-demo.git
+clojurista@mylaptop$ git checkout tmarble/ClojureBridgeMN-track2
+</pre></div>
+</div>
+</div>
+<div class="section" id="try-clojurescript-with-flappy-bird">
+<h2>Try ClojureScript with flappy bird<a class="headerlink" href="#try-clojurescript-with-flappy-bird" title="Permalink to this headline">¶</a></h2>
+<p>Use <strong><a class="reference external" href="https://github.com/bhauman/lein-figwheel/">lein figwheel</a></strong> to
+create an interactive browser REPL:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ lein figwheel
+Figwheel: Cleaning because dependencies changed
+Figwheel: Cutting some fruit, just a sec ...
+Retrieving figwheel/figwheel/0.5.4-7/figwheel-0.5.4-7.pom from clojars
+Retrieving ...
+Figwheel: Validating the configuration found in project.clj
+Figwheel: Configuration Valid :)
+Figwheel: Starting server at http://0.0.0.0:3449
+Figwheel: Watching build - flappy-bird-demo
+Figwheel: Cleaning build - flappy-bird-demo
+Compiling &quot;resources/public/js/flappy_bird_demo.js&quot; from [&quot;src&quot;]...
+Successfully compiled &quot;resources/public/js/flappy_bird_demo.js&quot; in 13.933 seconds.
+Figwheel: Starting CSS Watcher for paths  [&quot;resources/public/css&quot;]
+Launching ClojureScript REPL for build: flappy-bird-demo
+Figwheel Controls:
+          (stop-autobuild)                ;; stops Figwheel autobuilder
+          (start-autobuild [id ...])      ;; starts autobuilder focused on optional ids
+          (switch-to-build id ...)        ;; switches autobuilder to different build
+          (reset-autobuild)               ;; stops, cleans, and starts autobuilder
+          (reload-config)                 ;; reloads build config and resets autobuild
+          (build-once [id ...])           ;; builds source one time
+          (clean-builds [id ..])          ;; deletes compiled cljs target files
+          (print-config [id ...])         ;; prints out build configurations
+          (fig-status)                    ;; displays current state of system
+  Switch REPL build focus:
+          :cljs/quit                      ;; allows you to switch REPL to another build
+    Docs: (doc function-name-here)
+    Exit: Control+C or :cljs/quit
+ Results: Stored in vars *1, *2, *3, *e holds last exception object
+Prompt will show when Figwheel connects to your application
+To quit, type: :cljs/quit
+cljs.user=&gt; (println 123)
+123
+nil
+cljs.user=&gt; (.-location (.-document js/window))
+#object[Location http://0.0.0.0:3449/]
+cljs.user=&gt; :cljs/quit
+clojurista@mylaptop$
+</pre></div>
+</div>
+<p>Open your browser to <a class="reference external" href="http://localhost:3449">http://localhost:3449</a></p>
+<p>Turn on your developer console.</p>
+<p>When you type <code class="docutils literal"><span class="pre">(println</span> <span class="pre">123)</span></code> you are interacting with the browser <em>live</em>!</p>
+<p>You can try some JavaScript interop with <code class="docutils literal"><span class="pre">(.-location</span> <span class="pre">(.-document</span> <span class="pre">js/window))</span></code></p>
+<p>Now open the ClojureScript source file in your editor: <code class="docutils literal"><span class="pre">src/flappy_bird_demo/core.cljs</span></code></p>
+<p>See the string for the button label <code class="docutils literal"><span class="pre">&quot;START&quot;</span></code> on line 187. Change it to <code class="docutils literal"><span class="pre">&quot;START</span> <span class="pre">now!&quot;</span></code> and see the browser <em>update automatically</em> when you save <code class="docutils literal"><span class="pre">core.cljs</span></code>.</p>
+<p>Press the <strong>START now!</strong> button to start playing! Use your mouse button to <strong>JUMP</strong>!</p>
+<p>To quit a CLJS REPL type <code class="docutils literal"><span class="pre">:cljs/quit</span></code></p>
+</div>
+<div class="section" id="going-further">
+<h2>Going further<a class="headerlink" href="#going-further" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://clojurescript.org">ClojureScript.org</a></li>
+<li><a class="reference external" href="https://github.com/bhauman/lein-figwheel/">lein-figwheel</a></li>
+<li><a class="reference external" href="https://github.com/martinklepsch/tenzing">tenzing</a></li>
+<li><a class="reference external" href="https://github.com/viebel/klipse">klipse</a> and the <a class="reference external" href="http://blog.klipse.tech/clojure/2016/06/07/klipse-plugin-tuto.html">klipse/clojure blog</a></li>
+</ul>
 </div>
 </div>
 
