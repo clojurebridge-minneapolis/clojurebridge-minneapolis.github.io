@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Thursday Nov 3 2016 @ 21:13:35 skoestler
+                Friday Nov 4 2016 @ 11:08:44 tmarble
               </div>
             
           
@@ -214,22 +214,15 @@
 <p><img alt="Heroku dashboard" src="_images/heroku-getting-started1.png" /></p>
 <p>If you do not see this link on your dashboard, you can download the toolbelt from <a class="reference external" href="https://toolbelt.heroku.com/">toolbelt.heroku.com</a>.</p>
 <p>You will download an .exe file. Run this executable to install the Heroku Toolbelt and follow all prompts from the installation wizard.</p>
-<p>Before you can use Heroku, you will have to set up SSH, the way your computer communicates with Heroku.</p>
-<p>First, look up what your user directory is. You can find it by running <code class="docutils literal"><span class="pre">echo</span> <span class="pre">%USERPROFILE%</span></code>. Create a place for your SSH keys by running this command:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>mkdir &quot;%USERPROFILE%\.ssh&quot;
+<p>Now you can login to heroku the first time:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>clojurista@mylaptop$ heroku login
+Enter your Heroku credentials.
+Email: clojurista@gmail.com
+Password (typing will be hidden): ++++++++
+Logged in as clojurista@gmail.com
+clojurista@mylaptop$
 </pre></div>
 </div>
-<p>Then, if you have 32-bit Windows, run this command:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;C:\Program Files\Git\bin\ssh-keygen.exe&quot;
-</pre></div>
-</div>
-<p>If you have 64-bit Windows, run this command instead:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;C:\Program Files (x86)\Git\bin\ssh-keygen.exe&quot;
-</pre></div>
-</div>
-<p>The quotes are necessary on the <code class="docutils literal"><span class="pre">ssh-keygen.exe</span></code> command. When you run <code class="docutils literal"><span class="pre">ssh-keygen.exe</span></code>, you will need to type the name of your user directory - everything from &#8220;C:&#8220; onward - plus <code class="docutils literal"><span class="pre">\.ssh\id_rsa</span></code> when it asks you where to save the key. Be careful to type everything exactly. When it asks to &#8216;Enter passphrase&#8217; just hit Enter, then Enter again. <em>Look at the following example:</em></p>
-<p><img alt="ssh-keygen" src="_images/ssh-keygen.png" /></p>
-<p>After that, close the command prompt, open it again, and run the command <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">login</span></code>. You will be prompted for your email and password on Heroku. If you enter them and the command ends successfully, congratulations!</p>
 </div>
 <div class="section" id="testing-your-setup">
 <h2>Testing your setup<a class="headerlink" href="#testing-your-setup" title="Permalink to this headline">¶</a></h2>
