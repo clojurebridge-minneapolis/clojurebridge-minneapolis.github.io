@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Saturday Nov 5 2016 @ 09:54:01 futuro
+                Saturday Nov 5 2016 @ 11:32:16 web-flow
               </div>
             
           
@@ -189,8 +189,7 @@
   <span class="ss">:main</span> <span class="nv">chatter.handler</span>
   <span class="ss">:profiles</span>
   <span class="p">{</span><span class="ss">:dev</span>
-   <span class="p">{</span><span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">javax.servlet/servlet-api</span> <span class="s">&quot;2.5&quot;</span><span class="p">]</span>
-                   <span class="p">[</span><span class="nv">ring-mock</span> <span class="s">&quot;0.3.0&quot;</span><span class="p">]]}</span>
+   <span class="p">{</span><span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">javax.servlet/servlet-api</span> <span class="s">&quot;2.5&quot;</span><span class="p">]]}</span>
    <span class="ss">:production</span>
    <span class="p">{</span><span class="ss">:ring</span>
     <span class="p">{</span><span class="ss">:open-browser?</span> <span class="nv">false</span>, <span class="ss">:stacktraces?</span> <span class="nv">false</span>, <span class="ss">:auto-reload?</span> <span class="nv">false</span><span class="p">}</span>
@@ -214,7 +213,7 @@
 <p>We will still be able to start the app using <code class="docutils literal"><span class="pre">lein</span> <span class="pre">ring</span> <span class="pre">server</span></code> but now we can also start by entering <code class="docutils literal"><span class="pre">lein</span> <span class="pre">run</span> <span class="pre">-m</span> <span class="pre">chatter.handler</span></code> in the command line. When we start it this way, it defaults to port 5000, and you should see that in the browser. Port 3000 does not work anymore, but you see the app if you switch to 5000.</p>
 <p>If we create a jar with <code class="docutils literal"><span class="pre">lein</span> <span class="pre">uberjar</span></code>, we can also start the app with <code class="docutils literal"><span class="pre">java</span> <span class="pre">$JVM_OPTS</span> <span class="pre">-cp</span> <span class="pre">target/chatter-standalone.jar</span> <span class="pre">clojure.main</span> <span class="pre">-m</span> <span class="pre">chatter.handler</span></code></p>
 <p>These new methods of starting the app are closer to what Heroku will use to start the app.</p>
-<p>We also need a Procfile in the top directory containing the line <code class="docutils literal"><span class="pre">web:</span> <span class="pre">java</span> <span class="pre">$JVM_OPTS</span> <span class="pre">-cp</span> <span class="pre">target/chatter-standalone.jar</span> <span class="pre">clojure.main</span> <span class="pre">-m</span> <span class="pre">chatter.handler</span></code></p>
+<p>We also need a <code class="docutils literal"><span class="pre">Procfile</span></code> in the top directory containing the line <code class="docutils literal"><span class="pre">web:</span> <span class="pre">java</span> <span class="pre">$JVM_OPTS</span> <span class="pre">-cp</span> <span class="pre">target/chatter-standalone.jar</span> <span class="pre">clojure.main</span> <span class="pre">-m</span> <span class="pre">chatter.handler</span></code></p>
 <p>Stop the server using control-c, then restart with the command:</p>
 <p><code class="docutils literal"><span class="pre">lein</span> <span class="pre">run</span></code></p>
 <p>If the local web page still works; add and commit your changes, then push to github.</p>
