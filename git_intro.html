@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>This page is still under construction!!! &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
+  <title>Git &mdash; ClojureBridgeMN Documentation November 4-5, 2016 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Saturday Nov 5 2016 @ 08:34:57 tmarble
+                Saturday Nov 5 2016 @ 08:49:00 mhwalsh
               </div>
             
           
@@ -93,7 +93,14 @@
 <li class="toctree-l2"><a class="reference internal" href="welcome.html#you-are-here">You are here!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="welcome.html#why-clojure">Why Clojure?</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="welcome.html#using-git-to-save-your-programs">Using git to save your programs</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using git to save your programs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using git to save your programs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-version-control">What is version control?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-use-version-control-git">Why use version control/git?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#github-vs-git">Github vs git</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#git-basics-commands-and-theory">Git basics - Commands and theory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-resources">More Resources</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -134,7 +141,7 @@
       
           <li><a href="welcome.html">Welcome to ClojureBridge</a> &raquo;</li>
       
-    <li>This page is still under construction!!!</li>
+    <li>Git</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -148,9 +155,103 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p><strong>Using git to save your programs</strong></p>
-<div class="section" id="this-page-is-still-under-construction">
-<h1>This page is still under construction!!!<a class="headerlink" href="#this-page-is-still-under-construction" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="git">
+<h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-version-control">
+<h2>What is version control?<a class="headerlink" href="#what-is-version-control" title="Permalink to this headline">¶</a></h2>
+<p>One way to think about version control is in the context of some software tool you currently use. Every few months you get a new &#8216;version&#8217; of the tool you are using. The code that was written to create the software tool is the same original files, but in this new version some of the files may have been changed to add a new feature or fix a bug (broken code). Git is one of the tools that developers use to be able to facilitate multiple versions of the same code.</p>
+<div class="section" id="some-other-analogies">
+<h3>Some other analogies:<a class="headerlink" href="#some-other-analogies" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>track changes or history in a word or google doc</li>
+<li>a checkpoint in a video game</li>
+</ul>
+</div>
+</div>
+<div class="section" id="why-use-version-control-git">
+<h2>Why use version control/git?<a class="headerlink" href="#why-use-version-control-git" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Various version of the same code. To maintain the history. You can go back and view what the code used to look like or even go back in time to fix something the broke.</li>
+<li>As a collaboration tool. When many developers work on the same files it can be complicated and time consuming to combine all the changes. Version control helps developers make changes in parallel and handle conflicts.</li>
+</ul>
+<div class="section" id="why-git">
+<h3>Why git?<a class="headerlink" href="#why-git" title="Permalink to this headline">¶</a></h3>
+<p>The git documentation covers this topic very well <a class="reference external" href="https://git-scm.com/about">here</a> if you want to more in depth to why git.</p>
+</div>
+</div>
+<div class="section" id="github-vs-git">
+<h2>Github vs git<a class="headerlink" href="#github-vs-git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>git<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>git is a command line tool (in your terminal), that allows us to get all the benefits described above. You can do all you need locally (on your computer) without connecting to the internet. See the <a class="reference external" href="#why-git">Why git?</a> section for more detail, but it&#8217;s local capabilities are one of it&#8217;s main advantages.</p>
+</div>
+<div class="section" id="github">
+<h3>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h3>
+<p>Github is a web application built on top of git. It adds some additional functionality and some nice UIs (user interfaces) to make things easier to read. The main benefit is it easily helps us collaborate with other developers. We can put our code up on Github and others can collaborate on the project, use our code as an example, or give us feedback on what we are writing.</p>
+<p>You may hear people say &#8220;remote repository&#8221; this is what Github is. A place not on our computer where we can store our code.</p>
+<p>There are other similar services. Github is just one that is popular and we will be using during the workshop.</p>
+</div>
+</div>
+<div class="section" id="git-basics-commands-and-theory">
+<h2>Git basics - Commands and theory<a class="headerlink" href="#git-basics-commands-and-theory" title="Permalink to this headline">¶</a></h2>
+<p>We are going to learn five basic command that will get you started with git in your terminal. You will see references to these throughout the curriculum, but feel free to come back to these notes if you need a reminder.</p>
+<div class="section" id="commits">
+<h3>Commits<a class="headerlink" href="#commits" title="Permalink to this headline">¶</a></h3>
+<p>Commits are sets of changes to the code that we can move through to see the history of all the files. They capture what the code looked like at the time of the commit.</p>
+</div>
+<div class="section" id="workflow-diagram">
+<h3>Workflow Diagram<a class="headerlink" href="#workflow-diagram" title="Permalink to this headline">¶</a></h3>
+<p>We will reference this diagram in the descriptions below.</p>
+<p><img alt="git workflow diagram" src="_images/git-workflow.png" /></p>
+</div>
+<div class="section" id="git-init">
+<h3>git init<a class="headerlink" href="#git-init" title="Permalink to this headline">¶</a></h3>
+<p>This command turns the folder your code is in into a local git repository.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>$: cd project-folder
+$: git init
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-status">
+<h3>git status<a class="headerlink" href="#git-status" title="Permalink to this headline">¶</a></h3>
+<p>This command prints out the current state of your local repository. It will show you the files git is tracking or not, what changes have been made, and what changes are staged for commit. This is a command developers run frequently and inbetween different stages.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>$: git status
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-add">
+<h3>git add<a class="headerlink" href="#git-add" title="Permalink to this headline">¶</a></h3>
+<p>When you are happy with a change (or changes) you need to move them to the staging area. Files in the staging are in green when you run the <code class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></code> command. All staged changes will be included in your next commit.</p>
+</div>
+<div class="section" id="git-commit-m">
+<h3>git commit -m<a class="headerlink" href="#git-commit-m" title="Permalink to this headline">¶</a></h3>
+<p>Like mentioned earlier, a commit a snapshot of the code at that time. This command takes the staged changes and makes that snapshot. The command also takes a message that describes the changes being committed.</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>$: git commit -m &quot;useful message describing the change&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-remote-and-link-to-remote-repository">
+<h3>create a remote and link to remote repository<a class="headerlink" href="#create-a-remote-and-link-to-remote-repository" title="Permalink to this headline">¶</a></h3>
+<p>Instructions for how to do this can be found <a class="reference external" href="https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/">here</a>. Github will give us some additional commands to link the local with the remote repository. For now copy and paste these to set up tracking.</p>
+</div>
+<div class="section" id="git-push">
+<h3>git push<a class="headerlink" href="#git-push" title="Permalink to this headline">¶</a></h3>
+<p>Now the changes are in the local repository, it is time to put them on the remote repository to share the code you wrote (with a friend!). This command will do that!</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>$: git push
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="more-resources">
+<h2>More Resources<a class="headerlink" href="#more-resources" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://git-scm.com/doc">git documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf">Github Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://ndpsoftware.com/git-cheatsheet.html">Visual Git Cheat Sheet</a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
