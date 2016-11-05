@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Saturday Nov 5 2016 @ 15:41:21 futuro
+                Saturday Nov 5 2016 @ 15:48:11 futuro
               </div>
             
           
@@ -780,7 +780,7 @@ name-two expression-two]
     <span class="p">(</span><span class="nf">page/include-css</span> <span class="s">&quot;/chatter.css&quot;</span><span class="p">)]</span>
 </pre></div>
 </div>
-<p>Refresh the page. We want to see the <code class="docutils literal"><span class="pre">h1</span></code> tag centered, but you&#8217;ll see it&#8217;s not. Open the Console and go to the Network tab &#8211; <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Opening_the_Web_Console">Firefox</a> or <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/">Chrome</a> &#8211; and watch the traffic as you refresh the page. We&#8217;re getting a 404 when it&#8217;s trying to download the css.</p>
+<p>Refresh the page. We want to see the <code class="docutils literal"><span class="pre">h1</span></code> tag centered, but you&#8217;ll see it&#8217;s not. Open the Console and go to the Network tab &#8211; instructions for <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Opening_the_Web_Console">Firefox</a> or <a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools/">Chrome</a> &#8211; and watch the traffic as you refresh the page. We&#8217;re getting a 404 when it&#8217;s trying to download the css.</p>
 <p>The problem is in our <code class="docutils literal"><span class="pre">defroutes</span></code>. We have a route handling browser GET or POST requests, but anything else is falling through to our <code class="docutils literal"><span class="pre">route/not-found</span></code> call. We need to tell <code class="docutils literal"><span class="pre">defroutes</span></code> where to find our resources.  Change the defroutes to:</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">defroutes</span> <span class="nv">app-routes</span>
   <span class="p">(</span><span class="nf">GET</span> <span class="s">&quot;/&quot;</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">generate-message-view</span> <span class="o">@</span><span class="nv">chat-messages</span><span class="p">))</span>
