@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                Saturday Nov 5 2016 @ 15:48:11 futuro
+                Saturday Nov 5 2016 @ 15:59:08 futuro
               </div>
             
           
@@ -167,8 +167,9 @@
     <span class="p">(</span><span class="nf">jetty/run-jetty</span> <span class="o">#</span><span class="ss">&#39;app</span> <span class="p">{</span><span class="ss">:port</span> <span class="nv">port</span> <span class="ss">:join?</span> <span class="nv">false</span><span class="p">})))</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">ns</span></code> of <code class="docutils literal"><span class="pre">handler.clj</span></code> should look like:</p>
+<p>We need to tell Clojure to create a class file for our <code class="docutils literal"><span class="pre">chatter.handler</span></code> namespace, so let&#8217;s add the <code class="docutils literal"><span class="pre">(:gen-class)</span></code> directive to our <code class="docutils literal"><span class="pre">ns</span></code> form. The <code class="docutils literal"><span class="pre">ns</span></code> of <code class="docutils literal"><span class="pre">handler.clj</span></code> should look like:</p>
 <div class="highlight-clojure"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">ns </span><span class="nv">chatter.handler</span>
+  <span class="p">(</span><span class="ss">:gen-class</span><span class="p">)</span>
   <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">compojure.core</span> <span class="ss">:refer</span> <span class="ss">:all</span><span class="p">]</span>
             <span class="p">[</span><span class="nv">compojure.route</span> <span class="ss">:as</span> <span class="nv">route</span><span class="p">]</span>
             <span class="p">[</span><span class="nv">ring.middleware.defaults</span> <span class="ss">:refer</span> <span class="p">[</span><span class="nv">wrap-defaults</span> <span class="nv">site-defaults</span><span class="p">]]</span>
